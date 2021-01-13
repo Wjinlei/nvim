@@ -6,10 +6,8 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "sh",
     "rust",
-    "html",
     "css",
     "js",
-    "vue",
     "python",
     "go",
     "json"
