@@ -31,6 +31,11 @@ if has_machine_specific_file == 0
     exec "e ~/.config/nvim/_machine_specific.vim"
 endif
 
+" ===
+" === Necessary Commands to Execute
+" ===
+exec "nohlsearch"
+
 
 " ====================
 " === Editor Setup ===
@@ -826,9 +831,3 @@ let g:rnvimr_presets = [{'width': 0.8, 'height': 0.8}]
 
 
 " ===================== End of Plugin Settings =====================
-
-
-" ===
-" === Necessary Commands to Execute
-" ===
-exec "nohlsearch"
