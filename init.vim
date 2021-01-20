@@ -229,19 +229,14 @@ endfunc
 call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
-"Plug 'morhetz/gruvbox'
-"Plug 'ajmwagar/vim-deus'
-"Plug 'doums/darcula'
-Plug 'liuchengxu/space-vim-theme'
+Plug 'ajmwagar/vim-deus'
 Plug 'liuchengxu/eleline.vim'
-"Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
 
 " File navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'kevinhwang91/rnvimr'
-"Plug 'pechorin/any-jump.vim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 " Snippets
@@ -256,7 +251,6 @@ Plug 'MattesGroeger/vim-bookmarks'
 
 " Git
 Plug 'airblade/vim-gitgutter'
-"Plug 'jreybert/vimagit'
 
 " Genreal Highlighter
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
@@ -294,14 +288,11 @@ Plug 'tweekmonster/braceless.vim'
 Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-python --enable-go --enable-bash'}
 
 " Editor Enhancement
-Plug 'easymotion/vim-easymotion'
-Plug 'preservim/nerdcommenter'
+Plug 'godlygeek/tabular'
 Plug 'lambdalisue/suda.vim' " 使用 :sudow 以root身份保存文件
 Plug 'sheerun/vim-polyglot'
-Plug 'godlygeek/tabular'
-
-" Vim Applications
-Plug 'itchyny/calendar.vim'
+Plug 'preservim/nerdcommenter'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Other
 Plug 'wincent/terminus'
@@ -319,10 +310,7 @@ syntax on
 set termguicolors
 set background=dark " Setting dark mode
 "set background=light " Setting light mode
-"colorscheme gruvbox
-"colorscheme darcula
-"colorscheme deus
-colorscheme space_vim_theme
+colorscheme deus
 
 
 " ===
@@ -344,18 +332,6 @@ colorscheme space_vim_theme
 " ===
 let g:eleline_powerline_fonts = 1
 "let g:eleline_slim = 1
-
-
-" ===
-" === lightline
-" ===
-"let g:lightline = { 'colorscheme': 'gruvbox' }
-"let g:lightline = { 'colorscheme': 'darculaOriginal' }
-"let g:lightline = { 'colorscheme': 'deus' }
-"let g:lightline = { 'colorscheme': 'srcery' }
-"let g:lightline = { 'colorscheme': 'snazzy' }
-"let g:lightline = { 'colorscheme': 'PaperColor' }
-"let g:lightline = { 'colorscheme': 'space_vim_theme' }
 
 
 " ===
@@ -382,11 +358,6 @@ nnoremap gh :GitGutterPreviewHunk<CR>
 nnoremap gk :GitGutterPrevHunk<CR>
 nnoremap gj :GitGutterNextHunk<CR>
 
-" ===
-" === vimagit
-" ===
-"noremap mg :Magit<CR>
-
 
 " ===
 " === tabular
@@ -403,14 +374,6 @@ let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
 let g:xtabline_settings.enable_persistance = 0
 let g:xtabline_settings.last_open_first = 1
 noremap to :XTabMode<CR>
-
-
-" ===
-" === any-jump
-" ===
-"nnoremap fj :AnyJump<CR>
-"let g:any_jump_window_width_ratio  = 0.8
-"let g:any_jump_window_height_ratio = 0.9
 
 
 " ===
@@ -448,20 +411,6 @@ noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
 sign define vimspectorBP text=🛑 texthl=Normal
 sign define vimspectorBPDisabled text=🚫 texthl=Normal
 sign define vimspectorPC text=👉 texthl=SpellBad
-
-
-" ===
-" === vim-easymotion
-" ===
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_do_shade = 0
-let g:EasyMotion_smartcase = 1
-" Move to {char}
-map  fn <Plug>(easymotion-bd-f)
-nmap fn <Plug>(easymotion-overwin-f)
-" Move to line
-map fl <Plug>(easymotion-bd-jk)
-nmap fl <Plug>(easymotion-overwin-line)
 
 
 " ===
@@ -665,7 +614,7 @@ let g:vmt_fence_closing_text = '/TOC'
 " === LeaderF
 " ===
 noremap <silent> ff :Leaderf file<CR>
-"let g:Lf_WindowPosition = 'popup'
+let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
@@ -865,21 +814,6 @@ let g:rnvimr_action = {
             \ 'yw': 'EmitRangerCwd'
             \ }
 let g:rnvimr_presets = [{'width': 0.8, 'height': 0.8}]
-
-
-" ===
-" === vim-calendar
-" ===
-" E open Event list
-" T open Task list
-" D flag delete
-" dd flag delete
-" L delete is flag task
-" U undo
-" a\i\o add task or event
-noremap \\ :Calendar -first_day=monday<CR>
-noremap \cc :Calendar -view=clock<CR>
-noremap \cy :Calendar -view=year<CR>
 
 
 " ===================== End of Plugin Settings =====================
