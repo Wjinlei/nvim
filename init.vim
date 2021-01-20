@@ -307,6 +307,7 @@ Plug 'lambdalisue/suda.vim' " 使用 :sudow 以root身份保存文件
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdcommenter'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'tpope/vim-surround' " cs'<q>,ds'<q>
 
 " Other
 Plug 'wincent/terminus'
