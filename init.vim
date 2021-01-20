@@ -194,7 +194,7 @@ noremap stml :+tabmove<CR>
 noremap <LEADER>/ :term<CR>
 
 " Open up lazygit
-noremap <LEADER>lg :term lazygit<CR>
+noremap <silent> <LEADER>lg :term lazygit<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
