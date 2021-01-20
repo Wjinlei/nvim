@@ -16,6 +16,21 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" ===
+" === Create a _machine_specific.vim
+" ===
+let has_machine_specific_file = 1
+if empty(glob('~/.config/nvim/_machine_specific.vim'))
+    let has_machine_specific_file = 0
+    silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
+endif
+source ~/.config/nvim/_machine_specific.vim
+
+" Open the _machine_specific.vim file if it has just been created
+if has_machine_specific_file == 0
+    exec "e ~/.config/nvim/_machine_specific.vim"
+endif
+
 
 " ====================
 " === Editor Setup ===
@@ -121,12 +136,6 @@ noremap q :q!<CR>
 noremap Q :qa!<CR>
 noremap w :w!<CR>
 noremap W :w!<CR>
-
-" ESC
-onoremap <A-n> <ESC><ESC>
-inoremap <A-n> <ESC><ESC>
-cnoremap <A-n> <ESC><ESC>
-
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
@@ -234,9 +243,9 @@ Plug 'liuchengxu/eleline.vim'
 Plug 'bling/vim-bufferline'
 
 " File navigation
+Plug 'kevinhwang91/rnvimr'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'kevinhwang91/rnvimr'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 " Snippets
@@ -818,20 +827,6 @@ let g:rnvimr_presets = [{'width': 0.8, 'height': 0.8}]
 
 " ===================== End of Plugin Settings =====================
 
-" ===
-" === Create a _machine_specific.vim
-" ===
-let has_machine_specific_file = 1
-if empty(glob('~/.config/nvim/_machine_specific.vim'))
-    let has_machine_specific_file = 0
-    silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
-endif
-source ~/.config/nvim/_machine_specific.vim
-
-" Open the _machine_specific.vim file if it has just been created
-if has_machine_specific_file == 0
-    exec "e ~/.config/nvim/_machine_specific.vim"
-endif
 
 " ===
 " === Necessary Commands to Execute
