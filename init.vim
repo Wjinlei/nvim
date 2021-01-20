@@ -241,7 +241,7 @@ Plug 'bling/vim-bufferline'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'kevinhwang91/rnvimr'
-Plug 'pechorin/any-jump.vim'
+"Plug 'pechorin/any-jump.vim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 " Snippets
@@ -256,7 +256,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 
 " Git
 Plug 'airblade/vim-gitgutter'
-Plug 'jreybert/vimagit'
+"Plug 'jreybert/vimagit'
 
 " Genreal Highlighter
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
@@ -385,7 +385,7 @@ nnoremap gj :GitGutterNextHunk<CR>
 " ===
 " === vimagit
 " ===
-noremap mg :Magit<CR>
+"noremap mg :Magit<CR>
 
 
 " ===
@@ -408,9 +408,9 @@ noremap to :XTabMode<CR>
 " ===
 " === any-jump
 " ===
-nnoremap fj :AnyJump<CR>
-let g:any_jump_window_width_ratio  = 0.8
-let g:any_jump_window_height_ratio = 0.9
+"nnoremap fj :AnyJump<CR>
+"let g:any_jump_window_width_ratio  = 0.8
+"let g:any_jump_window_height_ratio = 0.9
 
 
 " ===
@@ -513,7 +513,7 @@ else
 endif
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -553,7 +553,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
+" Use <LEADER>h to show documentation in preview window.
 nnoremap <silent> <LEADER>h :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
