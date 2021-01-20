@@ -243,8 +243,8 @@ endfunc
 call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
-Plug 'ajmwagar/vim-deus'
-Plug 'liuchengxu/eleline.vim'
+Plug 'srcery-colors/srcery-vim'
+Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
 
 " File navigation
@@ -252,6 +252,9 @@ Plug 'kevinhwang91/rnvimr'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+
+" Find & Replace
+Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -325,7 +328,7 @@ syntax on
 set termguicolors
 set background=dark " Setting dark mode
 "set background=light " Setting light mode
-colorscheme deus
+colorscheme srcery
 
 
 " ===
@@ -343,10 +346,10 @@ colorscheme deus
 
 
 " ===
-" === eleline
+" === lightline
 " ===
-let g:eleline_powerline_fonts = 1
-"let g:eleline_slim = 1
+let g:lightline = {'colorscheme': 'srcery'}
+
 
 
 " ===
@@ -560,6 +563,12 @@ let g:snips_author = "Jerry Wang"
 " coc-yank
 nnoremap <silent> <LEADER>y :<C-u>CocList -A --normal yank<cr>
 
+" ===
+" === Far.vim
+" ===
+noremap <LEADER>f :Far  **/*<left><left><left><left><left>
+let g:far#enable_undo = 1
+let g:far#mapping = {"replace_undo" : ["l"]}
 
 " ===
 " === MarkdownPreview
@@ -629,7 +638,7 @@ let g:vmt_fence_closing_text = '/TOC'
 " === LeaderF
 " ===
 noremap <silent> ff :Leaderf file<CR>
-let g:Lf_WindowPosition = 'popup'
+"let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
@@ -640,39 +649,8 @@ let g:Lf_IgnoreCurrentBufferName = 1
 " === FZF
 " ===
 " Layout
-let g:fzf_layout =
-\ {'up':'~90%', 'window':
-    \ {
-        \ 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5,
-        \ 'highlight': 'Todo', 'border': 'sharp'
-    \ }
-\ }
-
-" Color
-let g:fzf_colors =
-\ {
-    \ 'fg':      ['fg', 'Normal'],
-    \ 'bg':      ['bg', 'Normal'],
-    \ 'hl':      ['fg', 'Comment'],
-    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-    \ 'hl+':     ['fg', 'Statement'],
-    \ 'info':    ['fg', 'PreProc'],
-    \ 'border':  ['fg', 'Ignore'],
-    \ 'prompt':  ['fg', 'Conditional'],
-    \ 'pointer': ['fg', 'Exception'],
-    \ 'marker':  ['fg', 'Keyword'],
-    \ 'spinner': ['fg', 'Label'],
-    \ 'header':  ['fg', 'Comment']
-\ }
-
-let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
-let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
-let g:fzf_buffers_jump = 1
-
-"Get Files
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)
+let g:fzf_layout = {'up':'~90%', 'window':
+    \ {'width': 0.8, 'height': 0.9,'yoffset':0.5,'xoffset': 0.5,'highlight': 'Todo', 'border': 'sharp'}}
 
 " Make Ripgrep ONLY search file contents and not filenames
 command! -bang -nargs=* Rg
@@ -682,16 +660,9 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
   \   <bang>0)
 
-" Git grep
-command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep(
-  \   'git grep --line-number '.shellescape(<q-args>), 0,
-  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
-
-"noremap fg  :GGrep<CR>
-noremap fs  :Rg<CR>
-"noremap ff  :Files<CR>
+noremap fr  :Rg<CR>
+noremap fs  :Lines<CR>
 noremap bb  :Buffers<CR>
 
 " ===
