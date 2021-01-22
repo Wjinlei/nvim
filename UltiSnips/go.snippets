@@ -44,8 +44,6 @@ if err != nil {
 endsnippet
 
 
-snippet ifherr "handleError" b
-if handleError(c, "$1", err) {
-	return
-}
+snippet herr "handleError" b
+handleError("$1", err, nil)
 endsnippet
