@@ -390,7 +390,7 @@ nnoremap gj :GitGutterNextHunk<CR>
 " ===
 " === Agit
 " ===
-nnoremap <LEADER>ag :Agit<CR>
+nnoremap <LEADER>mg :Agit<CR>
 let g:agit_no_default_mappings = 1
 
 
