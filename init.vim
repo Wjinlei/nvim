@@ -145,6 +145,9 @@ noremap W :w!<CR>
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 
+" Search
+noremap <LEADER><CR> :nohlsearch<CR>
+
 
 " ===
 " === Cursor Movement
@@ -463,6 +466,17 @@ augroup autoformat_settings
   " autocmd FileType rust AutoFormatBuffer rustfmt
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
+
+" ===
+" === vim-visual-multi
+" ===
+let g:VM_maps                       = {}
+let g:VM_maps['Find Next']          = 'j'
+let g:VM_maps['Find Prev']          = 'k'
+let g:VM_maps['Skip Region']        = 'n'
+let g:VM_maps['Remove Region']      = 'u'
+let g:VM_maps["Undo"]               = '<c-u>'
+let g:VM_maps["Redo"]               = '<c-r>'
 
 
 " ===
