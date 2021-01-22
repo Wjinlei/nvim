@@ -319,6 +319,7 @@ Plug 'lambdalisue/suda.vim' " 使用 :sudow 以root身份保存文件
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdcommenter'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround' " cs'<q>,ds'<q>
 
 " Other
@@ -485,6 +486,19 @@ let g:VM_maps['Skip Region']        = 'n'
 let g:VM_maps['Remove Region']      = 'u'
 let g:VM_maps["Undo"]               = '<c-u>'
 let g:VM_maps["Redo"]               = '<c-r>'
+
+" ===
+" === vim-easymotion
+" ===
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_do_shade = 0
+let g:EasyMotion_smartcase = 1
+" Move to {char}
+map  fn <Plug>(easymotion-bd-f)
+nmap fn <Plug>(easymotion-overwin-f)
+" Move to line
+map fl <Plug>(easymotion-bd-jk)
+nmap fl <Plug>(easymotion-overwin-line)
 
 
 " ===
