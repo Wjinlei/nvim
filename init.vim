@@ -272,6 +272,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 
 " Git
 Plug 'airblade/vim-gitgutter'
+Plug 'cohama/agit.vim'
 
 " Autoformat
 Plug 'google/vim-maktaba'
@@ -383,6 +384,13 @@ nnoremap gf :GitGutterFold<CR>
 nnoremap gh :GitGutterPreviewHunk<CR>
 nnoremap gk :GitGutterPrevHunk<CR>
 nnoremap gj :GitGutterNextHunk<CR>
+
+
+" ===
+" === Agit
+" ===
+nnoremap <LEADER>ag :Agit<CR>
+let g:agit_no_default_mappings = 1
 
 
 " ===
