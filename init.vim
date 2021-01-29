@@ -246,8 +246,8 @@ endfunc
 call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
-Plug 'srcery-colors/srcery-vim'
-"Plug 'lucasprag/simpleblack'
+"Plug 'srcery-colors/srcery-vim'
+Plug 'lucasprag/simpleblack'
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
 
@@ -335,10 +335,10 @@ call plug#end()
 " === Dress up my vim
 " ===
 syntax on
-set termguicolors
+"set termguicolors
 set background=dark " Setting dark mode
 "set background=light " Setting light mode
-colorscheme srcery
+colorscheme simpleblack
 
 
 " ===
@@ -352,13 +352,13 @@ colorscheme srcery
 " ===
 " === 灰色注释
 " ===
-"hi Comment guifg=#5C6370 ctermfg=59
+hi Comment guifg=#5C6370 ctermfg=59
 
 
 " ===
 " === lightline
 " ===
-let g:lightline = {'colorscheme': 'srcery'}
+let g:lightline = {'colorscheme': 'simpleblack'}
 
 
 
