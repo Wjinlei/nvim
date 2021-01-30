@@ -173,7 +173,6 @@ noremap spl :set splitright<CR>:vsplit<CR>
 noremap smv <C-w>t<C-w>K
 noremap smh <C-w>t<C-w>H
 " moving the cursor around windows
-noremap ss <C-w>w
 noremap sk <C-w>k
 noremap sj <C-w>j
 noremap sh <C-w>h
@@ -494,11 +493,7 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_do_shade = 0
 let g:EasyMotion_smartcase = 1
 " Move to {char}
-map  fn <Plug>(easymotion-bd-f)
-nmap fn <Plug>(easymotion-overwin-f)
-" Move to line
-map fl <Plug>(easymotion-bd-jk)
-nmap fl <Plug>(easymotion-overwin-line)
+map  ss <Plug>(easymotion-bd-f)
 
 
 " ===
