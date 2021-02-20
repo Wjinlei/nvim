@@ -3,15 +3,6 @@
     "coc.preferences.hoverTarget": "preview",
     "coc.preferences.enableFloatHighlight": true,
     "coc.preferences.snippetStatusText": "Ⓢ ",
-    "coc.preferences.formatOnSaveFiletypes": [
-        "sh",
-        "rust",
-        "css",
-        "js",
-        "python",
-        "go",
-        "json"
-    ],
     "suggest.completionItemKindLabels": {
         "class": "\uf0e8",
         "color": "\ue22b",
