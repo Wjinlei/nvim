@@ -252,10 +252,8 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
 
 " File navigation
-Plug 'kevinhwang91/rnvimr'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 " Find & Replace
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
@@ -267,13 +265,6 @@ Plug 'honza/vim-snippets'
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Bookmarks
-Plug 'MattesGroeger/vim-bookmarks'
-
-" Git
-Plug 'airblade/vim-gitgutter'
-Plug 'cohama/agit.vim'
-
 " Autoformat
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
@@ -282,22 +273,11 @@ Plug 'google/vim-codefmt'
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'RRethy/vim-illuminate'
 
-" Taglist
-Plug 'liuchengxu/vista.vim'
-
-" Undo Tree
-Plug 'mbbill/undotree'
-
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'dkarter/bullets.vim'
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
-
-" HTML, CSS, JavaScript, JSON, etc.
-Plug 'elzr/vim-json'
-Plug 'othree/html5.vim'
-Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -305,22 +285,14 @@ Plug 'rust-lang/rust.vim'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-" Python
-Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'tweekmonster/braceless.vim'
-
 " Debuger
 Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-python --enable-go --enable-bash'}
 
 " Editor Enhancement
-Plug 'godlygeek/tabular'
 Plug 'lambdalisue/suda.vim' " 使用 :sudow 以root身份保存文件
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdcommenter'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-surround' " cs'<q>,ds'<q>
 
 " Other
 Plug 'wincent/terminus'
@@ -356,91 +328,19 @@ colorscheme deus
 
 
 " ===
-" === lightline
-" ===
-let g:lightline = {'colorscheme': 'srcery'}
-
-
-
-" ===
-" === Colorizer
-" ===
-let g:colorizer_syntax = 1
-
-
-" ===
 " === rainbow
 " ===
 let g:rainbow_active = 1
 
-" ===
-" === treesitter
-" ===
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"html","css","javascript","json","vue","bash"},
-  highlight = {
-    enable = true, -- false will disable the whole extension
-  },
-  indent = {
-    enable = true
-  }
-}
-EOF
 
 " ===
-" === GitGutter
-" ===
-let g:gitgutter_signs = 0
-let g:gitgutter_map_keys = 0
-let g:gitgutter_preview_win_floating = 0
-autocmd BufWritePost * GitGutter
-nnoremap gf :GitGutterFold<CR>
-nnoremap gh :GitGutterPreviewHunk<CR>
-nnoremap gk :GitGutterPrevHunk<CR>
-nnoremap gj :GitGutterNextHunk<CR>
-
-
-" ===
-" === Agit
-" ===
-nnoremap <LEADER>mg :Agit<CR>
-let g:agit_no_default_mappings = 1
-
-
-" ===
-" === tabular
-" ===
-vmap ga :Tabularize /
-
-
-" ===
-" === xtabline, 这个插件其实我也不清楚到底有什么实际作用
+" === xtabline
 " ===
 let g:xtabline_settings = {}
 let g:xtabline_settings.enable_mappings = 0
 let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
 let g:xtabline_settings.enable_persistance = 0
 let g:xtabline_settings.last_open_first = 1
-noremap to :XTabMode<CR>
-
-
-" ===
-" === Undotree
-" ===
-noremap U :UndotreeToggle<CR>
-let g:undotree_DiffAutoOpen = 1
-let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_ShortIndicators = 1
-let g:undotree_WindowLayout = 2
-let g:undotree_DiffpanelHeight = 8
-let g:undotree_SplitWidth = 24
-function g:Undotree_CustomMap()
-    nmap <buffer> k <plug>UndotreeNextState
-    nmap <buffer> j <plug>UndotreePreviousState
-    nmap <buffer> K 5<plug>UndotreeNextState
-    nmap <buffer> J 5<plug>UndotreePreviousState
-endfunc
 
 
 " ===
@@ -469,11 +369,6 @@ cnoreabbrev sudow w suda://%
 
 
 " ===
-" === Python-syntax
-" ===
-let g:python_highlight_all = 1
-
-" ===
 " === AutoFormat
 " ===
 augroup autoformat_settings
@@ -490,16 +385,6 @@ augroup autoformat_settings
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
 
-" ===
-" === vim-visual-multi
-" ===
-let g:VM_maps                       = {}
-let g:VM_maps['Find Next']          = 'j'
-let g:VM_maps['Find Prev']          = 'k'
-let g:VM_maps['Skip Region']        = 'n'
-let g:VM_maps['Remove Region']      = 'u'
-let g:VM_maps["Undo"]               = '<c-u>'
-let g:VM_maps["Redo"]               = '<c-r>'
 
 " ===
 " === vim-easymotion
@@ -509,6 +394,13 @@ let g:EasyMotion_do_shade = 0
 let g:EasyMotion_smartcase = 1
 " Move to {char}
 map  ss <Plug>(easymotion-bd-f)
+
+
+" ===
+" === Nerdcommenter
+" ===
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
 
 
 " ===
@@ -612,7 +504,6 @@ nmap <silent> <LEADER>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<C
 " Highlight the symbol and its references when holding the cursor.
 "autocmd CursorHold * silent call CocActionAsync('highlight')
 
-
 " Useful commands
 " CocCommand
 nnoremap <C-c> :CocCommand<CR>
@@ -631,12 +522,14 @@ let g:snips_author = "Jerry Wang"
 " coc-yank
 nnoremap <silent> <LEADER>y :<C-u>CocList -A --normal yank<cr>
 
+
 " ===
 " === Far.vim
 " ===
 noremap <LEADER>f :Far  **/*<left><left><left><left><left>
 let g:far#enable_undo = 1
 let g:far#mapping = {"replace_undo" : ["l"]}
+
 
 " ===
 " === MarkdownPreview
@@ -702,36 +595,6 @@ let g:vmt_cycle_list_item_markers = 1
 let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 
-" ===
-" === LeaderF
-" ===
-noremap <silent> ff :Leaderf file<CR>
-"let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_PreviewCode = 1
-let g:Lf_ShowHidden = 1
-let g:Lf_ShowDevIcons = 1
-let g:Lf_IgnoreCurrentBufferName = 1
-
-" ===
-" === FZF
-" ===
-" Layout
-let g:fzf_layout = {'up':'~90%', 'window':
-    \ {'width': 0.8, 'height': 0.9,'yoffset':0.5,'xoffset': 0.5,'highlight': 'Todo', 'border': 'sharp'}}
-
-" Make Ripgrep ONLY search file contents and not filenames
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --hidden --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
-  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
-  \   <bang>0)
-
-
-noremap fr  :Rg<CR>
-noremap fs  :Lines<CR>
-noremap bb  :Buffers<CR>
 
 " ===
 " === Ultisnips
@@ -748,63 +611,37 @@ silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
 
 
 " ===
-" === Nerdcommenter
+" === FZF
 " ===
-let g:NERDCommentEmptyLines = 1
-let g:NERDTrimTrailingWhitespace = 1
+" Layout
+let g:fzf_layout = {'up':'~90%', 'window':
+    \ {'width': 0.8, 'height': 0.9,'yoffset':0.5,'xoffset': 0.5,'highlight': 'Todo', 'border': 'sharp'}}
+" Make Ripgrep ONLY search file contents and not filenames
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
+  \   <bang>0)
+noremap fr  :Rg<CR>
+noremap fs  :Lines<CR>
+noremap bb  :Buffers<CR>
 
 
 " ===
-" === Vista.vim
+" === treesitter
 " ===
-noremap <silent> T :Vista!!<CR>
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'ctags'
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#enable_icon = 1
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
-function! NearestMethodOrFunction() abort
-    return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-set statusline+=%{NearestMethodOrFunction()}
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-
-
-" ===
-" === vim-bookmarks
-" ===
-let g:bookmark_no_default_key_mappings = 1
-" 添加普通书签
-nmap mt <Plug>BookmarkToggle
-" 添加带描述的书签
-nmap ma <Plug>BookmarkAnnotate
-" 查看所有书签
-nmap ml <Plug>BookmarkShowAll
-" 跳转到下一个书签
-nmap mi <Plug>BookmarkNext
-" 跳转到上一个书签
-nmap mn <Plug>BookmarkPrev
-" 清除当前所有书签
-nmap mC <Plug>BookmarkClear
-" 清除所有书签
-nmap mX <Plug>BookmarkClearAll
-"nmap mu <Plug>BookmarkMoveUp
-"nmap me <Plug>BookmarkMoveDown
-"nmap <LEADER>g <Plug>BookmarkMoveToLine
-let g:bookmark_save_per_working_dir = 1
-let g:bookmark_auto_save = 1
-let g:bookmark_manage_per_buffer = 1
-let g:bookmark_save_per_working_dir = 1
-let g:bookmark_center = 1
-let g:bookmark_auto_close = 1
-let g:bookmark_location_list = 0
-highlight BookmarkSign ctermbg=NONE ctermfg=160
-highlight BookmarkLine ctermbg=194 ctermfg=NONE
-let g:bookmark_sign = '🔖'
-let g:bookmark_highlight_lines = 1
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"html","css","javascript","json","vue","bash"},
+  highlight = {
+    enable = true, -- false will disable the whole extension
+  },
+  indent = {
+    enable = true
+  }
+}
+EOF
 
 
 " ===
@@ -844,30 +681,5 @@ autocmd FileTYpe go noremap gtt :GoTestFunc<CR>
 " ===
 let g:rustfmt_autosave = 1
 let g:rust_clip_command = 'xclip -selection clipboard'
-
-
-" ===
-" === rnvimr
-" ===
-" Make Ranger replace Netrw and be the file explorer
-let g:rnvimr_enable_ex = 1
-" Make Ranger to be hidden after picking a file
-let g:rnvimr_enable_picker = 1
-" Make Neovim wipe the buffers corresponding to the files deleted by Ranger
-let g:rnvimr_enable_bw = 1
-" Link CursorLine into RnvimrNormal highlight in the Floating window
-highlight link RnvimrNormal CursorLine
-nnoremap <silent> \r :RnvimrToggle<CR>
-tnoremap <silent> \r <C-\><C-n>:RnvimrToggle<CR>
-" Map Rnvimr action
-let g:rnvimr_action = {
-            \ '<C-t>': 'NvimEdit tabedit',
-            \ '<C-x>': 'NvimEdit split',
-            \ '<C-v>': 'NvimEdit vsplit',
-            \ 'gw': 'JumpNvimCwd',
-            \ 'yw': 'EmitRangerCwd'
-            \ }
-let g:rnvimr_presets = [{'width': 0.8, 'height': 0.8}]
-
 
 " ===================== End of Plugin Settings =====================
