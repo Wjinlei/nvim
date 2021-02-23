@@ -258,6 +258,9 @@ Plug 'junegunn/fzf.vim'
 " Find & Replace
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 
+" Taglist
+Plug 'liuchengxu/vista.vim'
+
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -626,6 +629,25 @@ command! -bang -nargs=* Rg
 noremap fr  :Rg<CR>
 noremap fs  :Lines<CR>
 noremap bb  :Buffers<CR>
+
+
+" ===
+" === Vista.vim
+" ===
+noremap <silent> T :Vista!!<CR>
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'ctags'
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+function! NearestMethodOrFunction() abort
+    return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+set statusline+=%{NearestMethodOrFunction()}
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 
 " ===
