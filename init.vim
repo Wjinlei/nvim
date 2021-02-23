@@ -245,10 +245,11 @@ endfunc
 call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
-Plug 'srcery-colors/srcery-vim'
-"Plug 'lucasprag/simpleblack'
-Plug 'itchyny/lightline.vim'
-Plug 'bling/vim-bufferline'
+Plug 'theniceboy/nvim-deus'
+
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground'
 
 " File navigation
 Plug 'kevinhwang91/rnvimr'
@@ -334,10 +335,10 @@ call plug#end()
 " === Dress up my vim
 " ===
 syntax on
-"set termguicolors
+set termguicolors
 set background=dark " Setting dark mode
 "set background=light " Setting light mode
-colorscheme srcery
+colorscheme deus
 
 
 " ===
@@ -351,7 +352,7 @@ colorscheme srcery
 " ===
 " === 灰色注释
 " ===
-hi Comment guifg=#5C6370 ctermfg=59
+"hi Comment guifg=#5C6370 ctermfg=59
 
 
 " ===
@@ -372,6 +373,21 @@ let g:colorizer_syntax = 1
 " ===
 let g:rainbow_active = 1
 
+" ===
+" === treesitter
+" ===
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"html","css","javascript","json","vue","bash","go"},
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+  indent = {
+    enable = true
+  }
+}
+EOF
 
 " ===
 " === GitGutter
