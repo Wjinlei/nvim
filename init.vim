@@ -378,10 +378,9 @@ let g:rainbow_active = 1
 " ===
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"html","css","javascript","json","vue","bash","go"},
+  ensure_installed = {"html","css","javascript","json","vue","bash"},
   highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
+    enable = true, -- false will disable the whole extension
   },
   indent = {
     enable = true
