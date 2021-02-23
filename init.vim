@@ -270,6 +270,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Autoformat
 Plug 'google/vim-maktaba'
+Plug 'google/vim-glaive'
 Plug 'google/vim-codefmt'
 
 " Genreal Highlighter
@@ -303,6 +304,7 @@ Plug 'luochen1990/rainbow'
 Plug 'mg979/vim-xtabline'
 
 call plug#end()
+call glaive#Install()
 
 " ===================== Start of Plugin Settings =====================
 
@@ -374,6 +376,7 @@ cnoreabbrev sudow w suda://%
 " ===
 " === AutoFormat
 " ===
+Glaive codefmt prettier_options="--print-width=160"
 augroup autoformat_settings
   " autocmd FileType bzl AutoFormatBuffer buildifier
   " autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
