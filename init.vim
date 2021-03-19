@@ -283,9 +283,6 @@ Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'dkarter/bullets.vim'
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
 
-" Rust
-Plug 'rust-lang/rust.vim'
-
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
@@ -417,9 +414,6 @@ let g:coc_global_extensions = [
             \ 'coc-actions',
             \ 'coc-diagnostic',
             \ 'coc-tsserver',
-            \ 'coc-python',
-            \ 'coc-phpls',
-            \ 'coc-rls',
             \ 'coc-html',
             \ 'coc-css',
             \ 'coc-json',
