@@ -256,6 +256,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Find & Replace
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 
 " Taglist
@@ -528,6 +529,28 @@ nnoremap <silent> <LEADER>y :<C-u>CocList -A --normal yank<cr>
 
 
 " ===
+" === Leaderf
+" ===
+"let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_PreviewCode = 1
+let g:Lf_ShowHidden = 1
+let g:Lf_ShowDevIcons = 1
+let g:Lf_CommandMap = {
+\   '<C-]>': ['<C-v>'],
+\   '<C-p>': ['<C-n>'],
+\}
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+let g:Lf_WildIgnore = {
+        \ 'dir': ['.git', 'vendor', 'node_modules'],
+        \ 'file': ['__vim_project_root']
+        \}
+let g:Lf_UseMemoryCache = 0
+let g:Lf_UseCache = 0
+
+
+" ===
 " === Far.vim
 " ===
 noremap <LEADER>f :Far  **/*<left><left><left><left><left>
@@ -627,6 +650,7 @@ command! -bang -nargs=* Rg
 " Fzf layout
 let g:fzf_layout = {'window': {'width': 1, 'height': 1 }}
 
+noremap ff  :Leaderf file<CR>
 noremap fh  :History<CR>
 noremap fr  :Rg<CR>
 noremap fs  :Lines<CR>
