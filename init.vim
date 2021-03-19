@@ -431,10 +431,12 @@ map  ss <Plug>(easymotion-bd-f)
 let g:VM_maps                       = {}
 let g:VM_maps['Find Under']         = '<C-d>'
 let g:VM_maps['Find Subword Under'] = '<C-d>'
+let g:VM_maps["Find Next"]          = '<C-n>'
+let g:VM_maps["Find Prev"]          = '<C-p>'
 let g:VM_maps["Goto Next"]          = '<C-j>'
 let g:VM_maps["Goto Prev"]          = '<C-k>'
 let g:VM_maps['Remove Region']      = 'q'
-let g:VM_maps['Skip Region']        = '<C-n>'
+let g:VM_maps['Skip Region']        = '<C-s>'
 let g:VM_maps["Undo"]               = '<C-u>'
 let g:VM_maps["Redo"]               = '<C-r>'
 
