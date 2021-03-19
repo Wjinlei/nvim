@@ -346,8 +346,8 @@ let g:rainbow_active = 1
 " ===
 " === vim-airline
 " ===
-"let g:airline_theme='deus'
-let g:airline_theme='minimalist'
+let g:airline_theme='deus'
+"let g:airline_theme='minimalist'
 
 " ===
 " === vim-scrollstatus
