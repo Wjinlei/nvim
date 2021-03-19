@@ -298,6 +298,7 @@ Plug 'lambdalisue/suda.vim' " 使用 :sudow 以root身份保存文件
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Other
 Plug 'wincent/terminus'
@@ -401,6 +402,20 @@ let g:EasyMotion_do_shade = 0
 let g:EasyMotion_smartcase = 1
 " Move to {char}
 map  ss <Plug>(easymotion-bd-f)
+
+
+" ===
+" === vim-visual-multi
+" ===
+let g:VM_maps                       = {}
+let g:VM_maps['Find Under']         = '<C-d>'
+let g:VM_maps['Find Subword Under'] = '<C-d>'
+let g:VM_maps["Goto Next"]          = '<C-j>'
+let g:VM_maps["Goto Prev"]          = '<C-k>'
+let g:VM_maps['Remove Region']      = 'q'
+let g:VM_maps['Skip Region']        = '<C-n>'
+let g:VM_maps["Undo"]               = '<C-u>'
+let g:VM_maps["Redo"]               = '<C-r>'
 
 
 " ===
