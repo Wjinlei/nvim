@@ -617,9 +617,6 @@ silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
 " ===
 " === FZF
 " ===
-" Layout
-let g:fzf_layout = {'up':'~90%', 'window':
-    \ {'width': 0.8, 'height': 0.9,'yoffset':0.5,'xoffset': 0.5,'highlight': 'Todo', 'border': 'sharp'}}
 " Make Ripgrep ONLY search file contents and not filenames
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -627,7 +624,10 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
   \   <bang>0)
+" Fzf layout
+let g:fzf_layout = {'window': {'width': 1, 'height': 1 }}
 
+noremap fh  :History<CR>
 noremap fr  :Rg<CR>
 noremap fs  :Lines<CR>
 noremap bb  :Buffers<CR>
