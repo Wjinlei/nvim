@@ -246,6 +246,9 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
 Plug 'theniceboy/nvim-deus'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ojroques/vim-scrollstatus'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter'
@@ -338,6 +341,23 @@ colorscheme deus
 " === rainbow
 " ===
 let g:rainbow_active = 1
+
+
+" ===
+" === vim-airline
+" ===
+let g:airline_theme='deus'
+
+" ===
+" === vim-scrollstatus
+" ===
+let g:scrollstatus_size = 20
+let g:airline_section_x = '%{ScrollStatus()} '
+let g:airline_section_y = airline#section#create_right(['filetype'])
+let g:airline_section_z = airline#section#create([
+            \ '%#__accent_bold#%3l%#__restore__#/%L', ' ',
+            \ '%#__accent_bold#%3v%#__restore__#/%3{virtcol("$") - 1}',
+            \ ])
 
 
 " ===
