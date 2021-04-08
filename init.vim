@@ -251,7 +251,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ojroques/vim-scrollstatus'
 
 " Treesitter
-Plug 'nvim-treesitter/nvim-treesitter' " need nvim 5.0.0
+Plug 'nvim-treesitter/nvim-treesitter' " need nvim 0.5
 Plug 'nvim-treesitter/playground'
 
 " File navigation
@@ -263,7 +263,7 @@ Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 
 " Git
-Plug 'kdheepak/lazygit.nvim' " need nvim 5.0.0
+Plug 'kdheepak/lazygit.nvim' " need nvim 0.5
 
 " Taglist
 Plug 'liuchengxu/vista.vim'
