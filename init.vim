@@ -196,7 +196,7 @@ noremap stml :+tabmove<CR>
 noremap <LEADER>/ :term<CR>
 
 " Open up lazygit
-noremap <silent> <LEADER>lg :term lazygit<CR>
+"noremap <silent> <LEADER>lg :term lazygit<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
@@ -251,7 +251,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ojroques/vim-scrollstatus'
 
 " Treesitter
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter' " need nvim 5.0.0
 Plug 'nvim-treesitter/playground'
 
 " File navigation
@@ -261,6 +261,9 @@ Plug 'junegunn/fzf.vim'
 " Find & Replace
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+
+" Git
+Plug 'kdheepak/lazygit.nvim' " need nvim 5.0.0
 
 " Taglist
 Plug 'liuchengxu/vista.vim'
@@ -446,6 +449,16 @@ let g:VM_maps["Redo"]               = '<C-r>'
 " ===
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
+
+" ===
+" === LazyGit
+" ===
+let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 0.8 " scaling factor for floating window
+let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
+let g:lazygit_floating_window_use_plenary = 0 " use plenary.nvim to manage floating window if available
+let g:lazygit_use_neovim_remote = 1 " fallback to 0 if neovim-remote is not installed
+nnoremap <silent> <leader>lg :LazyGit<CR>
 
 
 " ===
