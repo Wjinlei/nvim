@@ -403,7 +403,7 @@ cnoreabbrev sudow w suda://%
 " ===
 " === AutoFormat
 " ===
-Glaive codefmt prettier_options="--print-width=140"
+Glaive codefmt prettier_options="--print-width=120"
 augroup autoformat_settings
   " autocmd FileType bzl AutoFormatBuffer buildifier
   " autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
