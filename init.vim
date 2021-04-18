@@ -157,8 +157,10 @@ noremap <LEADER><CR> :nohlsearch<CR>
 " ===
 noremap <silent> K 5k
 noremap <silent> J 5j
-noremap <silent> H b
-noremap <silent> L w
+noremap <silent> H h
+noremap <silent> L l
+noremap <silent> h b
+noremap <silent> l w
 noremap <silent> <C-h> ^
 noremap <silent> <C-l> $
 
