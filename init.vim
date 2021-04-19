@@ -215,14 +215,14 @@ func! CompileRunGcc()
         exec "!g++ % -o %<"
         exec "!time ./%<"
     elseif &filetype == 'cpp'
-        set splitbelow
+        set splitright
         exec "!g++ -std=c++11 % -Wall -o %<"
-        :sp
+        :vsp
         :res -15
         :term ./%<
     elseif &filetype == 'python'
-        set splitbelow
-        :sp
+        set splitright
+        :vsp
         :term python3 %
     elseif &filetype == 'markdown'
         exec "MarkdownPreview"
@@ -231,9 +231,13 @@ func! CompileRunGcc()
     elseif &filetype == 'html'
         silent! exec "!".g:mkdp_browser." % &"
     elseif &filetype == 'go'
-        set splitbelow
-        :sp
+        set splitright
+        :vsp
         :term go run %
+    elseif &filetype == 'vue'
+        set splitright
+        :vsp
+        :term npm run build
     elseif &filetype == 'rust'
         exec "!rustc % -o %<"
         exec "!time ./%<"
