@@ -8,6 +8,7 @@
 
 ### 介绍
 这是我的vim配置, 它`fock`于`@theniceboy`.<br/>
+它需要`neovim` >= `0.5`<br/>
 
 ![preview](./preview.jpg)
 
