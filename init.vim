@@ -254,6 +254,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Pretty Dress
 Plug 'theniceboy/nvim-deus'
 "Plug 'morhetz/gruvbox'
+Plug 'dracula/vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ojroques/vim-scrollstatus'
@@ -331,7 +332,7 @@ syntax on
 set termguicolors
 set background=dark " Setting dark mode
 "set background=light " Setting light mode
-colorscheme deus
+colorscheme dracula
 
 
 " ===
@@ -357,8 +358,8 @@ let g:rainbow_active = 1
 " ===
 " === vim-airline
 " ===
-let g:airline_theme='deus'
-"let g:airline_theme='minimalist'
+"let g:airline_theme='deus'
+let g:airline_theme='dracula'
 
 " ===
 " === vim-scrollstatus
