@@ -45,7 +45,7 @@ exec "nohlsearch"
 " ===
 " === System
 " ===
-"set clipboard=unnamed
+set clipboard=unnamed
 let &t_ut=''
 set autochdir
 
