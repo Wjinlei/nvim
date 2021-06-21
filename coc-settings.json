@@ -2,6 +2,11 @@
     "coc.preferences.extensionUpdateCheck": "daily",
     "coc.preferences.enableFloatHighlight": true,
     "coc.preferences.snippetStatusText": "Ⓢ ",
+    "coc-actions.hideCursor": false,
+    "coc-actions.showActionKind": true,
+    "translator.engines": ["google"],
+    "yank.enableCompletion": false,
+    "codeLens.enable": true,
     "suggest.completionItemKindLabels": {
         "class": "\uf0e8",
         "color": "\ue22b",
@@ -119,12 +124,6 @@
         "$HOME/.config/nvim/plugged/vim-snippets/UltiSnips"
     ],
 
-    "coc-actions.hideCursor": false,
-    "coc-actions.showActionKind": true,
-    "codeLens.enable": true,
-    "yank.enableCompletion": false,
-    "translator.engines": ["google"],
-
     "languageserver": {
         "golang": {
             "command": "gopls",
@@ -138,14 +137,11 @@
             "filetypes": ["sh"],
             "ignoredRootPaths": ["~"]
         },
-        "rust": {
-            "command": "rust-analyzer",
-            "filetypes": ["rust"],
-            "rootPatterns": ["Cargo.toml"]
-        },
         "vue": {
             "command": "vls",
             "filetypes": ["vue"]
         }
-    }
+    },
+
+    "rust-analyzer.server.path": "~/.local/bin/rust-analyzer"
 }
