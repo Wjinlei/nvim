@@ -307,7 +307,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Debuger
-Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-python --enable-go --enable-bash --force-enable-rust'}
+Plug 'puremourning/vimspector'
 
 " Editor Enhancement
 Plug 'lambdalisue/suda.vim' " 使用 :sudow 以root身份保存文件
@@ -388,6 +388,7 @@ let g:xtabline_settings.last_open_first = 1
 " ===
 " === vimspector
 " ===
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB','vscode-go' ]
 let g:vimspector_enable_mappings = 'HUMAN'
 function! s:read_template_into_buffer(template)
     " has to be a function to avoid the extra space fzf#run insers otherwise
