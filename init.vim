@@ -333,7 +333,7 @@ syntax on
 set termguicolors
 set background=dark " Setting dark mode
 "set background=light " Setting light mode
-colorscheme gruvbox
+colorscheme deus
 
 
 " ===
