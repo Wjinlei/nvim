@@ -483,7 +483,7 @@ let g:coc_global_extensions = [
             \ 'coc-html',
             \ 'coc-css',
             \ 'coc-json',
-            \ 'coc-rls',
+            \ 'coc-rust-analyzer',
             \ 'coc-vimlsp',
             \ 'coc-lists',
             \ 'coc-emmet',

@@ -1,6 +1,5 @@
 {
     "coc.preferences.extensionUpdateCheck": "daily",
-    "coc.preferences.hoverTarget": "preview",
     "coc.preferences.enableFloatHighlight": true,
     "coc.preferences.snippetStatusText": "Ⓢ ",
     "suggest.completionItemKindLabels": {
@@ -125,14 +124,6 @@
     "codeLens.enable": true,
     "yank.enableCompletion": false,
     "translator.engines": ["google"],
-
-    "python.autoComplete.addBrackets": true,
-    "python.jediEnabled": false,
-    "python.formatting.provider": "yapf",
-    "python.formatting.yapfArgs": [
-        "--style",
-        "{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
-    ],
 
     "languageserver": {
         "golang": {
