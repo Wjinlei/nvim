@@ -239,6 +239,7 @@ func! CompileRunGcc()
         :vsp
         :term npm run build
     elseif &filetype == 'rust'
+        "exec "!cargo run"
         exec "!rustc % -o %<"
         exec "!time ./%<"
     endif
