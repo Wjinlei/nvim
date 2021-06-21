@@ -307,7 +307,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Debuger
-Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-python --enable-go --enable-bash'}
+Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-python --enable-go --enable-bash --force-enable-rust'}
 
 " Editor Enhancement
 Plug 'lambdalisue/suda.vim' " 使用 :sudow 以root身份保存文件
