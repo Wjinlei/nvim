@@ -697,7 +697,7 @@ noremap bb  :Buffers<CR>
 let g:rnvimr_enable_ex = 1
 let g:rnvimr_enable_picker = 1
 let g:rnvimr_draw_border = 1
-let g:rnvimr_border_attr = {'fg': 30, 'bg': -1}
+"let g:rnvimr_border_attr = {'fg': 80, 'bg': -1}
 let g:rnvimr_enable_bw = 1
 let g:rnvimr_shadow_winblend = 50
 let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
