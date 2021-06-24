@@ -255,7 +255,8 @@ call plug#begin('~/.config/nvim/plugged')
 " Pretty Dress
 "Plug 'theniceboy/nvim-deus'
 "Plug 'dracula/vim'
-Plug 'joshdick/onedark.vim'
+"Plug 'joshdick/onedark.vim'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ojroques/vim-scrollstatus'
@@ -332,14 +333,16 @@ set background=dark " Setting dark mode
 "set background=light " Setting light mode
 "colorscheme deus
 "colorscheme dracula
-colorscheme onedark
+"colorscheme onedark
+colorscheme PaperColor
 
 " ===
 " === vim-airline
 " ===
 "let g:airline_theme='deus'
 "let g:airline_theme='dracula'
-let g:airline_theme='onedark'
+"let g:airline_theme='onedark'
+let g:airline_theme='papercolor'
 
 
 " ===
