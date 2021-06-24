@@ -16,11 +16,14 @@
 ### 安装前,您需要
 - [ ] 翻墙
 - [ ] 安装`gcc`,`g++`,`make`,`libstdc++`
-- [ ] 安装`pynvim`,推荐使用`pyenv`
-- [ ] 安装`neovim`,推荐使用`nvm`
-- [ ] 安装`xclip`
-- [ ] 安装`perl`(可选)
-- [ ] 安装`ruby`(可选)
+- [ ] 安装`pynvim`,推荐[pyenv](https://github.com/pyenv/pyenv)
+- [ ] 安装`neovim`,推荐[nvm](https://github.com/nvm-sh/nvm)
+- [ ] 安装`tree-sitter`
+    - 推荐直接下载[release](https://github.com/tree-sitter/tree-sitter/releases),解压到`~/.local/bin`目录
+    - `~/.local/bin`要加入环境变量
+- [ ] 安装`xclip`(可选)
+- [ ] 安装`perl `(可选)
+- [ ] 安装`ruby `(可选)
 
 
 ### 快速开始
