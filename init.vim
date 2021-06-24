@@ -145,6 +145,9 @@ noremap W :w!<CR>
 " Back normal mode
 inoremap jj <Esc>
 
+" Open explorer
+noremap ff :tabe<CR>:Explore<CR>
+
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 
@@ -202,7 +205,7 @@ noremap <LEADER>/ :term<CR>
 "noremap <silent> <LEADER>lg :term lazygit<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
-noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+"noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 " find and replace
 noremap \s :%s//g<left><left>
@@ -269,7 +272,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Find & Replace
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+"Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 Plug 'kevinhwang91/rnvimr'
 
@@ -471,7 +474,7 @@ let g:lazygit_floating_window_scaling_factor = 0.8 " scaling factor for floating
 let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
 let g:lazygit_floating_window_use_plenary = 0 " use plenary.nvim to manage floating window if available
 let g:lazygit_use_neovim_remote = 1 " fallback to 0 if neovim-remote is not installed
-nnoremap <silent> <leader>lg :LazyGit<CR>
+nnoremap <silent> lg :LazyGit<CR>
 
 
 " ===
@@ -596,22 +599,22 @@ nnoremap <silent> <LEADER>y :<C-u>CocList -A --normal yank<cr>
 " === Leaderf
 " ===
 "let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_PreviewCode = 1
-let g:Lf_ShowHidden = 1
-let g:Lf_ShowDevIcons = 1
-let g:Lf_CommandMap = {
-\   '<C-]>': ['<C-v>'],
-\   '<C-p>': ['<C-n>'],
-\}
-let g:Lf_UseVersionControlTool = 0
-let g:Lf_IgnoreCurrentBufferName = 1
-let g:Lf_WildIgnore = {
-        \ 'dir': ['.git', 'vendor', 'node_modules'],
-        \ 'file': ['__vim_project_root']
-        \}
-let g:Lf_UseMemoryCache = 0
-let g:Lf_UseCache = 0
+"let g:Lf_PreviewInPopup = 1
+"let g:Lf_PreviewCode = 1
+"let g:Lf_ShowHidden = 1
+"let g:Lf_ShowDevIcons = 1
+"let g:Lf_CommandMap = {
+"\   '<C-]>': ['<C-v>'],
+"\   '<C-p>': ['<C-n>'],
+"\}
+"let g:Lf_UseVersionControlTool = 0
+"let g:Lf_IgnoreCurrentBufferName = 1
+"let g:Lf_WildIgnore = {
+        "\ 'dir': ['.git', 'vendor', 'node_modules'],
+        "\ 'file': ['__vim_project_root']
+        "\}
+"let g:Lf_UseMemoryCache = 0
+"let g:Lf_UseCache = 0
 
 
 " ===
@@ -714,7 +717,7 @@ command! -bang -nargs=* Rg
 " Fzf layout
 let g:fzf_layout = {'window': {'width': 1, 'height': 1 }}
 
-noremap ff  :Leaderf file<CR>
+"noremap ff  :Leaderf file<CR>
 noremap fh  :History<CR>
 noremap fr  :Rg<CR>
 noremap fs  :Lines<CR>
