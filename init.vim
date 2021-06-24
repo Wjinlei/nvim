@@ -257,7 +257,8 @@ call plug#begin('~/.config/nvim/plugged')
 "Plug 'dracula/vim'
 "Plug 'joshdick/onedark.vim'
 "Plug 'NLKNguyen/papercolor-theme'
-Plug 'cocopon/iceberg.vim'
+"Plug 'cocopon/iceberg.vim'
+Plug 'ayu-theme/ayu-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ojroques/vim-scrollstatus'
@@ -336,7 +337,8 @@ set background=dark " Setting dark mode
 "colorscheme dracula
 "colorscheme onedark
 "colorscheme PaperColor
-colorscheme iceberg
+"colorscheme iceberg
+colorscheme ayu
 
 " ===
 " === vim-airline
@@ -345,7 +347,8 @@ colorscheme iceberg
 "let g:airline_theme='dracula'
 "let g:airline_theme='onedark'
 "let g:airline_theme='papercolor'
-let g:airline_theme='iceberg'
+"let g:airline_theme='iceberg'
+let g:airline_theme='ayu'
 
 
 " ===
