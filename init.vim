@@ -137,13 +137,10 @@ let g:terminal_color_14 = '#9AEDFE'
 let mapleader=" "
 
 " Save & quit
-noremap q :q!<CR>
+noremap q :bdelete!<CR>
 noremap Q :qa!<CR>
 noremap w :w!<CR>
 noremap W :w!<CR>
-
-" Back normal mode
-inoremap jj <Esc>
 
 " Open explorer
 noremap fd :tabe<CR>:Explore<CR>
@@ -153,6 +150,9 @@ noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 
 " Search
 noremap <LEADER><CR> :nohlsearch<CR>
+
+" Back normal mode
+inoremap jj <Esc>
 
 
 " ===
@@ -257,8 +257,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
 Plug 'theniceboy/nvim-deus'
-"Plug 'morhetz/gruvbox'
-"Plug 'dracula/vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ojroques/vim-scrollstatus'
@@ -274,7 +272,7 @@ Plug 'junegunn/fzf.vim'
 " Find & Replace
 "Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
-Plug 'kevinhwang91/rnvimr'
+"Plug 'kevinhwang91/rnvimr'
 
 " Git
 Plug 'kdheepak/lazygit.nvim' " need nvim 0.5
@@ -728,19 +726,19 @@ noremap bb  :Buffers<CR>
 " ===
 " === rnvimr
 " ===
-let g:rnvimr_ex_enable = 1
-let g:rnvimr_pick_enable = 1
-let g:rnvimr_draw_border = 0
-" let g:rnvimr_bw_enable = 1
-highlight link RnvimrNormal CursorLine
-nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
-let g:rnvimr_layout = { 'relative': 'editor',
-            \ 'width': &columns,
-            \ 'height': &lines,
-            \ 'col': 0,
-            \ 'row': 0,
-            \ 'style': 'minimal' }
-let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+"let g:rnvimr_ex_enable = 1
+"let g:rnvimr_pick_enable = 1
+"let g:rnvimr_draw_border = 0
+"" let g:rnvimr_bw_enable = 1
+"highlight link RnvimrNormal CursorLine
+"nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+"let g:rnvimr_layout = { 'relative': 'editor',
+            "\ 'width': &columns,
+            "\ 'height': &lines,
+            "\ 'col': 0,
+            "\ 'row': 0,
+            "\ 'style': 'minimal' }
+"let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
 
 " ===
