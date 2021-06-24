@@ -267,15 +267,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Find & Replace
-"Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 Plug 'kevinhwang91/rnvimr'
 
 " Git
 Plug 'kdheepak/lazygit.nvim' " need nvim 0.5
-
-" Taglist
-"Plug 'liuchengxu/vista.vim'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -350,14 +346,6 @@ colorscheme deus
 
 
 " ===
-" === Netrw
-" ===
-let g:netrw_browse_split = 3
-let g:netrw_liststyle = 0
-let g:netrw_banner = 0
-
-
-" ===
 " === rainbow
 " ===
 let g:rainbow_active = 1
@@ -367,8 +355,7 @@ let g:rainbow_active = 1
 " === vim-airline
 " ===
 let g:airline_theme='deus'
-"let g:airline_theme='dracula'
-"let g:airline_theme='gruvbox'
+
 
 " ===
 " === vim-scrollstatus
@@ -599,27 +586,6 @@ nnoremap <silent> <LEADER>y :<C-u>CocList -A --normal yank<cr>
 
 
 " ===
-" === Leaderf
-" ===
-"let g:Lf_PreviewInPopup = 1
-"let g:Lf_PreviewCode = 1
-"let g:Lf_ShowHidden = 1
-"let g:Lf_ShowDevIcons = 1
-"let g:Lf_CommandMap = {
-"\   '<C-]>': ['<C-v>'],
-"\   '<C-p>': ['<C-n>'],
-"\}
-"let g:Lf_UseVersionControlTool = 0
-"let g:Lf_IgnoreCurrentBufferName = 1
-"let g:Lf_WildIgnore = {
-        "\ 'dir': ['.git', 'vendor', 'node_modules'],
-        "\ 'file': ['__vim_project_root']
-        "\}
-"let g:Lf_UseMemoryCache = 0
-"let g:Lf_UseCache = 0
-
-
-" ===
 " === Far.vim
 " ===
 noremap <LEADER>f :Far  **/*<left><left><left><left><left>
@@ -719,7 +685,6 @@ command! -bang -nargs=* Rg
 " Fzf layout
 let g:fzf_layout = {'window': {'width': 1, 'height': 1 }}
 
-"noremap ff  :Leaderf file<CR>
 noremap fh  :History<CR>
 noremap fr  :Rg<CR>
 noremap fs  :Lines<CR>
@@ -746,25 +711,6 @@ let g:rnvimr_layout = { 'relative': 'editor',
             \ 'row': 0,
             \ 'style': 'minimal' }
 let g:rnvimr_presets = [{'width': 0.8, 'height': 0.8}]
-
-
-" ===
-" === Vista.vim
-" ===
-"noremap <silent> T :Vista!!<CR>
-"let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-"let g:vista_default_executive = 'ctags'
-"let g:vista_fzf_preview = ['right:50%']
-"let g:vista#renderer#enable_icon = 1
-"let g:vista#renderer#icons = {
-"\   "function": "\uf794",
-"\   "variable": "\uf71b",
-"\  }
-"function! NearestMethodOrFunction() abort
-    "return get(b:, 'vista_nearest_method_or_function', '')
-"endfunction
-"set statusline+=%{NearestMethodOrFunction()}
-"autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 
 " ===
