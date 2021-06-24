@@ -718,6 +718,7 @@ command! -bang -nargs=* Rg
 let g:fzf_layout = {'window': {'width': 1, 'height': 1 }}
 
 "noremap ff  :Leaderf file<CR>
+noremap ff  :Files<CR>
 noremap fh  :History<CR>
 noremap fr  :Rg<CR>
 noremap fs  :Lines<CR>
