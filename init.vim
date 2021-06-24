@@ -137,13 +137,13 @@ let g:terminal_color_14 = '#9AEDFE'
 let mapleader=" "
 
 " Save & quit
-noremap q :bdelete!<CR>
+noremap q :q!<CR>
 noremap Q :qa!<CR>
 noremap w :w!<CR>
 noremap W :w!<CR>
 
 " Open explorer
-noremap fd :tabe<CR>:Explore<CR>
+noremap fd :Hexplore<CR>
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
@@ -350,6 +350,14 @@ colorscheme deus
 " === 灰色注释
 " ===
 "hi Comment guifg=#5C6370 ctermfg=59
+
+
+" ===
+" === Netrw
+" ===
+let g:netrw_browse_split = 3
+let g:netrw_liststyle = 0
+let g:netrw_banner = 0
 
 
 " ===
