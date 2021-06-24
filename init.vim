@@ -142,9 +142,6 @@ noremap Q :qa!<CR>
 noremap w :w!<CR>
 noremap W :w!<CR>
 
-" Open explorer
-noremap fd :Sexplore<CR>
-
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 
@@ -272,7 +269,7 @@ Plug 'junegunn/fzf.vim'
 " Find & Replace
 "Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
-"Plug 'kevinhwang91/rnvimr'
+Plug 'kevinhwang91/rnvimr'
 
 " Git
 Plug 'kdheepak/lazygit.nvim' " need nvim 0.5
@@ -604,7 +601,6 @@ nnoremap <silent> <LEADER>y :<C-u>CocList -A --normal yank<cr>
 " ===
 " === Leaderf
 " ===
-"let g:Lf_WindowPosition = 'popup'
 "let g:Lf_PreviewInPopup = 1
 "let g:Lf_PreviewCode = 1
 "let g:Lf_ShowHidden = 1
@@ -724,7 +720,6 @@ command! -bang -nargs=* Rg
 let g:fzf_layout = {'window': {'width': 1, 'height': 1 }}
 
 "noremap ff  :Leaderf file<CR>
-noremap ff  :Files<CR>
 noremap fh  :History<CR>
 noremap fr  :Rg<CR>
 noremap fs  :Lines<CR>
@@ -734,19 +729,22 @@ noremap bb  :Buffers<CR>
 " ===
 " === rnvimr
 " ===
-"let g:rnvimr_ex_enable = 1
-"let g:rnvimr_pick_enable = 1
-"let g:rnvimr_draw_border = 0
-"" let g:rnvimr_bw_enable = 1
-"highlight link RnvimrNormal CursorLine
-"nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
-"let g:rnvimr_layout = { 'relative': 'editor',
-            "\ 'width': &columns,
-            "\ 'height': &lines,
-            "\ 'col': 0,
-            "\ 'row': 0,
-            "\ 'style': 'minimal' }
-"let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+let g:rnvimr_enable_ex = 1
+let g:rnvimr_enable_picker = 1
+let g:rnvimr_draw_border = 1
+let g:rnvimr_border_attr = {'fg': 30, 'bg': -1}
+let g:rnvimr_enable_bw = 1
+let g:rnvimr_shadow_winblend = 50
+let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
+highlight link RnvimrNormal CursorLine
+nnoremap <silent> fd :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+let g:rnvimr_layout = { 'relative': 'editor',
+            \ 'width': &columns,
+            \ 'height': &lines,
+            \ 'col': 0,
+            \ 'row': 0,
+            \ 'style': 'minimal' }
+let g:rnvimr_presets = [{'width': 0.8, 'height': 0.8}]
 
 
 " ===
