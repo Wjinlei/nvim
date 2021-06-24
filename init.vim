@@ -146,7 +146,7 @@ noremap W :w!<CR>
 inoremap jj <Esc>
 
 " Open explorer
-noremap ff :tabe<CR>:Explore<CR>
+noremap fd :tabe<CR>:Explore<CR>
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
