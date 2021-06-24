@@ -260,7 +260,8 @@ call plug#begin('~/.config/nvim/plugged')
 "Plug 'cocopon/iceberg.vim'
 "Plug 'ayu-theme/ayu-vim'
 "Plug 'jacoborus/tender.vim'
-Plug 'sainnhe/sonokai'
+"Plug 'sainnhe/sonokai'
+Plug 'connorholyday/vim-snazzy'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ojroques/vim-scrollstatus'
@@ -342,7 +343,8 @@ set background=dark " Setting dark mode
 "colorscheme iceberg
 "colorscheme ayu
 "colorscheme tender
-colorscheme sonokai
+"colorscheme sonokai
+colorscheme snazzy
 
 " ===
 " === vim-airline
@@ -354,7 +356,8 @@ colorscheme sonokai
 "let g:airline_theme='iceberg'
 "let g:airline_theme='ayu'
 "let g:airline_theme='tender'
-let g:airline_theme='sonokai'
+"let g:airline_theme='sonokai'
+let g:airline_theme='snazzy'
 
 
 " ===
