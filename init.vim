@@ -157,8 +157,10 @@ inoremap jj <Esc>
 " ===
 noremap <silent> K 5k
 noremap <silent> J 5j
-noremap <silent> H b
-noremap <silent> L w
+noremap <silent> H h
+noremap <silent> L l
+noremap <silent> h b
+noremap <silent> l w
 noremap <silent> <C-h> ^
 noremap <silent> <C-l> $
 
@@ -253,10 +255,10 @@ endfunc
 call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
-Plug 'theniceboy/nvim-deus'
+"Plug 'theniceboy/nvim-deus'
 "Plug 'dracula/vim'
 "Plug 'joshdick/onedark.vim'
-"Plug 'NLKNguyen/papercolor-theme'
+Plug 'NLKNguyen/papercolor-theme'
 "Plug 'cocopon/iceberg.vim'
 "Plug 'ayu-theme/ayu-vim'
 "Plug 'jacoborus/tender.vim'
@@ -336,10 +338,10 @@ syntax on
 set termguicolors
 set background=dark " Setting dark mode
 "set background=light " Setting light mode
-colorscheme deus
+"colorscheme deus
 "colorscheme dracula
 "colorscheme onedark
-"colorscheme PaperColor
+colorscheme PaperColor
 "colorscheme iceberg
 "colorscheme ayu
 "colorscheme tender
@@ -349,10 +351,10 @@ colorscheme deus
 " ===
 " === vim-airline
 " ===
-let g:airline_theme='deus'
+"let g:airline_theme='deus'
 "let g:airline_theme='dracula'
 "let g:airline_theme='onedark'
-"let g:airline_theme='papercolor'
+let g:airline_theme='papercolor'
 "let g:airline_theme='iceberg'
 "let g:airline_theme='ayu'
 "let g:airline_theme='tender'
