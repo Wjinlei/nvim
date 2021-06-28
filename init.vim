@@ -253,8 +253,8 @@ endfunc
 call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
-"Plug 'theniceboy/nvim-deus'
-Plug 'dracula/vim'
+Plug 'theniceboy/nvim-deus'
+"Plug 'dracula/vim'
 "Plug 'joshdick/onedark.vim'
 "Plug 'NLKNguyen/papercolor-theme'
 "Plug 'cocopon/iceberg.vim'
@@ -336,8 +336,8 @@ syntax on
 set termguicolors
 set background=dark " Setting dark mode
 "set background=light " Setting light mode
-"colorscheme deus
-colorscheme dracula
+colorscheme deus
+"colorscheme dracula
 "colorscheme onedark
 "colorscheme PaperColor
 "colorscheme iceberg
@@ -349,8 +349,8 @@ colorscheme dracula
 " ===
 " === vim-airline
 " ===
-"let g:airline_theme='deus'
-let g:airline_theme='dracula'
+let g:airline_theme='deus'
+"let g:airline_theme='dracula'
 "let g:airline_theme='onedark'
 "let g:airline_theme='papercolor'
 "let g:airline_theme='iceberg'
