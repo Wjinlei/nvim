@@ -157,10 +157,8 @@ inoremap jj <Esc>
 " ===
 noremap <silent> K 5k
 noremap <silent> J 5j
-noremap <silent> H h
-noremap <silent> L l
-noremap <silent> h b
-noremap <silent> l w
+noremap <silent> H b
+noremap <silent> L w
 noremap <silent> <C-h> ^
 noremap <silent> <C-l> $
 
