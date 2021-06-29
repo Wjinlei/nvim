@@ -253,7 +253,7 @@ endfunc
 call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
-Plug 'theniceboy/nvim-deus'
+"Plug 'theniceboy/nvim-deus'
 "Plug 'dracula/vim'
 "Plug 'joshdick/onedark.vim'
 "Plug 'NLKNguyen/papercolor-theme'
@@ -262,9 +262,9 @@ Plug 'theniceboy/nvim-deus'
 "Plug 'jacoborus/tender.vim'
 "Plug 'sainnhe/sonokai'
 "Plug 'connorholyday/vim-snazzy'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ojroques/vim-scrollstatus'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+"Plug 'ojroques/vim-scrollstatus'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter' " need nvim 0.5
@@ -322,7 +322,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " Other
 Plug 'wincent/terminus'
 Plug 'luochen1990/rainbow'
-Plug 'mg979/vim-xtabline'
+"Plug 'mg979/vim-xtabline'
 
 call plug#end()
 call glaive#Install()
@@ -336,7 +336,32 @@ syntax on
 set termguicolors
 set background=dark " Setting dark mode
 "set background=light " Setting light mode
-colorscheme deus
+
+"Black
+"DarkBlue
+"DarkGreen
+"DarkCyan
+"DarkRed
+"DarkMagenta
+"Brown, DarkYellow
+"LightGray, LightGrey, Gray, Grey
+"DarkGray, DarkGrey
+"Blue, LightBlue
+"Green, LightGreen
+"Cyan, LightCyan
+"Red, LightRed
+"Magenta, LightMagenta
+"Yellow, LightYellow
+"White
+hi PmenuSel guifg=LightGray
+hi PmenuSel guibg=DarkCyan
+hi Pmenu guifg=LightGray
+hi Pmenu guibg=Black 
+
+" ===
+" === theme
+" ====
+"colorscheme deus
 "colorscheme dracula
 "colorscheme onedark
 "colorscheme PaperColor
@@ -349,7 +374,7 @@ colorscheme deus
 " ===
 " === vim-airline
 " ===
-let g:airline_theme='deus'
+"let g:airline_theme='deus'
 "let g:airline_theme='dracula'
 "let g:airline_theme='onedark'
 "let g:airline_theme='papercolor'
@@ -377,13 +402,13 @@ let g:airline_theme='deus'
 " ===
 " === vim-scrollstatus
 " ===
-let g:scrollstatus_size = 20
-let g:airline_section_x = '%{ScrollStatus()} '
-let g:airline_section_y = airline#section#create_right(['filetype'])
-let g:airline_section_z = airline#section#create([
-            \ '%#__accent_bold#%3l%#__restore__#/%L', ' ',
-            \ '%#__accent_bold#%3v%#__restore__#/%3{virtcol("$") - 1}',
-            \ ])
+"let g:scrollstatus_size = 20
+"let g:airline_section_x = '%{ScrollStatus()} '
+"let g:airline_section_y = airline#section#create_right(['filetype'])
+"let g:airline_section_z = airline#section#create([
+            "\ '%#__accent_bold#%3l%#__restore__#/%L', ' ',
+            "\ '%#__accent_bold#%3v%#__restore__#/%3{virtcol("$") - 1}',
+            "\ ])
 
 
 " ===
@@ -395,11 +420,11 @@ let g:rainbow_active = 1
 " ===
 " === xtabline
 " ===
-let g:xtabline_settings = {}
-let g:xtabline_settings.enable_mappings = 0
-let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
-let g:xtabline_settings.enable_persistance = 0
-let g:xtabline_settings.last_open_first = 1
+"let g:xtabline_settings = {}
+"let g:xtabline_settings.enable_mappings = 0
+"let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+"let g:xtabline_settings.enable_persistance = 0
+"let g:xtabline_settings.last_open_first = 1
 
 
 " ===
@@ -517,7 +542,7 @@ let g:coc_global_extensions = [
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
+if has("nvim-0.5.0") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else
