@@ -322,7 +322,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " Other
 Plug 'wincent/terminus'
 Plug 'luochen1990/rainbow'
-"Plug 'mg979/vim-xtabline'
+Plug 'mg979/vim-xtabline'
 
 call plug#end()
 call glaive#Install()
@@ -357,6 +357,10 @@ hi PmenuSel guifg=LightGray
 hi PmenuSel guibg=DarkBlue
 hi Pmenu guifg=Gray
 hi Pmenu guibg=Black 
+hi TabLine guifg=Black
+hi TabLineSel guibg=DarkBlue
+hi TabLineSel guifg=LightGray
+hi StatusLine guifg=DarkGrey
 
 
 " ===
@@ -421,11 +425,11 @@ let g:rainbow_active = 1
 " ===
 " === xtabline
 " ===
-"let g:xtabline_settings = {}
-"let g:xtabline_settings.enable_mappings = 0
-"let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
-"let g:xtabline_settings.enable_persistance = 0
-"let g:xtabline_settings.last_open_first = 1
+let g:xtabline_settings = {}
+let g:xtabline_settings.enable_mappings = 0
+let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+let g:xtabline_settings.enable_persistance = 0
+let g:xtabline_settings.last_open_first = 1
 
 
 " ===
