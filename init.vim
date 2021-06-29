@@ -328,6 +328,8 @@ let g:rainbow_active = 1
 let g:xtabline_settings = {}
 let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
 let g:xtabline_settings.enable_persistance = 0
+noremap xt :XTabMode tabs<CR>
+noremap xb :XTabMode buffers<CR>
 
 
 " ===
