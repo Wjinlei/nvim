@@ -142,11 +142,22 @@ noremap Q :qa!<CR>
 noremap w :w!<CR>
 noremap W :w!<CR>
 
+" Open file
+noremap ff :e 
+
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 
 " Search
 noremap <LEADER><CR> :nohlsearch<CR>
+
+" Quickfix
+nnoremap <C-j> :cnext<CR>zv
+nnoremap <C-k> :cprevious<CR>zv
+noremap fs :vimgrep //j * \| cope<left><left><left><left><left><left><left><left><left><left><left>
+
+" Close Quickfix
+noremap <LEADER><LEADER> :cclose<CR>
 
 " Back normal mode
 inoremap jj <Esc>
