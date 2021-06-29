@@ -354,9 +354,10 @@ set background=dark " Setting dark mode
 "Yellow, LightYellow
 "White
 hi PmenuSel guifg=LightGray
-hi PmenuSel guibg=DarkCyan
-hi Pmenu guifg=LightGray
+hi PmenuSel guibg=DarkBlue
+hi Pmenu guifg=Gray
 hi Pmenu guibg=Black 
+
 
 " ===
 " === theme
