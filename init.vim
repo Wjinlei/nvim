@@ -268,7 +268,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter' " need nvim 0.5
-Plug 'nvim-treesitter/playground'
+"Plug 'nvim-treesitter/playground'
 
 " File navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
