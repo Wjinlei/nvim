@@ -201,6 +201,9 @@ noremap <LEADER>/ :term<CR>
 " Open up lazygit
 noremap <silent> <LEADER>lg :term lazygit<CR>
 
+" Open up ranger
+noremap <silent> <LEADER>fd :term ranger<CR>
+
 " find and replace
 noremap \s :%s//g<left><left>
 
