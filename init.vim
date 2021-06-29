@@ -199,10 +199,7 @@ noremap stml :+tabmove<CR>
 noremap <LEADER>/ :term<CR>
 
 " Open up lazygit
-"noremap <silent> <LEADER>lg :term lazygit<CR>
-
-" Press space twice to jump to the next '<++>' and edit it
-"noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+noremap <silent> <LEADER>lg :term lazygit<CR>
 
 " find and replace
 noremap \s :%s//g<left><left>
@@ -224,24 +221,24 @@ func! CompileRunGcc()
         set splitright
         :vsp
         :term python3 %
-    elseif &filetype == 'markdown'
-        exec "MarkdownPreview"
-    elseif &filetype == 'sh'
-        :!time bash %
-    elseif &filetype == 'html'
-        silent! exec "!".g:mkdp_browser." % &"
+    "elseif &filetype == 'markdown'
+        "exec "MarkdownPreview"
     elseif &filetype == 'go'
         set splitright
         :vsp
         :term go run %
+    elseif &filetype == 'rust'
+        exec "!cargo run"
+        "exec "!rustc % -o %<"
+        "exec "!time ./%<"
+    elseif &filetype == 'html'
+        silent! exec "!".g:mkdp_browser." % &"
     elseif &filetype == 'vue'
         set splitright
         :vsp
         :term npm run build
-    elseif &filetype == 'rust'
-        "exec "!cargo run"
-        exec "!rustc % -o %<"
-        exec "!time ./%<"
+    elseif &filetype == 'sh'
+        :!time bash %
     endif
 endfunc
 
@@ -252,77 +249,19 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Pretty Dress
-"Plug 'theniceboy/nvim-deus'
-"Plug 'dracula/vim'
-"Plug 'joshdick/onedark.vim'
-"Plug 'NLKNguyen/papercolor-theme'
-"Plug 'cocopon/iceberg.vim'
-"Plug 'ayu-theme/ayu-vim'
-"Plug 'jacoborus/tender.vim'
-"Plug 'sainnhe/sonokai'
-"Plug 'connorholyday/vim-snazzy'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-"Plug 'ojroques/vim-scrollstatus'
-
-" Treesitter
-Plug 'nvim-treesitter/nvim-treesitter' " need nvim 0.5
-"Plug 'nvim-treesitter/playground'
-
-" File navigation
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-" Find & Replace
-Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
-Plug 'kevinhwang91/rnvimr'
-
-" Git
-Plug 'kdheepak/lazygit.nvim' " need nvim 0.5
-
-" Snippets
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
-" Auto Complete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Autoformat
 Plug 'google/vim-maktaba'
 Plug 'google/vim-glaive'
 Plug 'google/vim-codefmt'
-
-" Genreal Highlighter
-Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'RRethy/vim-illuminate'
-
-" Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
-Plug 'dkarter/bullets.vim'
-Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
-
-" Rust
-Plug 'rust-lang/rust.vim'
-
-" Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-" Debuger
-Plug 'puremourning/vimspector'
-
-" Editor Enhancement
-Plug 'lambdalisue/suda.vim' " 使用 :sudow 以root身份保存文件
-Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdcommenter'
-Plug 'easymotion/vim-easymotion'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-
-" Other
-Plug 'wincent/terminus'
-Plug 'luochen1990/rainbow'
+Plug 'lambdalisue/suda.vim'
 Plug 'mg979/vim-xtabline'
+Plug 'luochen1990/rainbow'
+
+Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 call glaive#Install()
@@ -364,33 +303,6 @@ hi StatusLine guifg=DarkGrey
 
 
 " ===
-" === theme
-" ====
-"colorscheme deus
-"colorscheme dracula
-"colorscheme onedark
-"colorscheme PaperColor
-"colorscheme iceberg
-"colorscheme ayu
-"colorscheme tender
-"colorscheme sonokai
-"colorscheme snazzy
-
-" ===
-" === vim-airline
-" ===
-"let g:airline_theme='deus'
-"let g:airline_theme='dracula'
-"let g:airline_theme='onedark'
-"let g:airline_theme='papercolor'
-"let g:airline_theme='iceberg'
-"let g:airline_theme='ayu'
-"let g:airline_theme='tender'
-"let g:airline_theme='sonokai'
-"let g:airline_theme='snazzy'
-
-
-" ===
 " === 背景透明
 " ===
 "hi Normal     ctermbg=NONE guibg=NONE
@@ -402,18 +314,6 @@ hi StatusLine guifg=DarkGrey
 " === 灰色注释
 " ===
 "hi Comment guifg=#5C6370 ctermfg=59
-
-
-" ===
-" === vim-scrollstatus
-" ===
-"let g:scrollstatus_size = 20
-"let g:airline_section_x = '%{ScrollStatus()} '
-"let g:airline_section_y = airline#section#create_right(['filetype'])
-"let g:airline_section_z = airline#section#create([
-            "\ '%#__accent_bold#%3l%#__restore__#/%L', ' ',
-            "\ '%#__accent_bold#%3v%#__restore__#/%3{virtcol("$") - 1}',
-            "\ ])
 
 
 " ===
@@ -430,26 +330,6 @@ let g:xtabline_settings.enable_mappings = 0
 let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
 let g:xtabline_settings.enable_persistance = 0
 let g:xtabline_settings.last_open_first = 1
-
-
-" ===
-" === vimspector
-" ===
-let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB','vscode-go' ]
-let g:vimspector_enable_mappings = 'HUMAN'
-function! s:read_template_into_buffer(template)
-    " has to be a function to avoid the extra space fzf#run insers otherwise
-    execute '0r ~/.config/nvim/vimspector_json/'.a:template
-endfunction
-command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
-            \   'source': 'ls -1 ~/.config/nvim/vimspector_json',
-            \   'down': 20,
-            \   'sink': function('<sid>read_template_into_buffer')
-            \ })
-noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
-sign define vimspectorBP text=🛑 texthl=Normal
-sign define vimspectorBPDisabled text=🚫 texthl=Normal
-sign define vimspectorPC text=👉 texthl=SpellBad
 
 
 " ===
@@ -478,46 +358,10 @@ augroup END
 
 
 " ===
-" === vim-easymotion
-" ===
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_do_shade = 0
-let g:EasyMotion_smartcase = 1
-" Move to {char}
-map  ss <Plug>(easymotion-bd-f)
-
-
-" ===
-" === vim-visual-multi
-" ===
-let g:VM_maps                       = {}
-let g:VM_maps['Find Under']         = '<C-d>'
-let g:VM_maps['Find Subword Under'] = '<C-d>'
-let g:VM_maps["Find Next"]          = '<C-n>'
-let g:VM_maps["Find Prev"]          = '<C-p>'
-let g:VM_maps["Goto Next"]          = '<C-j>'
-let g:VM_maps["Goto Prev"]          = '<C-k>'
-let g:VM_maps['Remove Region']      = 'q'
-let g:VM_maps['Skip Region']        = '<C-s>'
-let g:VM_maps["Undo"]               = '<C-u>'
-let g:VM_maps["Redo"]               = '<C-r>'
-
-
-" ===
 " === Nerdcommenter
 " ===
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
-
-" ===
-" === LazyGit
-" ===
-let g:lazygit_floating_window_winblend = 0 " transparency of floating window
-let g:lazygit_floating_window_scaling_factor = 0.8 " scaling factor for floating window
-let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
-let g:lazygit_floating_window_use_plenary = 0 " use plenary.nvim to manage floating window if available
-let g:lazygit_use_neovim_remote = 1 " fallback to 0 if neovim-remote is not installed
-nnoremap <silent> <LEADER>lg :LazyGit<CR>
 
 
 " ===
@@ -603,78 +447,6 @@ imap <C-l> <Plug>(coc-snippets-expand)
 " coc-yank
 nnoremap <silent> <LEADER>y :<C-u>CocList -A --normal yank<cr>
 
-" ===
-" === Far.vim
-" ===
-noremap <LEADER>f :Far  **/*<left><left><left><left><left>
-let g:far#enable_undo = 1
-let g:far#mapping = {"replace_undo" : ["l"]}
-
-
-" ===
-" === MarkdownPreview
-" ===
-let g:mkdp_auto_start = 0
-let g:mkdp_auto_close = 1
-let g:mkdp_refresh_slow = 0
-let g:mkdp_command_for_global = 0
-let g:mkdp_open_to_the_world = 0
-let g:mkdp_open_ip = ''
-let g:mkdp_echo_preview_url = 0
-let g:mkdp_browserfunc = ''
-let g:mkdp_preview_options = {
-            \ 'mkit': {},
-            \ 'katex': {},
-            \ 'uml': {},
-            \ 'maid': {},
-            \ 'disable_sync_scroll': 0,
-            \ 'sync_scroll_type': 'middle',
-            \ 'hide_yaml_meta': 1
-            \ }
-let g:mkdp_markdown_css = ''
-let g:mkdp_highlight_css = ''
-let g:mkdp_port = ''
-let g:mkdp_page_title = '「${name}」'
-
-
-" ===
-" === vim-table-mode
-" ===
-noremap <LEADER>mtm :TableModeToggle<CR>
-"let g:table_mode_disable_mappings = 1
-let g:table_mode_cell_text_object_i_map = 'k<Bar>'
-
-
-" ===
-" === Markdown Settings
-" ===
-" Snippets
-source ~/.config/nvim/md-snippets.vim
-" auto spell
-autocmd BufRead,BufNewFile *.md setlocal spell
-
-
-" ===
-" === Bullets.vim
-" ===
-"let g:bullets_set_mappings = 0
-let g:bullets_enabled_file_types = [
-            \ 'markdown',
-            \ 'text',
-            \ 'gitcommit',
-            \ 'scratch'
-            \]
-
-
-" ===
-" === vim-markdown-toc, :GenToGFM 生成目录, :RmoveToc 删除目录, :UpdateToc 手动更新目录
-" ===
-let g:vmt_auto_update_on_save = 1
-let g:vmt_dont_insert_fence = 0
-let g:vmt_cycle_list_item_markers = 1
-let g:vmt_fence_text = 'TOC'
-let g:vmt_fence_closing_text = '/TOC'
-
 
 " ===
 " === Ultisnips
@@ -688,63 +460,6 @@ let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/UltiSnips/', 'UltiSnips']
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
-
-
-" ===
-" === FZF
-" ===
-" Make Ripgrep ONLY search file contents and not filenames
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --hidden --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
-  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
-  \   <bang>0)
-" Fzf layout
-let g:fzf_layout = {'window': {'width': 1, 'height': 1 }}
-
-noremap fh  :History<CR>
-noremap fr  :Rg<CR>
-noremap fs  :Lines<CR>
-noremap bb  :Buffers<CR>
-
-
-" ===
-" === rnvimr
-" ===
-let g:rnvimr_enable_ex = 1
-let g:rnvimr_enable_picker = 1
-let g:rnvimr_draw_border = 1
-"let g:rnvimr_border_attr = {'fg': 80, 'bg': -1}
-let g:rnvimr_enable_bw = 1
-let g:rnvimr_shadow_winblend = 50
-let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
-highlight link RnvimrNormal CursorLine
-nnoremap <silent> fd :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
-nnoremap <silent> ff :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
-let g:rnvimr_layout = { 'relative': 'editor',
-            \ 'width': &columns,
-            \ 'height': &lines,
-            \ 'col': 0,
-            \ 'row': 0,
-            \ 'style': 'minimal' }
-let g:rnvimr_presets = [{'width': 0.8, 'height': 0.8}]
-
-
-" ===
-" === treesitter
-" ===
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"html","css","javascript","json","vue","bash"},
-  highlight = {
-    enable = true, -- false will disable the whole extension
-  },
-  indent = {
-    enable = true
-  }
-}
-EOF
 
 
 " ===
