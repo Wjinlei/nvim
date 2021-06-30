@@ -143,7 +143,7 @@ noremap w :w!<CR>
 noremap W :w!<CR>
 
 " Open file
-noremap ff :e *
+noremap ff :e 
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
