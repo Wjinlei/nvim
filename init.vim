@@ -144,6 +144,7 @@ noremap W :w!<CR>
 
 " Open file
 noremap ff :e 
+noremap FF :e 
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
@@ -155,12 +156,14 @@ noremap <LEADER><CR> :nohlsearch<CR>
 nnoremap <C-j> :cnext<CR>zv
 nnoremap <C-k> :cprevious<CR>zv
 noremap fs :vimgrep //j * \| cope<left><left><left><left><left><left><left><left><left><left><left>
+noremap FS :vimgrep //j * \| cope<left><left><left><left><left><left><left><left><left><left><left>
 
 " Close Quickfix
 noremap <LEADER><LEADER> :cclose<CR>
 
 " Back normal mode
 inoremap jj <Esc>
+inoremap JJ <Esc>
 
 
 " ===
@@ -211,9 +214,11 @@ noremap <LEADER>/ :term<CR>
 
 " Open up lazygit
 noremap <silent> <LEADER>lg :term lazygit<CR>
+noremap <silent> <LEADER>LG :term lazygit<CR>
 
 " Open up ranger
 noremap <silent> <LEADER>fd :term ranger<CR>
+noremap <silent> <LEADER>FD :term ranger<CR>
 
 " find and replace
 noremap \s :%s//g<left><left>
