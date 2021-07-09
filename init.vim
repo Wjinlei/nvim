@@ -518,5 +518,8 @@ autocmd FileTYpe go noremap gtt :GoTestFunc<CR>
 " ===
 let g:rustfmt_autosave = 1
 let g:rust_clip_command = 'xclip -selection clipboard'
+let g:rust_fold = 1
+autocmd FileTYpe rust noremap gtt :RustTest<CR>
+autocmd FileTYpe rust noremap gff :RustFmt<CR>
 
 " ===================== End of Plugin Settings =====================
