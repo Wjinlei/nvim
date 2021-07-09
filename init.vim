@@ -146,6 +146,10 @@ noremap W :w!<CR>
 noremap ff :e 
 noremap FF :e 
 
+" Folding
+noremap fl zc
+noremap fo zo
+
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 
