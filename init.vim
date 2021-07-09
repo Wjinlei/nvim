@@ -520,7 +520,7 @@ autocmd FileTYpe go noremap gtt :GoTestFunc<CR>
 " ===
 " === Rust
 " ===
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
 let g:rust_fold = 1
 autocmd FileTYpe rust noremap gtt :RustTest<CR>
