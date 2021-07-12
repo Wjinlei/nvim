@@ -392,6 +392,7 @@ let g:NERDTrimTrailingWhitespace = 1
 " ===
 "silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 let g:coc_global_extensions = [
+  \ 'coc-rust-analyzer',
   \ 'coc-snippets',
   \ 'coc-explorer',
   \ 'coc-html',
@@ -400,7 +401,6 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-emmet',
   \ 'coc-vetur',
-  \ 'coc-rust-analyzer',
   \ 'coc-vimlsp',
   \ 'coc-lists',
   \ 'coc-yank',
