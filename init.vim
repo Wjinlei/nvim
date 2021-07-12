@@ -525,6 +525,8 @@ autocmd FileTYpe go noremap gtt :GoTestFunc<CR>
 " ===
 " === Rust
 " ===
+syntax enable
+filetype plugin indent on
 let g:rustfmt_autosave = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
 let g:rust_fold = 1
