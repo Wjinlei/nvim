@@ -2,8 +2,9 @@
     "coc.preferences.extensionUpdateCheck": "daily",
     "coc.preferences.enableFloatHighlight": true,
     "coc.preferences.snippetStatusText": "Ⓢ ",
-    "coc-actions.hideCursor": false,
+    "coc-actions.hideCursor": true,
     "coc-actions.showActionKind": true,
+    "coc-actions.useCursorLine": false,
     "translator.engines": ["google"],
     "yank.enableCompletion": false,
     "codeLens.enable": true,
@@ -143,5 +144,8 @@
         }
     },
 
-    "rust-analyzer.server.path": "~/.local/bin/rust-analyzer"
+    "rust-analyzer.enable": true,
+    "rust-analyzer.server.path": "~/.local/bin/rust-analyzer",
+    "rust-analyzer.diagnostics.enable": false,
+    "rust-analyzer.diagnostics.enableExperimental": false
 }
