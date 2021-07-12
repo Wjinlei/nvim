@@ -392,7 +392,6 @@ let g:NERDTrimTrailingWhitespace = 1
 " ===
 "silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 let g:coc_global_extensions = [
-  \ 'coc-actions',
   \ 'coc-snippets',
   \ 'coc-explorer',
   \ 'coc-html',
@@ -455,8 +454,7 @@ nmap <silent> gr <Plug>(coc-references)
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+xmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Useful commands
 " CocCommand
