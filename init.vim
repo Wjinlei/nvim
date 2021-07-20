@@ -520,7 +520,7 @@ let g:go_mod_fmt_autosave                    = 1
 "let g:go_metalinter_autosave_enabled         = ['vet', 'golint']
 autocmd FileType go noremap gk :GoDoc<CR>
 autocmd FileType go noremap gta :GoTest<CR>
-autocmd FileTYpe go noremap gtt :GoTestFunc<CR>
+autocmd FileType go noremap gtt :GoTestFunc<CR>
 
 " ===
 " === Rust
@@ -530,7 +530,7 @@ filetype plugin indent on
 let g:rustfmt_autosave = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
 let g:rust_fold = 1
-autocmd FileTYpe rust noremap gtt :RustTest<CR>
-autocmd FileTYpe rust noremap gff :RustFmt<CR>
+autocmd FileType rust noremap gtt :RustTest<CR>
+autocmd FileType rust noremap gff :RustFmt<CR>
 
 " ===================== End of Plugin Settings =====================
