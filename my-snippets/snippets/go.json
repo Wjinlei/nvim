@@ -1,0 +1,11 @@
+{
+  "iferr declaration": {
+    "prefix": "iferr",
+    "body": [
+        "if err != nil {",
+        "   return err",
+        "}"
+    ],
+    "description": "if err != nil"
+  }
+}
