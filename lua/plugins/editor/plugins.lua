@@ -30,6 +30,11 @@ editor["windwp/nvim-spectre"] = {
 	),
 }
 
+editor["nvim-orgmode/orgmode"] = {
+	after = "nvim-treesitter",
+	config = conf.orgmode,
+}
+
 editor["rhysd/accelerated-jk"] = {
 	event = "BufWinEnter",
 	keymap("n", "k", "<Plug>(accelerated_jk_gk)", { noremap = true, silent = true }),
