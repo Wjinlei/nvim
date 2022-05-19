@@ -36,7 +36,7 @@ editor["nvim-orgmode/orgmode"] = {
 }
 
 editor["lukas-reineke/headlines.nvim"] = {
-	after = "org-bullets.nvim",
+	after = "orgmode",
 	config = function()
 		require("headlines").setup()
 	end,
