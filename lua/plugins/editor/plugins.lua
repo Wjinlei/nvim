@@ -35,6 +35,15 @@ editor["nvim-orgmode/orgmode"] = {
 	config = conf.orgmode,
 }
 
+editor["akinsho/org-bullets.nvim"] = {
+	after = "orgmode",
+	config = function()
+		require("org-bullets").setup({
+			symbols = { "🐅 ", "🦅 ", "🦣 ", "🦬 ", "🐂 ", "🐗 ", "🐖 ", "🐏 ", "🐔 ", "🦐 " },
+		})
+	end,
+}
+
 editor["rhysd/accelerated-jk"] = {
 	event = "BufWinEnter",
 	keymap("n", "k", "<Plug>(accelerated_jk_gk)", { noremap = true, silent = true }),
