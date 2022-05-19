@@ -44,6 +44,13 @@ editor["akinsho/org-bullets.nvim"] = {
 	end,
 }
 
+editor["lukas-reineke/headlines.nvim"] = {
+	after = "org-bullets.nvim",
+	config = function()
+		require("headlines").setup()
+	end,
+}
+
 editor["rhysd/accelerated-jk"] = {
 	event = "BufWinEnter",
 	keymap("n", "k", "<Plug>(accelerated_jk_gk)", { noremap = true, silent = true }),
