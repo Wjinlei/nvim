@@ -35,15 +35,6 @@ editor["nvim-orgmode/orgmode"] = {
 	config = conf.orgmode,
 }
 
-editor["akinsho/org-bullets.nvim"] = {
-	after = "orgmode",
-	config = function()
-		require("org-bullets").setup({
-			symbols = { "🐅 ", "🦅 ", "🦣 ", "🦬 ", "🐂 ", "🐗 ", "🐖 ", "🐏 ", "🐔 ", "🦐 " },
-		})
-	end,
-}
-
 editor["lukas-reineke/headlines.nvim"] = {
 	after = "org-bullets.nvim",
 	config = function()
