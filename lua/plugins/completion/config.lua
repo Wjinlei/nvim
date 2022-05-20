@@ -282,7 +282,6 @@ function config.cmp()
 					nvim_lsp = "[LSP]",
 					nvim_lua = "[LUA]",
 					luasnip = "[SNIP]",
-					orgmode = "[ORG]",
 					path = "[PATH]",
 					buffer = "[BUF]",
 				})[entry.source.name]
@@ -330,7 +329,6 @@ function config.cmp()
 			{ name = "nvim_lsp" },
 			{ name = "nvim_lua" },
 			{ name = "luasnip" },
-			{ name = "orgmode" },
 			{ name = "path" },
 			{ name = "buffer" },
 		},

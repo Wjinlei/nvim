@@ -30,18 +30,6 @@ editor["windwp/nvim-spectre"] = {
 	),
 }
 
-editor["nvim-orgmode/orgmode"] = {
-	after = "nvim-treesitter",
-	config = conf.orgmode,
-}
-
-editor["lukas-reineke/headlines.nvim"] = {
-	after = "orgmode",
-	config = function()
-		require("headlines").setup()
-	end,
-}
-
 editor["rhysd/accelerated-jk"] = {
 	event = "BufWinEnter",
 	keymap("n", "k", "<Plug>(accelerated_jk_gk)", { noremap = true, silent = true }),

@@ -23,12 +23,10 @@ function config.nvim_treesitter()
 			"html",
 			"css",
 			"vue",
-			"org",
 		},
 		highlight = {
 			enable = true,
-			disable = { "vim", "org" },
-			additional_vim_regex_highlighting = { "org" },
+			disable = { "vim" },
 		},
 		textobjects = {
 			select = {
@@ -74,21 +72,6 @@ function config.nvim_treesitter()
 	for _, p in pairs(parsers) do
 		p.install_info.url = p.install_info.url:gsub("https://github.com/", "git@github.com:")
 	end
-end
-
-function config.orgmode()
-	require("orgmode").setup_ts_grammar()
-	require("orgmode").setup({
-		org_agenda_files = { "~/data/org/*" },
-		org_default_notes_file = "~/data/org/refile.org",
-		mappings = {
-			-- disable_all = true,
-			global = {
-				org_capture = "<C-c>c",
-				org_agenda = "<C-c>a",
-			},
-		},
-	})
 end
 
 function config.spectre()
