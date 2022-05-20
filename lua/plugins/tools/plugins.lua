@@ -58,6 +58,7 @@ tools["dstein64/vim-startuptime"] = {
 tools["TimUntersberger/neogit"] = {
 	requires = {
 		{ "nvim-lua/plenary.nvim", opt = false },
+		{ "sindrets/diffview.nvim" },
 	},
 	config = conf.neogit,
 	keymap("n", "gs", '<cmd>lua require("neogit").open()<CR>', { noremap = true, silent = true }),
