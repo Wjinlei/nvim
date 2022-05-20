@@ -133,7 +133,7 @@ local stylua = require("efmls-configs.formatters.stylua")
 
 clangformat = vim.tbl_extend("force", clangformat, {
 	prefix = "clangfmt",
-	formatCommand = 'clang-format --style="{BasedOnStyle: Mozilla, IndentWidth: 8}" ${INPUT}',
+	formatCommand = 'clang-format --style="{BasedOnStyle: WebKit, IndentWidth: 8}" ${INPUT}',
 	formatStdin = true,
 })
 
