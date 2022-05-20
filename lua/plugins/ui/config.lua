@@ -7,18 +7,21 @@ function config.alpha()
 
 	dashboard.section.header.val = {
 		[[                                                  ]],
+		[[                         `..`                     ]],
+		[[                       ````+ `.`                  ]],
+		[[                   /o:``   :+ ``                  ]],
+		[[               .+//dho......y/..`                 ]],
+		[[               `sdddddhysso+h` ``                 ]],
+		[[                 /ddd+`..` +. .`                  ]],
+		[[                -hos+    `.:```                   ]],
+		[[              `./dddyo+//osso/:`                  ]],
+		[[            `/o++dddddddddddddod-                 ]],
+		[[           `// -y+:sdddddsddsy.dy                 ]],
+		[[               /o   `..```h+`y+/h+`               ]],
+		[[               .s       `++``o:  ``               ]],
+		[[                       `:- `:-                    ]],
 		[[                                                  ]],
-		[[                                                  ]],
-		[[                                                  ]],
-		[[                                                  ]],
-		[[███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗]],
-		[[████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║]],
-		[[██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║]],
-		[[██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║]],
-		[[██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║]],
-		[[╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
-		[[                                                  ]],
-		[[                    By Jerry.                     ]],
+		[[    CENTAUR VIM - Enjoy Programming & Writing     ]],
 	}
 	dashboard.section.buttons.val = {
 		dashboard.button(
@@ -29,6 +32,7 @@ function config.alpha()
 		dashboard.button("ff", "  Find file", "<cmd>lua require('plugins.tools.pickers').project_files()<CR>"),
 		dashboard.button("fs", "  Find text", "<cmd>lua require('plugins.tools.pickers').search()<CR>"),
 		dashboard.button("fh", "  Recently used files", ":Telescope oldfiles <CR>"),
+		dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
 		dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
 		dashboard.button("q", "  Quit vim", ":qa<CR>"),
 	}
