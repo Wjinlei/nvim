@@ -80,7 +80,7 @@ local on_attach = function(client, bufnr)
 		fix_pos = true,
 	})
 
-	-- Add BufWritePre event with save format
+	-- Add BufWritePost event with save format
 	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 	if client.supports_method("textDocument/formatting") then
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
