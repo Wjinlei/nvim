@@ -34,6 +34,7 @@ tools["airblade/vim-gitgutter"] = {
 	keymap("n", "gn", "<Plug>(GitGutterNextHunk)", keymap_opts),
 	keymap("n", "gp", "<Plug>(GitGutterPrevHunk)", keymap_opts),
 	keymap("n", "gf", ":GitGutterFold<CR>", keymap_opts),
+	keymap("n", "gl", ":GitGutter<CR>", keymap_opts),
 
 	-- Refresh gitgutter signs
 	vim.cmd([[augroup GitGutterRefresh]]),
