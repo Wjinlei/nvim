@@ -38,7 +38,7 @@ tools["airblade/vim-gitgutter"] = {
 	-- Refresh gitgutter signs
 	vim.cmd([[augroup GitGutterRefresh]]),
 	vim.cmd([[autocmd! * <buffer>]]),
-	vim.cmd([[autocmd BufWritePost <buffer> :GitGutter]]),
+	vim.cmd([[autocmd BufEnter <buffer> :GitGutter]]),
 	vim.cmd([[augroup END]]),
 }
 
