@@ -46,13 +46,6 @@ ui["kyazdani42/nvim-tree.lua"] = {
 	keymap("n", "tt", "<cmd>NvimTreeToggle<cr>", { noremap = true, silent = true }),
 }
 
-ui["petertriho/nvim-scrollbar"] = {
-	event = "BufRead",
-	config = function()
-		require("scrollbar").setup()
-	end,
-}
-
 ui["akinsho/bufferline.nvim"] = {
 	tag = "*",
 	event = "BufRead",

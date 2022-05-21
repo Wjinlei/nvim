@@ -46,15 +46,6 @@ editor["phaazon/hop.nvim"] = {
 	vim.api.nvim_set_keymap("n", ",", "<cmd>lua require'hop'.hint_words()<cr>", {}),
 }
 
-editor["edluffy/specs.nvim"] = {
-	event = "CursorMoved",
-	config = conf.specs,
-	vim.api.nvim_set_keymap("n", "<CR>", ':lua require("specs").show_specs()<CR>', { noremap = true, silent = true }),
-	-- You can even bind it to search jumping and more, example:
-	vim.api.nvim_set_keymap("n", "n", 'n:lua require("specs").show_specs()<CR>', { noremap = true, silent = true }),
-	vim.api.nvim_set_keymap("n", "N", 'N:lua require("specs").show_specs()<CR>', { noremap = true, silent = true }),
-}
-
 editor["romainl/vim-cool"] = { event = { "CursorMoved", "InsertEnter" } }
 editor["terrortylor/nvim-comment"] = { opt = false, config = conf.comment }
 editor["karb94/neoscroll.nvim"] = { event = "BufReadPost", config = conf.neoscroll }
