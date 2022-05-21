@@ -38,7 +38,7 @@ tools["airblade/vim-gitgutter"] = {
 	vim.cmd([[
 augroup GitGutterRefresh
 autocmd! * <buffer>
-autocmd DiffUpdated <buffer> :GitGutter
+autocmd DiffUpdated * :GitGutter
 augroup END
         ]]),
 }
