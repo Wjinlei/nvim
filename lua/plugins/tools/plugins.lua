@@ -35,12 +35,6 @@ tools["airblade/vim-gitgutter"] = {
 	keymap("n", "gp", "<Plug>(GitGutterPrevHunk)", keymap_opts),
 	keymap("n", "gf", ":GitGutterFold<CR>", keymap_opts),
 	keymap("n", "gl", ":GitGutter<CR>", keymap_opts),
-
-	-- Refresh gitgutter signs
-	vim.cmd([[augroup GitGutterRefresh]]),
-	vim.cmd([[autocmd! * <buffer>]]),
-	vim.cmd([[autocmd BufEnter <buffer> :GitGutter]]),
-	vim.cmd([[augroup END]]),
 }
 
 tools["dstein64/vim-startuptime"] = {
