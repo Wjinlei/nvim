@@ -59,7 +59,7 @@ tools["TimUntersberger/neogit"] = {
 tools["aserowy/tmux.nvim"] = {
 	config = conf.tmux,
 	keymap("n", "<Left>", '<cmd>lua require("tmux").resize_left()<cr>', keymap_opts),
-	keymap("n", "<Down>", '<cmd>lua require("tmux").resit_bottom()<cr>', keymap_opts),
+	keymap("n", "<Down>", '<cmd>lua require("tmux").resize_bottom()<cr>', keymap_opts),
 	keymap("n", "<Right>", '<cmd>lua require("tmux").resize_right()<cr>', keymap_opts),
 	keymap("n", "<Up>", '<cmd> lua require("tmux").resize_top()<cr>', keymap_opts),
 	keymap("n", "<A-h>", '<cmd>lua require("tmux").move_left()<cr>', keymap_opts),
