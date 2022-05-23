@@ -74,4 +74,6 @@ tools["akinsho/toggleterm.nvim"] = {
 	keymap("n", "<C-\\>", '<Cmd>exe v:count1 . "ToggleTerm"<CR>', keymap_opts),
 	keymap("i", "<C-\\>", '<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>', keymap_opts),
 }
+
+tools["nathom/filetype.nvim"] = { opt = false }
 return tools
