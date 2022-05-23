@@ -16,6 +16,10 @@ keymap("n", "W", ":wq<CR>", {})
 keymap("v", "w", ":w<CR>", {})
 keymap("v", "W", ":wq<CR>", {})
 
+-- Run
+keymap("n", "r", "<cmd>lua require('core.func').run()<CR>", {})
+keymap("n", "R", "<cmd>lua require('core.func').run()<CR>", {})
+
 -- Record mocro
 keymap("n", "x", "q", { noremap = true, silent = true })
 keymap("n", "X", "@x", { noremap = true, silent = true })

@@ -10,4 +10,11 @@ M.quit = function()
 	end
 end
 
+M.run = function()
+	api.nvim_command("w")
+	if vim.bo.filetype == "c" then
+		api.nvim_command("term gcc % -o %< && ./%< && rm -f %<")
+	end
+end
+
 return M
