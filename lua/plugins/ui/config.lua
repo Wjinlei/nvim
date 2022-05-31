@@ -138,7 +138,7 @@ function config.nvim_tree()
 				custom_only = false,
 				list = {
 					-- user mappings go here
-                                        { key = "s", action = "" },
+					{ key = "s", action = "" },
 				},
 			},
 		},
