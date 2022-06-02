@@ -9,38 +9,20 @@ require("nvim-lsp-installer").setup({})
 local lspconfig = require("lspconfig")
 local saga = require("lspsaga")
 
--- require nvim 0.8
-local filter_formatting = function(bufnr)
-	vim.lsp.buf.format({
-		filter = function(clients)
-			-- filter out clients that you don't want to use
-			return vim.tbl_filter(function(client)
-				return client.name ~= "tsserver"
-					and client.name ~= "volar"
-					and client.name ~= "html"
-					and client.name ~= "clangd"
-			end, clients)
-		end,
-		bufnr = bufnr,
-	})
-end
-
 -- Open Lsp server info
 vim.api.nvim_set_keymap("n", "<LEADER>lsp", ":LspInstallInfo<CR>", {})
+vim.api.nvim_set_keymap("n", "<LEADER>lsi", ":LspInfo<CR>", {})
 
 local function keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "rn", ":Lspsaga rename<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "v", "<A-a>", ":<C-U>Lspsaga range_code_action<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-a>", ":Lspsaga code_action<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<LEADER>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gt", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "rn", ":Lspsaga rename<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "rf", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-
-	vim.keymap.set("n", "<LEADER>f", function()
-		filter_formatting(bufnr)
-	end, { buffer = bufnr })
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-a>", ":Lspsaga code_action<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "v", "<A-a>", ":<C-U>Lspsaga range_code_action<CR>", opts)
 	vim.api.nvim_buf_set_keymap(
 		bufnr,
 		"n",
@@ -79,19 +61,6 @@ local on_attach = function(client, bufnr)
 		floating_window = false,
 		fix_pos = true,
 	})
-
-	-- Add BufWritePost event with save format
-	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-	if client.supports_method("textDocument/formatting") then
-		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-		vim.api.nvim_create_autocmd("BufWritePost", {
-			group = augroup,
-			buffer = bufnr,
-			callback = function()
-				filter_formatting(bufnr)
-			end,
-		})
-	end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
