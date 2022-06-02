@@ -114,3 +114,4 @@ bind-key -T copy-mode-vi Right resize-pane -R 1
 ## Thanks to the authors of the following projects
 - [ayamir](https://github.com/ayamir/nvimdots)
 - [ravenxrz](https://github.com/ravenxrz/dotfiles/tree/master/nvim)
+- [seagle0128](https://github.com/seagle0128/.emacs.d)
