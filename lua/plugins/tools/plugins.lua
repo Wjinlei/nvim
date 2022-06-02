@@ -75,5 +75,11 @@ tools["akinsho/toggleterm.nvim"] = {
 	keymap("i", "<C-\\>", '<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>', keymap_opts),
 }
 
+tools["petertriho/nvim-scrollbar"] = {
+        as = "scrollbar",
+        requires = "kevinhwang91/nvim-hlslens",
+        config = conf.nvim_scrollbar
+}
+
 tools["nathom/filetype.nvim"] = { opt = false }
 return tools
