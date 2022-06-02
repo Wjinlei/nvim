@@ -46,6 +46,11 @@ editor["phaazon/hop.nvim"] = {
 	vim.api.nvim_set_keymap("n", ",", "<cmd>lua require'hop'.hint_words()<cr>", {}),
 }
 
+editor["lambdalisue/suda.vim"] = {
+	vim.api.nvim_set_keymap("n", "<LEADER>w", ":SudaWrite<CR>", {}),
+	vim.api.nvim_set_keymap("n", "<LEADER>r", ":SudaRead<CR>", {}),
+}
+
 editor["romainl/vim-cool"] = { event = { "CursorMoved", "InsertEnter" } }
 editor["terrortylor/nvim-comment"] = { opt = false, config = conf.comment }
 editor["karb94/neoscroll.nvim"] = { event = "BufReadPost", config = conf.neoscroll }
