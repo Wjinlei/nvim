@@ -26,8 +26,8 @@ tools["nvim-telescope/telescope-frecency.nvim"] = {
 	requires = { "tami5/sqlite.lua" },
 }
 tools["nvim-telescope/telescope-fzf-native.nvim"] = { after = "telescope.nvim", run = "make" }
-tools["nvim-telescope/telescope-live-grep-raw.nvim"] = { after = "telescope-frecency.nvim" }
-tools["nvim-telescope/telescope-project.nvim"] = { after = "telescope-live-grep-raw.nvim" }
+tools["nvim-telescope/telescope-live-grep-args.nvim"] = { after = "telescope-frecency.nvim" }
+tools["nvim-telescope/telescope-project.nvim"] = { after = "telescope-live-grep-args.nvim" }
 tools["notjedi/nvim-rooter.lua"] = { after = "telescope-project.nvim", config = conf.rooter }
 
 tools["airblade/vim-gitgutter"] = {

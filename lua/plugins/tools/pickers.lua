@@ -42,6 +42,6 @@ M.git_cwd = function(cmd, cwd)
 end
 
 M.search = function()
-	require("telescope").extensions.live_grep_raw.live_grep_raw({ cwd = M.git_root() })
+	require("telescope").extensions.live_grep_args.live_grep_args({ cwd = M.git_root() })
 end
 return M

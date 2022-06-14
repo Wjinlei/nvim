@@ -4,7 +4,7 @@ local config = {}
 function config.telescope()
 	vim.cmd([[packadd sqlite.lua]])
 	vim.cmd([[packadd telescope-project.nvim]])
-	vim.cmd([[packadd telescope-live-grep-raw.nvim]])
+	vim.cmd([[packadd telescope-live-grep-args.nvim]])
 	vim.cmd([[packadd telescope-fzf-native.nvim]])
 	vim.cmd([[packadd telescope-frecency.nvim]])
 
@@ -87,7 +87,7 @@ function config.telescope()
 
 	require("telescope").load_extension("fzf")
 	require("telescope").load_extension("frecency")
-	require("telescope").load_extension("live_grep_raw")
+	require("telescope").load_extension("live_grep_args")
 	require("telescope").load_extension("project")
 end
 
