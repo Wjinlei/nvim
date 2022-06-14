@@ -15,6 +15,9 @@ M.run = function()
 	if vim.bo.filetype == "c" then
 		api.nvim_command("term gcc % -o %< && ./%< && rm -f %<")
 	end
+	if vim.bo.filetype == "go" then
+		api.nvim_command("term go run %<.go")
+	end
 end
 
 return M
