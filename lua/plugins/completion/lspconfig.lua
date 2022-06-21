@@ -66,7 +66,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-local servers = { "clangd", "volar", "tsserver", "gopls", "sumneko_lua", "html", "cssls" }
+local servers = { "clangd", "volar", "tsserver", "gopls", "sumneko_lua", "html", "cssls", "bashls" }
 for _, server in ipairs(servers) do
 	local opts = {
 		on_attach = on_attach,
@@ -95,10 +95,12 @@ efmls.init({
 local eslint = require("efmls-configs.linters.eslint")
 local clangtidy = require("efmls-configs.linters.clang_tidy")
 local luacheck = require("efmls-configs.linters.luacheck")
+local shellcheck = require("efmls-configs.linters.shellcheck")
 
 local prettier = require("efmls-configs.formatters.prettier")
 local clangformat = require("efmls-configs.formatters.clang_format")
 local stylua = require("efmls-configs.formatters.stylua")
+local shfmt = require("efmls-configs.formatters.shfmt")
 
 clangformat = vim.tbl_extend("force", clangformat, {
 	prefix = "clangfmt",
@@ -122,6 +124,7 @@ efmls.setup({
 	c = { formatter = clangformat, linter = clangtidy },
 	cpp = { formatter = clangformat, linter = clangtidy },
 	lua = { formatter = stylua, linter = luacheck },
+	sh = { formatter = shfmt, linter = shellcheck },
 })
 
 -- Override diagnostics symbol
