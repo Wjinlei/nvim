@@ -19,16 +19,23 @@ tools["nvim-telescope/telescope.nvim"] = {
 	keymap("n", "bb", "<cmd>lua require('telescope.builtin').buffers()<cr>", keymap_opts),
 	keymap("n", "fh", "<cmd>lua require('telescope.builtin').oldfiles()<cr>", keymap_opts),
 	keymap("n", "fp", ":lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>", keymap_opts),
+	keymap("n", "fn", "<cmd>lua require('telescope').extensions.notify.notify()<cr>", keymap_opts),
 }
 
+tools["nvim-telescope/telescope-fzf-native.nvim"] = { after = "telescope.nvim", run = "make" }
 tools["nvim-telescope/telescope-frecency.nvim"] = {
 	after = "telescope-fzf-native.nvim",
 	requires = { "tami5/sqlite.lua" },
 }
-tools["nvim-telescope/telescope-fzf-native.nvim"] = { after = "telescope.nvim", run = "make" }
 tools["nvim-telescope/telescope-live-grep-args.nvim"] = { after = "telescope-frecency.nvim" }
 tools["nvim-telescope/telescope-project.nvim"] = { after = "telescope-live-grep-args.nvim" }
 tools["notjedi/nvim-rooter.lua"] = { after = "telescope-project.nvim", config = conf.rooter }
+tools["rcarriga/nvim-notify"] = {
+	after = "nvim-rooter",
+	config = function()
+		vim.notify = require("notify")
+	end,
+}
 
 tools["airblade/vim-gitgutter"] = {
 	keymap("n", "gn", "<Plug>(GitGutterNextHunk)", keymap_opts),
@@ -76,9 +83,9 @@ tools["akinsho/toggleterm.nvim"] = {
 }
 
 tools["petertriho/nvim-scrollbar"] = {
-        as = "scrollbar",
-        requires = "kevinhwang91/nvim-hlslens",
-        config = conf.nvim_scrollbar
+	as = "scrollbar",
+	requires = "kevinhwang91/nvim-hlslens",
+	config = conf.nvim_scrollbar,
 }
 
 tools["nathom/filetype.nvim"] = { opt = false }

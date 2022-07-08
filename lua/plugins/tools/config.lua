@@ -7,6 +7,7 @@ function config.telescope()
 	vim.cmd([[packadd telescope-live-grep-args.nvim]])
 	vim.cmd([[packadd telescope-fzf-native.nvim]])
 	vim.cmd([[packadd telescope-frecency.nvim]])
+	vim.cmd([[packadd nvim-notify]])
 
 	local previewers = require("telescope.previewers")
 	local Job = require("plenary.job")
@@ -89,6 +90,7 @@ function config.telescope()
 	require("telescope").load_extension("frecency")
 	require("telescope").load_extension("live_grep_args")
 	require("telescope").load_extension("project")
+	require("telescope").load_extension("notify")
 end
 
 function config.rooter()
