@@ -31,7 +31,7 @@ tools["nvim-telescope/telescope-live-grep-args.nvim"] = { after = "telescope-fre
 tools["nvim-telescope/telescope-project.nvim"] = { after = "telescope-live-grep-args.nvim" }
 tools["notjedi/nvim-rooter.lua"] = { after = "telescope-project.nvim", config = conf.rooter }
 tools["rcarriga/nvim-notify"] = {
-	after = "nvim-rooter",
+	after = "nvim-rooter.lua",
 	config = function()
 		vim.notify = require("notify")
 	end,
