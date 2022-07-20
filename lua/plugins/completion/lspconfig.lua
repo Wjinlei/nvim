@@ -66,7 +66,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-local servers = { "clangd", "volar", "tsserver", "gopls", "sumneko_lua", "html", "cssls", "bashls" }
+local servers = { "clangd", "volar", "tsserver", "gopls", "sumneko_lua", "html", "cssls", "bashls", "rust_analyzer" }
 for _, server in ipairs(servers) do
 	local opts = {
 		on_attach = on_attach,

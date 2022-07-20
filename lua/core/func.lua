@@ -18,6 +18,9 @@ M.run = function()
 	if vim.bo.filetype == "go" then
 		api.nvim_command("term go run %<.go")
 	end
+	if vim.bo.filetype == "rust" then
+		api.nvim_command("term cargo run")
+	end
 end
 
 return M
