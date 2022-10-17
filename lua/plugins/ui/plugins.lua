@@ -15,7 +15,7 @@ ui["goolord/alpha-nvim"] = {
 	event = "BufWinEnter",
 	config = conf.alpha,
 	requires = "kyazdani42/nvim-web-devicons",
-	keymap("n", "ta", "<cmd>Alpha<cr>", { noremap = true, silent = true }),
+	-- keymap("n", "ta", "<cmd>Alpha<cr>", { noremap = true, silent = true }),
 }
 
 ui["RRethy/vim-illuminate"] = {
