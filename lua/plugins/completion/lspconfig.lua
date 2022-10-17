@@ -77,6 +77,11 @@ for _, server in ipairs(servers) do
 		opts = vim.tbl_deep_extend("force", clangd_opts, opts)
 		opts.capabilities.offsetEncoding = { "utf-16" }
 	end
+
+	if server == "volar" then
+		local volar_opts = require("plugins.completion.settings.volar")
+		opts = vim.tbl_deep_extend("force", volar_opts, opts)
+	end
 	lspconfig[server].setup(opts)
 end
 
