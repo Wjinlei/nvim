@@ -18,8 +18,14 @@ completion["L3MON4D3/LuaSnip"] = {
 	config = conf.luasnip,
 	requires = { "rafamadriz/friendly-snippets" },
 }
-completion["windwp/nvim-autopairs"] = { after = "nvim-cmp", config = function() require("nvim-autopairs").setup {} end }
+completion["windwp/nvim-autopairs"] = {
+	after = "nvim-cmp",
+	config = function()
+		require("nvim-autopairs").setup({})
+	end,
+}
 completion["neovim/nvim-lspconfig"] = { config = conf.lspconfig }
+completion["simrat39/rust-tools.nvim"] = { config = conf.rust_tools, after = "nvim-lspconfig" }
 completion["williamboman/nvim-lsp-installer"] = { after = "nvim-lspconfig" }
 completion["tami5/lspsaga.nvim"] = { after = "nvim-lspconfig" }
 completion["kosayoda/nvim-lightbulb"] = { after = "nvim-lspconfig", config = conf.lightbulb }
