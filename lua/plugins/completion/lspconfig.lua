@@ -1,5 +1,4 @@
 -- luacheck: globals vim
-vim.cmd([[packadd lsp_signature.nvim]])
 vim.cmd([[packadd aerial.nvim]])
 vim.cmd([[packadd nvim-lsp-installer]])
 vim.cmd([[packadd cmp-nvim-lsp]])
@@ -51,16 +50,6 @@ local on_attach = function(client, bufnr)
 	vim.cmd([[autocmd! * <buffer>]])
 	vim.cmd([[autocmd BufLeave <buffer> :AerialClose]])
 	vim.cmd([[augroup END]])
-
-	require("lsp_signature").on_attach({
-		hi_parameter = "Search",
-		bind = true,
-		hint_enable = true,
-		hint_prefix = "🐼 ",
-		use_lspsaga = false,
-		floating_window = false,
-		fix_pos = true,
-	})
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

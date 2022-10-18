@@ -22,7 +22,6 @@ completion["windwp/nvim-autopairs"] = { after = "nvim-cmp", config = function() 
 completion["neovim/nvim-lspconfig"] = { config = conf.lspconfig }
 completion["williamboman/nvim-lsp-installer"] = { after = "nvim-lspconfig" }
 completion["tami5/lspsaga.nvim"] = { after = "nvim-lspconfig" }
-completion["ray-x/lsp_signature.nvim"] = { after = "nvim-lspconfig" }
 completion["kosayoda/nvim-lightbulb"] = { after = "nvim-lspconfig", config = conf.lightbulb }
 completion["stevearc/aerial.nvim"] = { after = "nvim-lspconfig", config = conf.aerial }
 completion["creativenull/efmls-configs-nvim"] = { requires = { "neovim/nvim-lspconfig" } }
