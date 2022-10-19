@@ -87,6 +87,4 @@ tools["petertriho/nvim-scrollbar"] = {
 	requires = "kevinhwang91/nvim-hlslens",
 	config = conf.nvim_scrollbar,
 }
-
-tools["nathom/filetype.nvim"] = { opt = false }
 return tools

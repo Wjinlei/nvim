@@ -3,18 +3,11 @@ local editor = {}
 local keymap = vim.api.nvim_set_keymap
 local conf = require("plugins.editor.config")
 
-editor["nvim-treesitter/nvim-treesitter"] = {
-	run = ":TSUpdate",
-	event = "BufRead",
-	config = conf.nvim_treesitter,
-}
-
-editor["p00f/nvim-ts-rainbow"] = {
-	after = "nvim-treesitter",
-	event = "BufRead",
-}
+editor["nvim-treesitter/nvim-treesitter"] = { run = ":TSUpdate", event = "BufRead", config = conf.nvim_treesitter }
+editor["p00f/nvim-ts-rainbow"] = { after = "nvim-treesitter" }
 editor["nvim-treesitter/nvim-treesitter-textobjects"] = { after = "nvim-treesitter" }
 editor["JoosepAlviste/nvim-ts-context-commentstring"] = { after = "nvim-treesitter" }
+
 editor["windwp/nvim-spectre"] = {
 	requires = {
 		{ "kyazdani42/nvim-web-devicons", opt = false },
