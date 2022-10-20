@@ -20,8 +20,8 @@ function config.rust_tools()
 				vim.keymap.set("n", "<A-c>", rt.open_cargo_toml.open_cargo_toml, { buffer = bufnr })
 				vim.keymap.set("n", "r", rt.runnables.runnables, { buffer = bufnr })
 				-- hover_range功能目前好像有Bug https://github.com/simrat39/rust-tools.nvim/issues/235
-				-- vim.keymap.set("v", "<A-h>", rt.hover_range.hover_range, { buffer = bufnr })
-				vim.keymap.set("n", "<A-h>", rt.hover_actions.hover_actions, { buffer = bufnr })
+				-- vim.keymap.set("v", "<A-d>", rt.hover_range.hover_range, { buffer = bufnr })
+				vim.keymap.set("n", "<A-d>", rt.hover_actions.hover_actions, { buffer = bufnr })
 				vim.keymap.set("n", "<A-e>", rt.expand_macro.expand_macro, { buffer = bufnr })
 			end,
 		}, -- rust-analyzer options
