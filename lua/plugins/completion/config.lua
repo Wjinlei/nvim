@@ -8,6 +8,24 @@ end
 function config.rust_tools()
 	local rt = require("rust-tools")
 	local opts = {
+		-- all the opts to send to nvim-lspconfig
+		-- these override the defaults set by rust-tools.nvim
+		-- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
+		server = {
+			-- standalone file support
+			-- setting it to false may improve startup time
+			standalone = true,
+			on_attach = function(_, bufnr)
+				require("plugins.completion.on_attach").on_attach(_, bufnr)
+				vim.keymap.set("n", "<A-c>", rt.open_cargo_toml.open_cargo_toml, { buffer = bufnr })
+				vim.keymap.set("n", "r", rt.runnables.runnables, { buffer = bufnr })
+				-- hover_range功能目前好像有Bug https://github.com/simrat39/rust-tools.nvim/issues/235
+				-- vim.keymap.set("v", "<A-h>", rt.hover_range.hover_range, { buffer = bufnr })
+				vim.keymap.set("n", "<A-h>", rt.hover_actions.hover_actions, { buffer = bufnr })
+				vim.keymap.set("n", "<A-e>", rt.expand_macro.expand_macro, { buffer = bufnr })
+			end,
+		}, -- rust-analyzer options
+
 		tools = { -- rust-tools options
 			-- how to execute terminal commands
 			-- options right now: termopen / quickfix
@@ -156,24 +174,7 @@ function config.rust_tools()
 			},
 		},
 
-		-- all the opts to send to nvim-lspconfig
-		-- these override the defaults set by rust-tools.nvim
-		-- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
-		server = {
-			-- standalone file support
-			-- setting it to false may improve startup time
-			standalone = true,
-			on_attach = function(_, bufnr)
-				vim.keymap.set("n", "r", rt.runnables.runnables, { buffer = bufnr })
-				vim.keymap.set("n", "<A-c>", rt.open_cargo_toml.open_cargo_toml, { buffer = bufnr })
-				-- hover_range功能目前好像有Bug https://github.com/simrat39/rust-tools.nvim/issues/235
-				-- vim.keymap.set("v", "<A-a>", rt.hover_range.hover_range, { buffer = bufnr })
-				vim.keymap.set("n", "<A-a>", rt.hover_actions.hover_actions, { buffer = bufnr })
-				vim.keymap.set("n", "<A-e>", rt.expand_macro.expand_macro, { buffer = bufnr })
-			end,
-		}, -- rust-analyzer options
-
-		-- debugging stuff
+		-- Debugging stuff
 		dap = {
 			adapter = {
 				type = "executable",
@@ -192,6 +193,18 @@ end
 function config.aerial()
 	-- Call the setup function to change the default behavior
 	require("aerial").setup({
+		-- Call this function when aerial attaches to a buffer.
+		-- Useful for setting keymaps. Takes a single `bufnr` argument.
+		on_attach = function(bufnr)
+			vim.keymap.set("n", "<C-m>", "<cmd>AerialToggle!<CR>", { buffer = bufnr })
+			vim.keymap.set("n", "<C-k>", "<cmd>AerialPrevUp<CR>", { buffer = bufnr })
+			vim.keymap.set("n", "<C-j>", "<cmd>AerialNextUp<CR>", { buffer = bufnr })
+			vim.cmd([[augroup AerialClose]])
+			vim.cmd([[autocmd! * <buffer>]])
+			vim.cmd([[autocmd BufLeave <buffer> :AerialClose]])
+			vim.cmd([[augroup END]])
+		end,
+
 		-- Priority list of preferred backends for aerial.
 		-- This can be a filetype map (see :help aerial-filetype-map)
 		backends = { "lsp", "treesitter", "markdown" },
@@ -323,10 +336,6 @@ function config.aerial()
 		-- Set default symbol icons to use patched font icons (see https://www.nerdfonts.com/)
 		-- "auto" will set it to true if nvim-web-devicons or lspkind-nvim is installed.
 		nerd_font = "auto",
-
-		-- Call this function when aerial attaches to a buffer.
-		-- Useful for setting keymaps. Takes a single `bufnr` argument.
-		on_attach = nil,
 
 		-- Automatically open aerial when entering supported buffers.
 		-- This can be a function (see :help aerial-open-automatic)

@@ -1,64 +1,49 @@
 -- luacheck: globals vim
-vim.cmd([[packadd aerial.nvim]])
-vim.cmd([[packadd nvim-lsp-installer]])
 vim.cmd([[packadd cmp-nvim-lsp]])
 vim.cmd([[packadd lspsaga.nvim]])
 vim.cmd([[packadd efmls-configs-nvim]])
+vim.cmd([[packadd nvim-lsp-installer]])
 require("nvim-lsp-installer").setup({})
-local lspconfig = require("lspconfig")
+
 local saga = require("lspsaga")
+local lspconfig = require("lspconfig")
+
+-- Override diagnostics symbol
+saga.init_lsp_saga({
+	debug = false,
+	code_action_icon = "💡",
+	diagnostic_header_icon = "🐞",
+	code_action_prompt = { virtual_text = false },
+	use_saga_diagnostic_sign = true,
+	infor_sign = "",
+	warn_sign = "",
+	error_sign = "",
+	hint_sign = "",
+	rename_prompt_prefix = "📝",
+})
 
 -- Open Lsp server info
 vim.api.nvim_set_keymap("n", "<LEADER>lsp", ":LspInstallInfo<CR>", {})
 vim.api.nvim_set_keymap("n", "<LEADER>lsi", ":LspInfo<CR>", {})
 
-local function keymaps(bufnr)
-	local opts = { noremap = true, silent = true }
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "rn", ":Lspsaga rename<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "v", "<A-a>", ":<C-U>Lspsaga range_code_action<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-a>", ":Lspsaga code_action<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<LEADER>f", "<cmd>lua vim.lsp.buf.format { async = true } <CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gt", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "rf", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<A-i>",
-		'<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<A-n>",
-		'<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
-		opts
-	)
-end
-
-local on_attach = function(client, bufnr)
-	keymaps(bufnr)
-
-	require("aerial").on_attach(client, {
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "mm", "<cmd>AerialToggle!<CR>", {}),
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>AerialPrevUp<CR>", {}),
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-j>", "<cmd>AerialNextUp<CR>", {}),
-	})
-	vim.cmd([[augroup AerialClose]])
-	vim.cmd([[autocmd! * <buffer>]])
-	vim.cmd([[autocmd BufLeave <buffer> :AerialClose]])
-	vim.cmd([[augroup END]])
-end
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local servers = { "clangd", "volar", "tsserver", "gopls", "sumneko_lua", "html", "cssls", "bashls", "rust_analyzer" }
+local servers = {
+	"rust_analyzer",
+	"gopls",
+	"clangd",
+	"sumneko_lua",
+	"html",
+	"cssls",
+	"tsserver",
+	"volar",
+	"bashls",
+}
+
 for _, server in ipairs(servers) do
 	local opts = {
-		on_attach = on_attach,
+		on_attach = require("plugins.completion.on_attach").on_attach,
 		capabilities = capabilities,
 		flags = { debounce_text_changes = 150 },
 	}
@@ -81,7 +66,7 @@ local efmls = require("efmls-configs")
 -- Init `efm-langserver` here.
 
 efmls.init({
-	on_attach = on_attach,
+	on_attach = require("plugins.completion.on_attach").on_attach,
 	capabilities = capabilities,
 	init_options = { documentFormatting = true, codeAction = true },
 })
@@ -119,20 +104,4 @@ efmls.setup({
 	cpp = { formatter = clangformat, linter = clangtidy },
 	lua = { formatter = stylua, linter = luacheck },
 	sh = { formatter = shfmt, linter = shellcheck },
-})
-
--- Override diagnostics symbol
-saga.init_lsp_saga({
-	debug = false,
-	code_action_icon = "💡",
-	diagnostic_header_icon = "🐞",
-	code_action_prompt = {
-		virtual_text = false,
-	},
-	use_saga_diagnostic_sign = true,
-	infor_sign = "",
-	warn_sign = "",
-	error_sign = "",
-	hint_sign = "",
-	rename_prompt_prefix = "📝",
 })
