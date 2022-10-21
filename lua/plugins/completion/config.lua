@@ -526,15 +526,15 @@ function config.cmp()
 		},
 	})
 
-	cmp.setup.cmdline(":", {
-		sources = cmp.config.sources({ { name = "cmdline" } }, { { name = "path" } }),
-	})
+	-- cmp.setup.cmdline(":", {
+	-- 	sources = cmp.config.sources({ { name = "cmdline" } }, { { name = "path" } }),
+	-- })
 
-	cmp.setup.cmdline("/", {
-		sources = {
-			{ name = "buffer" },
-		},
-	})
+	-- cmp.setup.cmdline("/", {
+	-- 	sources = {
+	-- 		{ name = "buffer" },
+	-- 	},
+	-- })
 end
 
 function config.luasnip()

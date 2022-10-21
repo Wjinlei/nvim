@@ -243,7 +243,14 @@ function config.nvim_tree()
 					enable = true,
 					chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
 					exclude = {
-						filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+						filetype = {
+							"notify",
+							"packer",
+							"qf",
+							"diff",
+							"fugitive",
+							"fugitiveblame",
+						},
 						buftype = { "nofile", "terminal", "help" },
 					},
 				},
@@ -302,6 +309,26 @@ function config.nvim_bufferline()
 			},
 		},
 	})
+end
+
+function config.wilder()
+	local wilder = require("wilder")
+	wilder.setup({
+		modes = { ":", "/", "?" },
+		next_key = "<C-j>",
+		previous_key = "<C-k>",
+	})
+	wilder.set_option(
+		"renderer",
+		wilder.renderer_mux({
+			[":"] = wilder.popupmenu_renderer({
+				highlighter = wilder.basic_highlighter(),
+			}),
+			["/"] = wilder.wildmenu_renderer({
+				highlighter = wilder.basic_highlighter(),
+			}),
+		})
+	)
 end
 
 return config
