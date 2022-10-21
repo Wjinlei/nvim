@@ -42,14 +42,8 @@ keymap("v", "<C-l>", "$", {})
 keymap("v", "<C-h>", "^", {})
 
 --- Window management
--- keymap("n", "<A-1>", ":set nosplitright<CR>:vsplit<CR>", {})
-keymap("n", "<LEADER>1", ":set splitright<CR>:vsplit<CR>", {})
--- keymap("n", "<A-2>", ":set nosplitbelow<CR>:split<CR>", {})
-keymap("n", "<LEADER>2", ":set splitbelow<CR>:split<CR>", {})
--- keymap("n", "<LEADER>mk", "<C-w>t<C-w>K", {})
--- keymap("n", "<LEADER>mj", "<C-w>t<C-w>J", {})
--- keymap("n", "<LEADER>mh", "<C-w>t<C-w>H", {})
--- keymap("n", "<LEADER>ml", "<C-w>t<C-w>L", {})
+keymap("n", "<LEADER>1", ":vnew<CR>", {})
+keymap("n", "<LEADER>2", ":new<CR>", {})
 keymap("n", "<A-,>", ":vertical resize -5<CR>", {})
 keymap("n", "<A-.>", ":vertical resize +5<CR>", {})
 
