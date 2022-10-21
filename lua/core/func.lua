@@ -3,8 +3,13 @@ local api = vim.api
 local M = {}
 
 M.quit = function()
-	local output = api.nvim_command_output("echo len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))")
-	if output == "1" then
+	-- Get buffer count
+	local cmd = "echo len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))"
+	-- Execute the command and get the output
+	local cmd_output = api.nvim_command_output(cmd)
+
+	-- If it is the last buffer, exit
+	if cmd_output == "1" then
 		api.nvim_command("quit!")
 	else
 		api.nvim_buf_delete(0, { force = 1 })
