@@ -54,8 +54,4 @@ ui["akinsho/bufferline.nvim"] = {
 
 ui["norcalli/nvim-colorizer.lua"] = { as = "colorizer", config = conf.colorizer }
 
-ui["gelguy/wilder.nvim"] = {
-	config = conf.wilder,
-	requires = { "kyazdani42/nvim-web-devicons" },
-}
 return ui
