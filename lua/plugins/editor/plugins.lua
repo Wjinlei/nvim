@@ -47,4 +47,14 @@ editor["lambdalisue/suda.vim"] = {
 editor["romainl/vim-cool"] = { event = { "CursorMoved", "InsertEnter" } }
 editor["terrortylor/nvim-comment"] = { opt = false, config = conf.comment }
 editor["karb94/neoscroll.nvim"] = { event = "BufReadPost", config = conf.neoscroll }
+
+editor["ethanholz/nvim-lastplace"] = {
+	config = function()
+		require("nvim-lastplace").setup({
+			lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+			lastplace_ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" },
+			lastplace_open_folds = true,
+		})
+	end,
+}
 return editor
