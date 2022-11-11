@@ -274,7 +274,7 @@ function config.aerial()
 
 		-- When true, don't load aerial until a command or function is called
 		-- Defaults to true, unless `on_attach` is provided, then it defaults to false
-		lazy_load = true,
+		lazy_load = false,
 
 		-- Disable aerial on files with this many lines
 		disable_max_lines = 10000,
@@ -383,8 +383,8 @@ function config.aerial()
 		-- Call this function when aerial attaches to a buffer.
 		on_attach = function(bufnr)
 			vim.keymap.set("n", "<C-m>", "<cmd>AerialToggle!<CR>", { buffer = bufnr })
-			vim.keymap.set("n", "<C-k>", "<cmd>AerialPrevUp<CR>", { buffer = bufnr })
-			vim.keymap.set("n", "<C-j>", "<cmd>AerialNextUp<CR>", { buffer = bufnr })
+			vim.keymap.set("n", "<C-k>", "<cmd>lua require('aerial').next_up()<CR>", { buffer = bufnr })
+			vim.keymap.set("n", "<C-j>", "<cmd>lua require('aerial').prev_up()<CR>", { buffer = bufnr })
 			vim.cmd([[augroup AerialClose]])
 			vim.cmd([[autocmd! * <buffer>]])
 			vim.cmd([[autocmd BufLeave <buffer> :AerialClose]])
@@ -392,7 +392,7 @@ function config.aerial()
 		end,
 
 		-- Call this function when aerial first sets symbols on a buffer.
-		on_first_symbols = function(bufnr) end,
+		-- on_first_symbols = function(bufnr) end,
 
 		-- Automatically open aerial when entering supported buffers.
 		-- This can be a function (see :help aerial-open-automatic)
@@ -441,7 +441,7 @@ function config.aerial()
 			height = nil,
 			min_height = { 8, 0.1 },
 
-			override = function(conf, source_winid)
+			override = function(conf)
 				-- This is the config that will be passed to nvim_open_win.
 				-- Change values here to customize the layout
 				return conf
