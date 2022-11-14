@@ -311,4 +311,30 @@ function config.nvim_bufferline()
 	})
 end
 
+function config.wilder()
+	local wilder = require("wilder")
+	wilder.setup({
+		modes = { ":", "/", "?" },
+		next_key = "<C-j>",
+		previous_key = "<C-k>",
+	})
+	wilder.set_option("use_python_remote_plugin", 0)
+	wilder.set_option("pipeline", {
+		wilder.branch(wilder.cmdline_pipeline(), wilder.search_pipeline()),
+	})
+	wilder.set_option(
+		"renderer",
+		wilder.renderer_mux({
+			[":"] = wilder.popupmenu_renderer({
+				highlighter = wilder.basic_highlighter(),
+				left = { " ", wilder.popupmenu_devicons() },
+				right = { " ", wilder.popupmenu_scrollbar() },
+			}),
+			["/"] = wilder.wildmenu_renderer({
+				highlighter = wilder.basic_highlighter(),
+			}),
+		})
+	)
+end
+
 return config
