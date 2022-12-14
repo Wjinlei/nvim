@@ -30,8 +30,10 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local servers = {
-	"rust_analyzer",
 	"gopls",
+	"rust_analyzer",
+	-- "omnisharp",
+	"csharp_ls",
 	"clangd",
 	"sumneko_lua",
 	"html",
@@ -47,6 +49,17 @@ for _, server in ipairs(servers) do
 		capabilities = capabilities,
 		flags = { debounce_text_changes = 150 },
 	}
+
+        -- Bug: https://github.com/OmniSharp/omnisharp-roslyn/issues/2484
+	-- if server == "omnisharp" then
+	-- 	local omnisharp_opts = require("plugins.completion.settings.omnisharp")
+	-- 	opts = vim.tbl_deep_extend("force", omnisharp_opts, opts)
+	-- end
+
+	if server == "csharp_ls" then
+		local csharp_ls_opts = require("plugins.completion.settings.csharp_ls")
+		opts = vim.tbl_deep_extend("force", csharp_ls_opts, opts)
+	end
 
 	if server == "clangd" then
 		local clangd_opts = require("plugins.completion.settings.clangd")
