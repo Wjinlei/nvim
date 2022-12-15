@@ -33,7 +33,7 @@ local servers = {
 	"gopls",
 	"rust_analyzer",
 	-- "omnisharp",
-	"csharp_ls",
+	-- "csharp_ls",
 	"clangd",
 	"sumneko_lua",
 	"html",
@@ -56,10 +56,10 @@ for _, server in ipairs(servers) do
 	-- 	opts = vim.tbl_deep_extend("force", omnisharp_opts, opts)
 	-- end
 
-	if server == "csharp_ls" then
-		local csharp_ls_opts = require("plugins.completion.settings.csharp_ls")
-		opts = vim.tbl_deep_extend("force", csharp_ls_opts, opts)
-	end
+	-- if server == "csharp_ls" then
+	-- 	local csharp_ls_opts = require("plugins.completion.settings.csharp_ls")
+	-- 	opts = vim.tbl_deep_extend("force", csharp_ls_opts, opts)
+	-- end
 
 	if server == "clangd" then
 		local clangd_opts = require("plugins.completion.settings.clangd")
