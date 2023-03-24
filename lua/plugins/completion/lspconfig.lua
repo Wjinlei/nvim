@@ -35,7 +35,7 @@ local servers = {
 	-- "omnisharp",
 	-- "csharp_ls",
 	"clangd",
-	"sumneko_lua",
+	"lua_ls",
 	"html",
 	"cssls",
 	"tsserver",
