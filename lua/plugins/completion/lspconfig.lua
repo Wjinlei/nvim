@@ -2,8 +2,8 @@
 vim.cmd([[packadd cmp-nvim-lsp]])
 vim.cmd([[packadd lspsaga.nvim]])
 vim.cmd([[packadd efmls-configs-nvim]])
-vim.cmd([[packadd nvim-lsp-installer]])
-require("nvim-lsp-installer").setup({})
+vim.cmd([[packadd mason.nvim]])
+require("mason").setup()
 
 local saga = require("lspsaga")
 local lspconfig = require("lspconfig")
@@ -22,25 +22,23 @@ saga.init_lsp_saga({
 	rename_prompt_prefix = "📝",
 })
 
--- Open Lsp server info
-vim.api.nvim_set_keymap("n", "<LEADER>lsp", ":LspInstallInfo<CR>", {})
-vim.api.nvim_set_keymap("n", "<LEADER>lsi", ":LspInfo<CR>", {})
+-- Open Mason
+vim.api.nvim_set_keymap("n", "<LEADER>lsp", ":Mason<CR>", {})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local servers = {
+	"bashls",
+	"clangd",
 	"gopls",
 	"rust_analyzer",
 	-- "omnisharp",
-	-- "csharp_ls",
-	"clangd",
 	"lua_ls",
+	"volar",
+	"tsserver",
 	"html",
 	"cssls",
-	"tsserver",
-	"volar",
-	"bashls",
 }
 
 for _, server in ipairs(servers) do
@@ -50,15 +48,10 @@ for _, server in ipairs(servers) do
 		flags = { debounce_text_changes = 150 },
 	}
 
-        -- Bug: https://github.com/OmniSharp/omnisharp-roslyn/issues/2484
+	-- Bug: https://github.com/OmniSharp/omnisharp-roslyn/issues/2484
 	-- if server == "omnisharp" then
 	-- 	local omnisharp_opts = require("plugins.completion.settings.omnisharp")
 	-- 	opts = vim.tbl_deep_extend("force", omnisharp_opts, opts)
-	-- end
-
-	-- if server == "csharp_ls" then
-	-- 	local csharp_ls_opts = require("plugins.completion.settings.csharp_ls")
-	-- 	opts = vim.tbl_deep_extend("force", csharp_ls_opts, opts)
 	-- end
 
 	if server == "clangd" then
@@ -71,6 +64,7 @@ for _, server in ipairs(servers) do
 		local volar_opts = require("plugins.completion.settings.volar")
 		opts = vim.tbl_deep_extend("force", volar_opts, opts)
 	end
+
 	lspconfig[server].setup(opts)
 end
 
@@ -84,15 +78,17 @@ efmls.init({
 	init_options = { documentFormatting = true, codeAction = true },
 })
 
+----- linters ------
 local eslint = require("efmls-configs.linters.eslint")
-local clangtidy = require("efmls-configs.linters.clang_tidy")
-local luacheck = require("efmls-configs.linters.luacheck")
 local shellcheck = require("efmls-configs.linters.shellcheck")
+local luacheck = require("efmls-configs.linters.luacheck")
+-- local clangtidy = require("efmls-configs.linters.clang_tidy")
 
+---- formatters ----
 local prettier = require("efmls-configs.formatters.prettier")
-local clangformat = require("efmls-configs.formatters.clang_format")
 local stylua = require("efmls-configs.formatters.stylua")
 local shfmt = require("efmls-configs.formatters.shfmt")
+local clangformat = require("efmls-configs.formatters.clang_format")
 
 clangformat = vim.tbl_extend("force", clangformat, {
 	prefix = "clangfmt",
@@ -107,14 +103,17 @@ prettier = vim.tbl_extend("force", prettier, {
 })
 
 efmls.setup({
+	--------- Back-end development ---------
+	sh = { formatter = shfmt, linter = shellcheck },
+	lua = { formatter = stylua, linter = luacheck },
+	c = { formatter = clangformat },
+	cpp = { formatter = clangformat },
+
+	------- Web front-end development -------
+	vue = { formatter = prettier, linter = eslint },
 	html = { formatter = prettier },
 	css = { formatter = prettier },
 	less = { formatter = prettier },
-	vue = { formatter = prettier, linter = eslint },
-	typescript = { formatter = prettier, linter = eslint },
 	javascript = { formatter = prettier, linter = eslint },
-	c = { formatter = clangformat, linter = clangtidy },
-	cpp = { formatter = clangformat, linter = clangtidy },
-	lua = { formatter = stylua, linter = luacheck },
-	sh = { formatter = shfmt, linter = shellcheck },
+	typescript = { formatter = prettier, linter = eslint },
 })
