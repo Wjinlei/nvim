@@ -50,9 +50,8 @@ lspconfig.rust_analyzer.setup({
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set("n", "<A-i>", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "<A-n>", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<A-l>", vim.diagnostic.setloclist)
+vim.keymap.set("n", "<A-i>", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+vim.keymap.set("n", "<A-n>", "<cmd>Lspsaga diagnostic_jump_next<CR>")
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
