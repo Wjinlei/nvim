@@ -16,7 +16,6 @@ function config.rust_tools()
 			-- setting it to false may improve startup time
 			standalone = true,
 			on_attach = function(_, bufnr)
-				require("plugins.completion.on_attach").on_attach(_, bufnr)
 				vim.keymap.set("n", "<A-c>", rt.open_cargo_toml.open_cargo_toml, { buffer = bufnr })
 				vim.keymap.set("n", "r", rt.runnables.runnables, { buffer = bufnr })
 				-- hover_range功能目前好像有Bug https://github.com/simrat39/rust-tools.nvim/issues/235

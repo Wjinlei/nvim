@@ -3,11 +3,76 @@ vim.cmd([[packadd cmp-nvim-lsp]])
 vim.cmd([[packadd lspsaga.nvim]])
 vim.cmd([[packadd efmls-configs-nvim]])
 vim.cmd([[packadd mason.nvim]])
+vim.cmd([[packadd mason-lspconfig.nvim]])
+
+-- Mason
 require("mason").setup()
+vim.api.nvim_set_keymap("n", "<LEADER>lsp", ":Mason<CR>", {})
+vim.api.nvim_set_keymap("n", "<LEADER>lsi", ":LspInfo<CR>", {})
 
-local saga = require("lspsaga")
+require("mason-lspconfig").setup({
+	automatic_installation = true,
+	handlers = nil,
+})
+
+-- Lspconfig
 local lspconfig = require("lspconfig")
+lspconfig.lua_ls.setup({})
+lspconfig.bashls.setup({})
+lspconfig.clangd.setup({
+	capabilities = {
+		offsetEncoding = { "utf-16" },
+	},
+})
+lspconfig.gopls.setup({})
+lspconfig.volar.setup({})
+lspconfig.tsserver.setup({})
+lspconfig.html.setup({})
+lspconfig.cssls.setup({})
+lspconfig.pyright.setup({})
+lspconfig.rust_analyzer.setup({
+	settings = {
+		["rust-analyzer"] = {},
+	},
+})
 
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set("n", "<A-i>", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "<A-n>", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<A-l>", vim.diagnostic.setloclist)
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+	callback = function(ev)
+		-- Enable completion triggered by <c-x><c-o>
+		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+		-- Buffer local mappings.
+		-- See `:help vim.lsp.*` for documentation on any of the below functions
+		local opts = { buffer = ev.buf }
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
+		vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "gH", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "<LEADER>wa", vim.lsp.buf.add_workspace_folder, opts)
+		vim.keymap.set("n", "<LEADER>wr", vim.lsp.buf.remove_workspace_folder, opts)
+		vim.keymap.set("n", "<LEADER>wl", function()
+			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		end, opts)
+		vim.keymap.set("n", "<LEADER>rn", vim.lsp.buf.rename, opts)
+		vim.keymap.set({ "n", "v" }, "<A-a>", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "<LEADER>f", function()
+			vim.lsp.buf.format({ async = true })
+		end, opts)
+	end,
+})
+
+-- Lspsaga code action
+local saga = require("lspsaga")
 -- Override diagnostics symbol
 saga.init_lsp_saga({
 	debug = false,
@@ -22,69 +87,23 @@ saga.init_lsp_saga({
 	rename_prompt_prefix = "📝",
 })
 
--- Open Mason
-vim.api.nvim_set_keymap("n", "<LEADER>lsp", ":Mason<CR>", {})
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-local servers = {
-	"bashls",
-	"clangd",
-	"gopls",
-	"rust_analyzer",
-	-- "omnisharp",
-	"lua_ls",
-	"volar",
-	"tsserver",
-	"html",
-	"cssls",
-}
-
-for _, server in ipairs(servers) do
-	local opts = {
-		on_attach = require("plugins.completion.on_attach").on_attach,
-		capabilities = capabilities,
-		flags = { debounce_text_changes = 150 },
-	}
-
-	-- Bug: https://github.com/OmniSharp/omnisharp-roslyn/issues/2484
-	-- if server == "omnisharp" then
-	-- 	local omnisharp_opts = require("plugins.completion.settings.omnisharp")
-	-- 	opts = vim.tbl_deep_extend("force", omnisharp_opts, opts)
-	-- end
-
-	if server == "clangd" then
-		local clangd_opts = require("plugins.completion.settings.clangd")
-		opts = vim.tbl_deep_extend("force", clangd_opts, opts)
-		opts.capabilities.offsetEncoding = { "utf-16" }
-	end
-
-	if server == "volar" then
-		local volar_opts = require("plugins.completion.settings.volar")
-		opts = vim.tbl_deep_extend("force", volar_opts, opts)
-	end
-
-	lspconfig[server].setup(opts)
-end
-
+-- Efmls-configs
 local efmls = require("efmls-configs")
 
--- Init `efm-langserver` here.
-
 efmls.init({
-	on_attach = require("plugins.completion.on_attach").on_attach,
-	capabilities = capabilities,
-	init_options = { documentFormatting = true, codeAction = true },
+	-- Enable formatting provided by efm langserver
+	init_options = {
+		documentFormatting = true,
+	},
 })
 
------ linters ------
+-- Linters
 local eslint = require("efmls-configs.linters.eslint")
 local shellcheck = require("efmls-configs.linters.shellcheck")
 local luacheck = require("efmls-configs.linters.luacheck")
--- local clangtidy = require("efmls-configs.linters.clang_tidy")
+local clangtidy = require("efmls-configs.linters.clang_tidy")
 
----- formatters ----
+-- Formatters
 local prettier = require("efmls-configs.formatters.prettier")
 local stylua = require("efmls-configs.formatters.stylua")
 local shfmt = require("efmls-configs.formatters.shfmt")
@@ -104,17 +123,17 @@ prettier = vim.tbl_extend("force", prettier, {
 
 efmls.setup({
 	--------- Back-end development ---------
+	c = { formatter = clangformat, linter = clangtidy },
+	cpp = { formatter = clangformat, linter = clangtidy },
 	sh = { formatter = shfmt, linter = shellcheck },
 	lua = { formatter = stylua, linter = luacheck },
-	c = { formatter = clangformat },
-	cpp = { formatter = clangformat },
 
 	------- Web front-end development -------
-	vue = { formatter = prettier, linter = eslint },
-	javascript = { formatter = prettier, linter = eslint },
-	typescript = { formatter = prettier, linter = eslint },
 	html = { formatter = prettier },
-	css = { formatter = prettier },
 	less = { formatter = prettier },
 	sass = { formatter = prettier },
+	css = { formatter = prettier },
+	javascript = { formatter = prettier, linter = eslint },
+	typescript = { formatter = prettier, linter = eslint },
+	vue = { formatter = prettier, linter = eslint },
 })
