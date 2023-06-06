@@ -76,10 +76,10 @@ saga.init_lsp_saga({
 	diagnostic_header_icon = "🐞",
 	code_action_prompt = { virtual_text = false },
 	use_saga_diagnostic_sign = true,
-	hint_sign = "⬜️",
-	infor_sign = "🟦",
-	warn_sign = "🟧",
-	error_sign = "❎",
+	hint_sign = "🪛",
+	infor_sign = "🔧",
+	warn_sign = "🔨",
+	error_sign = "💥",
 	rename_prompt_prefix = "📝",
 })
 
