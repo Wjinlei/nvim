@@ -31,13 +31,16 @@ ui["SmiteshP/nvim-gps"] = {
 	requires = "nvim-treesitter/nvim-treesitter",
 }
 
-ui["nvim-lualine/lualine.nvim"] = {
-	as = "lualine",
-	after = "lualine-lsp-progress",
-	config = conf.lualine,
-}
-
-ui["arkav/lualine-lsp-progress"] = { after = "nvim-gps" }
+--------------------------------------------------------
+-- Bug: vim.treesitter.query.get_node_text() is deprecated --
+--------------------------------------------------------
+-- ui["nvim-lualine/lualine.nvim"] = {
+-- 	as = "lualine",
+-- 	after = "lualine-lsp-progress",
+-- 	config = conf.lualine,
+-- }
+--
+-- ui["arkav/lualine-lsp-progress"] = { after = "nvim-gps" }
 
 ui["kyazdani42/nvim-tree.lua"] = {
 	cmd = { "NvimTreeToggle" },
