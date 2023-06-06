@@ -19,24 +19,9 @@ require("mason-lspconfig").setup({
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({})
 lspconfig.bashls.setup({})
-lspconfig.clangd.setup({
-	capabilities = {
-		offsetEncoding = { "utf-16" },
-	},
-	cmd = {
-		"clangd",
-		"--background-index",
-		"--clang-tidy",
-		"--completion-style=detailed",
-		"--pch-storage=memory",
-		"--header-insertion=iwyu",
-		"--header-insertion-decorators",
-		"--offset-encoding=utf-16",
-		"--pretty",
-		"-j=12",
-	},
-})
+lspconfig.clangd.setup(require("plugins.completion.server_config.clangd"))
 lspconfig.gopls.setup({})
+lspconfig.jdtls.setup(require("plugins.completion.server_config.jdtls"))
 lspconfig.volar.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.html.setup({})
