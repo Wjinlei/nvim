@@ -15,10 +15,10 @@ saga.init_lsp_saga({
 	diagnostic_header_icon = "🐞",
 	code_action_prompt = { virtual_text = false },
 	use_saga_diagnostic_sign = true,
-	infor_sign = "",
-	warn_sign = "",
-	error_sign = "",
-	hint_sign = "",
+	hint_sign = "🌠",
+	infor_sign = "✨",
+	warn_sign = "🔥",
+	error_sign = "💥",
 	rename_prompt_prefix = "📝",
 })
 
@@ -111,9 +111,10 @@ efmls.setup({
 
 	------- Web front-end development -------
 	vue = { formatter = prettier, linter = eslint },
+	javascript = { formatter = prettier, linter = eslint },
+	typescript = { formatter = prettier, linter = eslint },
 	html = { formatter = prettier },
 	css = { formatter = prettier },
 	less = { formatter = prettier },
-	javascript = { formatter = prettier, linter = eslint },
-	typescript = { formatter = prettier, linter = eslint },
+	sass = { formatter = prettier },
 })
