@@ -2,6 +2,8 @@
 local global = require("core.global")
 
 --- Global options
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.o.termguicolors = true
 vim.o.hidden = true
 vim.o.laststatus = 2
