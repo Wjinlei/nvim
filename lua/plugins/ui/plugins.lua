@@ -25,22 +25,28 @@ ui["RRethy/vim-illuminate"] = {
 	end,
 }
 
-ui["SmiteshP/nvim-gps"] = {
-	after = "nvim-treesitter",
-	config = conf.nvim_gps,
-	requires = "nvim-treesitter/nvim-treesitter",
+--------------------------------------------------------
+-- deprecated -- https://github.com/SmiteshP/nvim-navic
+--------------------------------------------------------
+-- ui["SmiteshP/nvim-gps"] = {
+-- 	after = "nvim-treesitter",
+-- 	config = conf.nvim_gps,
+-- 	requires = "nvim-treesitter/nvim-treesitter",
+-- }
+
+ui["SmiteshP/nvim-navic"] = {
+	after = "nvim-lspconfig",
+	config = conf.nvim_navic,
+	requires = "neovim/nvim-lspconfig",
 }
 
---------------------------------------------------------
--- Bug: vim.treesitter.query.get_node_text() is deprecated --
---------------------------------------------------------
--- ui["nvim-lualine/lualine.nvim"] = {
--- 	as = "lualine",
--- 	after = "lualine-lsp-progress",
--- 	config = conf.lualine,
--- }
---
--- ui["arkav/lualine-lsp-progress"] = { after = "nvim-gps" }
+ui["nvim-lualine/lualine.nvim"] = {
+	as = "lualine",
+	after = "lualine-lsp-progress",
+	config = conf.lualine,
+}
+
+ui["arkav/lualine-lsp-progress"] = { after = "nvim-navic" }
 
 ui["kyazdani42/nvim-tree.lua"] = {
 	cmd = { "NvimTreeToggle" },

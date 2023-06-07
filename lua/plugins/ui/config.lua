@@ -48,6 +48,7 @@ function config.alpha()
 	alpha.setup(dashboard.opts)
 end
 
+--[[
 function config.nvim_gps()
 	require("nvim-gps").setup({
 		disable_icons = false, -- Setting it to true will disable all icons
@@ -77,6 +78,50 @@ function config.nvim_gps()
 		depth_limit_indicator = "..",
 	})
 end
+--]]
+
+function config.nvim_navic()
+	require("nvim-navic").setup({
+		icons = {
+			File = " ",
+			Module = " ",
+			Namespace = " ",
+			Package = " ",
+			Class = " ",
+			Method = " ",
+			Property = " ",
+			Field = " ",
+			Constructor = " ",
+			Enum = " ",
+			Interface = " ",
+			Function = " ",
+			Variable = " ",
+			Constant = " ",
+			String = " ",
+			Number = " ",
+			Boolean = " ",
+			Array = " ",
+			Object = " ",
+			Key = " ",
+			Null = " ",
+			EnumMember = " ",
+			Struct = " ",
+			Event = " ",
+			Operator = " ",
+			TypeParameter = " ",
+		},
+		lsp = {
+			auto_attach = true,
+			preference = nil,
+		},
+		highlight = true,
+		separator = " > ",
+		depth_limit = 0,
+		depth_limit_indicator = "..",
+		safe_output = true,
+		click = false,
+	})
+end
 
 function config.colorizer()
 	require("colorizer").setup({
@@ -85,8 +130,8 @@ function config.colorizer()
 end
 
 function config.lualine()
-	vim.cmd([[packadd nvim-gps]])
-	local gps = require("nvim-gps")
+	vim.cmd([[packadd nvim-navic]])
+	local navic = require("nvim-navic")
 
 	require("lualine").setup({
 		sections = {
@@ -95,7 +140,14 @@ function config.lualine()
 			lualine_c = {
 				"filename",
 				"lsp_progress",
-				{ gps.get_location, cond = gps.is_available },
+				{
+					function()
+						return navic.get_location()
+					end,
+					cond = function()
+						return navic.is_available()
+					end,
+				},
 			},
 			lualine_x = { "encoding", "fileformat", "filetype", "filesize" },
 			lualine_y = { "progress" },
