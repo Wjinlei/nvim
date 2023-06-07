@@ -6,4 +6,5 @@ local main = function()
 end
 keymap("n", "<C-x>u", ":PackerSync<CR>", { noremap = true, silent = true })
 keymap("n", "<C-x>i", ":PackerInstall<CR>", { noremap = true, silent = true })
+keymap("n", "<C-x>x", ":PackerCompile<CR>", { noremap = true, silent = true })
 main()
