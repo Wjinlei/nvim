@@ -26,6 +26,7 @@ lspconfig.volar.setup(require("plugins.completion.server_config.volar"))
 lspconfig.tsserver.setup({})
 lspconfig.html.setup({})
 lspconfig.cssls.setup({})
+lspconfig.eslint.setup({})
 lspconfig.pyright.setup({})
 lspconfig.rust_analyzer.setup({
 	settings = {
