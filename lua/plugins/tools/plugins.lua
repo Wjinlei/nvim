@@ -55,7 +55,7 @@ tools["dstein64/vim-startuptime"] = {
 	keymap("n", "<C-c>s", ":StartupTime<CR>", keymap_opts),
 }
 
-tools["TimUntersberger/neogit"] = {
+tools["NeogitOrg/neogit"] = {
 	requires = {
 		{ "nvim-lua/plenary.nvim", opt = false },
 	},
