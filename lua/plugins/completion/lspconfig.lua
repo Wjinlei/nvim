@@ -114,7 +114,7 @@ clangformat = vim.tbl_extend("force", clangformat, {
 
 prettier = vim.tbl_extend("force", prettier, {
 	prefix = "prettier",
-	formatCommand = "prettier --arrow-parens=avoid --trailing-comma=none --stdin --stdin-filepath ${INPUT}",
+	formatCommand = "prettier --arrow-parens=avoid --stdin --stdin-filepath ${INPUT}",
 	formatStdin = true,
 })
 
