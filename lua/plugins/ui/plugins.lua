@@ -57,8 +57,8 @@ ui["kyazdani42/nvim-tree.lua"] = {
 
 ui["akinsho/bufferline.nvim"] = {
 	tag = "*",
-	event = "BufRead",
 	config = conf.nvim_bufferline,
+	requires = 'nvim-tree/nvim-web-devicons',
 }
 
 ui["norcalli/nvim-colorizer.lua"] = { as = "colorizer", config = conf.colorizer }
