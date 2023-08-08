@@ -29,12 +29,12 @@ function config.alpha()
 			"  Find project",
 			"<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>"
 		),
-		dashboard.button("ff", "  Find file", "<cmd>lua require('plugins.tools.pickers').project_files()<CR>"),
-		dashboard.button("fs", "  Find text", "<cmd>lua require('plugins.tools.pickers').search()<CR>"),
-		dashboard.button("fh", "  Recently used files", ":Telescope oldfiles <CR>"),
+		dashboard.button("ff", "󰈞  Find file", "<cmd>lua require('plugins.tools.pickers').project_files()<CR>"),
+		dashboard.button("fs", "󱎸  Find text", "<cmd>lua require('plugins.tools.pickers').search()<CR>"),
+		dashboard.button("fh", "  Recently used files", ":Telescope oldfiles <CR>"),
 		dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
 		dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
-		dashboard.button("q", "  Quit vim", ":qa<CR>"),
+		dashboard.button("q", "󰗼  Quit vim", ":qa<CR>"),
 	}
 
 	dashboard.section.footer.val = function()
