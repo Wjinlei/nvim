@@ -72,14 +72,18 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
   - Git status `gs`
 ### LSP
 > You must install a language server `<LEADER>lsp`
+  - Code Format `<LEADER>f`
+  - Smart rename `rn`
   - Goto prev diagnostic `<A-i>`
   - Goto next diagnostic `<A-n>`
   - Code action `<C-a>`
+  - Goto declaration `gD`
   - Goto definition `gd`
   - Goto implementation `gi`
-  - Goto declaration `gt`
-  - Format `<LEADER>f`
-  - Smart rename `rn`
+  - Goto references `gr`
+  - Goto type_definition `gt`
+  - Goto hover `gh`
+  - Goto signature_help `gH`
 ### Other
   - Toggle terminal `C-\`
   - Startup time `<C-c>s`
