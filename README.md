@@ -1,28 +1,27 @@
-## Preview
-- Project file search
-![search](./screenshot/search.gif)
-- Git
-![git](./screenshot/git.gif)
-- File browser
-![file](./screenshot/file.gif)
-- LSP
-![file](./screenshot/lsp.gif)
-- Start time
-![file](./screenshot/starttime.png)
+![preview](./screenshot/preview.png)
 
 ## Features
-
 - Beautiful UI
 - Better replace
 - Better search
 - Better comment
 - Better format
-- Git integration
-- Tmux integration 
+- LSP (Language server)
+  - html/js/css
+  - vue
+  - c/c++
+  - python
+  - rust
+  - go
+  - java
+  - lua
+  - shell
+- Code snappet
+- Outline
 - File browser
 - Markdown preview
-- LSP (language server)
-- Snappet
+- Git integration
+- Tmux integration
 - Toogle terminal
 - ...
 
@@ -43,6 +42,17 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
   - Do `:checkhealth`
 
 ## Keymap
+### File browser
+  - Open file browser `tt`
+### Markdown preview
+  - Open preview in default browser `<C-c>m` 
+### Better comment
+  - Comment current `gcc`
+  - Comment select area `gc`
+### Outline
+  - Outline `C-m`
+  - Outline next `C-j`
+  - Outline prev `C-k`
 ### Better search
   - Search file `ff`
   - Search string `fs`
@@ -50,6 +60,7 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
   - Search git file `fg`
   - Search history file `fh`
   - Search buffer `bb`
+  - Hop search `.` & `,`
 ### Better replace
   - Search and replace `fr`
   - Search and replace current word `fw`
@@ -58,6 +69,21 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
   - Goto next hunk `gn`
   - Goto prev hunk `gp`
   - Git status `gs`
+### LSP
+> You must install a language server `<LEADER>lsp`
+  - Goto prev diagnostic `<A-i>`
+  - Goto next diagnostic `<A-n>`
+  - Code action `<C-a>`
+  - Goto definition `gd`
+  - Goto implementation `gi`
+  - Goto declaration `gt`
+  - Format `<LEADER>f`
+  - Smart rename `rn`
+### Other
+  - Toggle terminal `C-\`
+  - Startup time `<C-c>s`
+  - Sudo write `<LEADER>w`
+  - Sudo read `<LEADER>r`
 
 ### Tmux integration 
 Must be in `.tmux.conf `Add the following configuration to conf
@@ -91,27 +117,24 @@ bind-key -T copy-mode-vi Right resize-pane -R 1
 
 </details>
 
-### File browser
-  - Open file browser `tt`
-### Markdown preview
-  - Open preview in default browser `<C-c>m` 
-### Better comment
-  - Comment current `gcc`
-  - Comment select area `gc`
-### LSP
-> You must install a language server `<LEADER>lsp`
-  - Smart rename `rn`
-  - Code action `<C-a>`
-  - Format `<LEADER>f`
-  - Goto definition `gd`
-  - Goto declaration `gt`
-  - Goto implementation `gi`
-  - Goto refrences `gf`
-  - Goto prev diagnostic `<A-i>`
-  - Goto next diagnostic `<A-n>`
-### Explore more features
+## Preview
+Vue
+![Vue](./screenshot/preview_000.png)
+Rust
+![Rust](./screenshot/preview_001.png)
+Go
+![Go](./screenshot/preview_002.png)
+Shell
+![Shell](./screenshot/preview_003.png)
+
+## FAQ
+1. 没有代码补全提示?
+> 请确认是否安装对应语言的`lsp`服务器，使用`<LEADER>lsp`呼出面板安装即可。
+
+2. 一些图标显示`?`号
+> nerd fonts 字体问题，nerd fonts 3.0版本以上，移动了一些符号，导致某些图标显示不正常<br/>
+升级到 nerd fonts 3.0 版本以上即可，写本文时，我用的版本是`3.0.2`
 
 ## Thanks to the authors of the following projects
 - [ayamir](https://github.com/ayamir/nvimdots)
-- [ravenxrz](https://github.com/ravenxrz/dotfiles/tree/master/nvim)
 - [seagle0128](https://github.com/seagle0128/.emacs.d)
