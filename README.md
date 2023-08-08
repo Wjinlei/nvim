@@ -84,6 +84,9 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
   - Startup time `<C-c>s`
   - Sudo write `<LEADER>w`
   - Sudo read `<LEADER>r`
+  - PackerInstall `<C-x>i`
+  - PackerSync `<C-x>u`
+  - PackerCompile `<C-x>x`
 
 ### Tmux integration 
 Must be in `.tmux.conf `Add the following configuration to conf
