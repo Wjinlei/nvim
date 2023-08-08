@@ -16,6 +16,7 @@
   - java
   - lua
   - shell
+- Code format
 - Code snappet
 - Outline
 - File browser
@@ -38,7 +39,7 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
 ### After Installation, You Need To
   - Python3 install `pynvim`
   - Nodejs install `neovim`
-  - Install Nerd font
+  - Install [Nerd font](https://www.nerdfonts.com/)
   - Do `:checkhealth`
 
 ## Keymap
