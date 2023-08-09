@@ -51,3 +51,10 @@ keymap("n", "<A-.>", ":vertical resize +5<CR>", {})
 keymap("n", "<LEADER>tt", ":tabe<CR>", {})
 keymap("n", "<LEADER>th", ":-tabnext<CR>", {})
 keymap("n", "<LEADER>tl", ":+tabnext<CR>", {})
+
+--- Neovide
+if vim.g.neovide == true then
+	keymap("n", "<C-=>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>", { silent = true })
+	keymap("n", "<C-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>", { silent = true })
+	keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
+end
