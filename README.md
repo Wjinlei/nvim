@@ -146,7 +146,7 @@ Shell
 > nerd fonts 字体问题，nerd fonts 3.0版本以上，移动了一些符号，导致某些图标显示不正常<br/>
 升级到 nerd fonts 3.0 版本以上即可，写本文时，我用的版本是`3.0.2`
 
-3. Java环境如何配置?
+3. 安装jdtls语言服务器后Java补全还是不生效?
 > 你需要下载一个`jdk17或以上的版本`放入`一个你指定的目录`  
 > 然后修改`lua/plugins/completion/server_config/jdtls.lua`中的  
 > `/usr/local/jdk-17.0.7/bin/java`路径为你的`jdk路径`即可
