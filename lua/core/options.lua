@@ -21,12 +21,16 @@ vim.o.lazyredraw = true
 vim.o.updatetime = 100
 vim.o.clipboard = "unnamedplus"
 vim.o.mouse = "a"
-vim.o.guifont = "FiraCode Nerd Font Mono:h14"
+vim.o.guifont = "Source Code Pro,FiraCode Nerd Font Mono:h20:#e-subpixelantialias:#h-slight"
 vim.o.backup = true
 vim.o.writebackup = true
 vim.o.backupdir = global.cache_dir .. "backup"
 vim.o.directory = global.cache_dir .. "swap"
 vim.o.undodir = global.cache_dir .. "undo"
+
+--- Neovide
+-- vim.g.neovide_transparency = 0.9
+vim.g.neovide_hide_mouse_when_typing = true
 
 --- Local window options
 vim.wo.wrap = true
