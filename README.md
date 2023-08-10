@@ -134,6 +134,8 @@ Shell
 ![Shell](./screenshot/preview_003.png)
 Java
 ![Java](./screenshot/preview_004.png)
+Lua
+![Lua](./screenshot/preview_005.png)
 
 ## FAQ
 1. 安装插件失败?
