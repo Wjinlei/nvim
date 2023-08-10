@@ -27,7 +27,7 @@
 - ...
 
 ## Requirements
-- Neovim >= 0.5.0
+- Neovim >= 0.6.0
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fzf](https://github.com/junegunn/fzf)
 - xclip(optional)
@@ -139,19 +139,28 @@ Java
 
 ## FAQ
 1. 安装插件失败?
-> 请确认是否科学上网，注意使用全局代理，光浏览器代理是没用的。
+```
+请确认是否科学上网，注意使用全局代理，光浏览器代理是没用的。
+```
 
 1. 没有代码补全提示?
-> 请确认是否安装对应语言的`lsp`服务器，使用`<LEADER>lsp`呼出面板安装即可。
+```
+请确认是否安装对应语言的`lsp`服务器，使用`<LEADER>lsp`呼出面板安装即可。
+```
 
 2. 一些图标显示`?`号
-> nerd fonts 字体问题，nerd fonts 3.0版本以上，移动了一些符号，导致某些图标显示不正常<br/>
+```
+nerd fonts 字体问题，nerd fonts 3.0版本以上，移动了一些符号，导致某些图标显示不正常
 升级到 nerd fonts 3.0 版本以上即可，写本文时，我用的版本是`3.0.2`
+```
 
 3. 安装jdtls语言服务器后Java补全还是不生效?
-> 你需要下载一个`jdk17或以上的版本`放入`一个你指定的目录`  
-> 然后修改`lua/plugins/completion/server_config/jdtls.lua`中的  
-> `/usr/local/jdk-17.0.7/bin/java`路径为你的`jdk路径`即可
+- 你需要下载一个`jdk17或以上的版本`(jdtls需要jdk17以上)放入`一个你指定的目录`  
+```
+然后修改jdtls的配置文件`lua/plugins/completion/server_config/jdtls.lua`中的 
+env.JAVA = "/usr/local/jdk-17.0.7/bin/java"路径为你的jdk路径即可  
+```
+- 如果你不是`Linux`系统，你还需修改`get_jdtls_config_dir()`函数的参数`config_linux`为你对应的系统
 
 ## Thanks to the authors of the following projects
 - [ayamir](https://github.com/ayamir/nvimdots)
