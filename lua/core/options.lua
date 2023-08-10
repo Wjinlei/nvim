@@ -24,9 +24,9 @@ vim.o.mouse = "a"
 vim.o.guifont = "Source Code Pro,FiraCode Nerd Font Mono:h18:#e-subpixelantialias:#h-none"
 vim.o.backup = true
 vim.o.writebackup = true
-vim.o.backupdir = global.cache_dir .. "backup"
-vim.o.directory = global.cache_dir .. "swap"
-vim.o.undodir = global.cache_dir .. "undo"
+vim.o.backupdir = global.cache_dir .. "/backup"
+vim.o.directory = global.cache_dir .. "/swap"
+vim.o.undodir = global.cache_dir .. "/undo"
 
 --- Neovide
 -- vim.g.neovide_transparency = 0.8

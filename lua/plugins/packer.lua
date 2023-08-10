@@ -1,9 +1,9 @@
 -- luacheck: globals vim
 local fn, api = vim.fn, vim.api
-local nvim_data_directory = require("core.global").data_dir
-local config_path = require("core.global").config_path
-local packer_compiled = nvim_data_directory .. "lua/_compiled.lua"
-local plugins_directory = config_path .. "/lua/plugins"
+local nvim_plugins_dir = require("core.global").plugins_dir
+local config_dir = require("core.global").std_config_dir
+local packer_compiled = nvim_plugins_dir .. "/lua/_compiled.lua"
+local plugins_directory = config_dir .. "/lua/plugins"
 
 local packer = nil
 local Packer = {}
@@ -28,7 +28,7 @@ function Packer:load_plugins()
 end
 
 function Packer:init()
-	local packer_install_directory = nvim_data_directory .. "pack/packer/opt/packer.nvim"
+	local packer_install_directory = nvim_plugins_dir .. "/pack/packer/opt/packer.nvim"
 	if fn.empty(fn.glob(packer_install_directory)) > 0 then
 		packer_bootstrap = fn.system({
 			"git",
