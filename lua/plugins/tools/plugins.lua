@@ -75,11 +75,4 @@ tools["aserowy/tmux.nvim"] = {
 	keymap("n", "<A-l>", '<cmd>lua require("tmux").move_right()<cr>', keymap_opts),
 }
 
-tools["akinsho/toggleterm.nvim"] = {
-	tag = "v1.*",
-	config = conf.toggleterm,
-	keymap("n", "<C-\\>", '<Cmd>exe v:count1 . "ToggleTerm"<CR>', keymap_opts),
-	keymap("i", "<C-\\>", '<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>', keymap_opts),
-}
-
 return tools

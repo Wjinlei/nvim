@@ -25,12 +25,17 @@ completion["windwp/nvim-autopairs"] = {
 	end,
 }
 completion["neovim/nvim-lspconfig"] = { config = conf.lspconfig }
+completion["nvimdev/lspsaga.nvim"] = {
+	after = "nvim-lspconfig",
+	config = function()
+		require("lspsaga").setup({})
+	end,
+}
 completion["simrat39/rust-tools.nvim"] = { config = conf.rust_tools, after = "nvim-lspconfig" }
 completion["williamboman/mason.nvim"] = { after = "nvim-lspconfig", cmd = "MasonUpdate" }
 completion["williamboman/mason-lspconfig.nvim"] = { after = "mason.nvim" }
 completion["mfussenegger/nvim-jdtls"] = { after = "nvim-lspconfig" }
 completion["kosayoda/nvim-lightbulb"] = { after = "nvim-lspconfig", config = conf.lightbulb }
-completion["stevearc/aerial.nvim"] = { after = "nvim-lspconfig", config = conf.aerial }
 completion["creativenull/efmls-configs-nvim"] = { requires = { "neovim/nvim-lspconfig" } }
 
 return completion

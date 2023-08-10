@@ -1,4 +1,5 @@
 -- luacheck: globals vim
+local keymap_opts = { noremap = true, silent = true }
 vim.cmd([[packadd cmp-nvim-lsp]])
 vim.cmd([[packadd efmls-configs-nvim]])
 vim.cmd([[packadd mason.nvim]])
@@ -34,9 +35,9 @@ lspconfig.rust_analyzer.setup({
 })
 
 -- Global mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set("n", "<A-i>", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "<A-n>", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<C-cr>", "<cmd>Lspsaga term_toggle<cr>", keymap_opts)
+vim.keymap.set("i", "<C-cr>", "<cmd>Lspsaga term_toggle<cr>", keymap_opts)
+vim.keymap.set("n", "<A-cr>", "<cmd>Lspsaga outline<cr>", keymap_opts)
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -59,8 +60,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<LEADER>wl", function()
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		end, opts)
-		vim.keymap.set("n", "<LEADER>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set({ "n", "v" }, "<A-a>", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "<A-d>", "<cmd>Lspsaga show_buf_diagnostics<cr>", opts)
+		vim.keymap.set("n", "<A-i>", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+		vim.keymap.set("n", "<A-n>", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+		vim.keymap.set("n", "<A-a>", "<cmd>Lspsaga code_action<cr>", opts)
+		vim.keymap.set("v", "<A-a>", "<cmd>Lspsaga code_action<cr>", opts)
+		vim.keymap.set("n", "<LEADER>rn", "<cmd>Lspsaga rename<cr>", opts)
 		vim.keymap.set("n", "<LEADER>f", function()
 			vim.lsp.buf.format({ async = true })
 		end, opts)
