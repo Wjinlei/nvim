@@ -51,9 +51,7 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
   - Comment current `gcc`
   - Comment select area `gc`
 ### Outline
-  - Outline `C-m`
-  - Outline next `C-j`
-  - Outline prev `C-k`
+  - Outline `A-CR`
 ### Better search
   - Search file `ff`
   - Search string `fs`
@@ -72,8 +70,9 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
   - Git status `gs`
 ### LSP
 > You must install a language server `<LEADER>lsp`
+  - Code Rename `<LEADER>rn`
   - Code Format `<LEADER>f`
-  - Smart rename `rn`
+  - Show bufr diagnostic `<A-d>`
   - Goto prev diagnostic `<A-i>`
   - Goto next diagnostic `<A-n>`
   - Code action `<C-a>`
@@ -85,7 +84,7 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
   - Goto hover `gh`
   - Goto signature_help `gH`
 ### Other
-  - Toggle terminal `C-\`
+  - Toggle terminal `C-CR`
   - Startup time `<C-c>s`
   - Sudo write `<LEADER>w`
   - Sudo read `<LEADER>r`
