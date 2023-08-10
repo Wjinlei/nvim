@@ -27,7 +27,7 @@
 - ...
 
 ## Requirements
-- Neovim >= 0.6.0
+- Neovim >= 0.9.0
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fzf](https://github.com/junegunn/fzf)
 - xclip(optional)
