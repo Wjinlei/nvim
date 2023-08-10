@@ -1,6 +1,5 @@
 -- luacheck: globals vim
 vim.cmd([[packadd cmp-nvim-lsp]])
-vim.cmd([[packadd lspsaga.nvim]])
 vim.cmd([[packadd efmls-configs-nvim]])
 vim.cmd([[packadd mason.nvim]])
 vim.cmd([[packadd mason-lspconfig.nvim]])
@@ -36,8 +35,8 @@ lspconfig.rust_analyzer.setup({
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set("n", "<A-i>", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-vim.keymap.set("n", "<A-n>", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+vim.keymap.set("n", "<A-i>", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "<A-n>", vim.diagnostic.goto_next)
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -60,28 +59,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<LEADER>wl", function()
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		end, opts)
-		vim.keymap.set("n", "<LEADER>rn", "<cmd>Lspsaga rename<CR>", opts)
-		vim.keymap.set({ "n", "v" }, "<A-a>", "<cmd>Lspsaga code_action<CR>", opts)
+		vim.keymap.set("n", "<LEADER>rn", vim.lsp.buf.rename, opts)
+		vim.keymap.set({ "n", "v" }, "<A-a>", vim.lsp.buf.code_action, opts)
 		vim.keymap.set("n", "<LEADER>f", function()
 			vim.lsp.buf.format({ async = true })
 		end, opts)
 	end,
-})
-
--- Lspsaga code action
-local saga = require("lspsaga")
--- Override diagnostics symbol
-saga.init_lsp_saga({
-	debug = false,
-	code_action_icon = "💡",
-	diagnostic_header_icon = "🐞",
-	code_action_prompt = { virtual_text = false },
-	use_saga_diagnostic_sign = true,
-	hint_sign = "🪛",
-	infor_sign = "🔧",
-	warn_sign = "🔨",
-	error_sign = "💥",
-	rename_prompt_prefix = "📝",
 })
 
 -- Efmls-configs
