@@ -50,8 +50,6 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
 ### Better comment
   - Comment current `gcc`
   - Comment select area `gc`
-### Outline
-  - Outline `A-CR`
 ### Better search
   - Search file `ff`
   - Search string `fs`
@@ -70,6 +68,7 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
   - Git status `gs`
 ### LSP
 > You must install a language server `<LEADER>lsp`
+  - Code Outline `A-CR`
   - Code Rename `<LEADER>rn`
   - Code Format `<LEADER>f`
   - Show bufr diagnostic `<A-d>`
