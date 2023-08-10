@@ -9,6 +9,7 @@ function config.telescope()
 	vim.cmd([[packadd telescope-frecency.nvim]])
 	vim.cmd([[packadd nvim-notify]])
 
+	local actions = require("telescope.actions")
 	local previewers = require("telescope.previewers")
 	local Job = require("plenary.job")
 	local new_maker = function(filepath, bufnr, opts)
@@ -52,12 +53,14 @@ function config.telescope()
 					["<C-k>"] = "move_selection_previous",
 					["<A-i>"] = "preview_scrolling_up",
 					["<A-n>"] = "preview_scrolling_down",
+					["q"] = actions.close,
 				},
 				n = {
 					["<C-j>"] = "move_selection_next",
 					["<C-k>"] = "move_selection_previous",
 					["<A-i>"] = "preview_scrolling_up",
 					["<A-n>"] = "preview_scrolling_down",
+					["q"] = actions.close,
 				},
 			},
 		},
