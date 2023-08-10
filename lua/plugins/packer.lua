@@ -28,9 +28,10 @@ function Packer:load_plugins()
 end
 
 function Packer:init()
+	local packer_first_installed = nil
 	local packer_install_directory = nvim_plugins_dir .. "/pack/packer/opt/packer.nvim"
 	if fn.empty(fn.glob(packer_install_directory)) > 0 then
-		local packer_bootstrap = fn.system({
+		packer_first_installed = fn.system({
 			"git",
 			"clone",
 			"--depth",
@@ -38,10 +39,6 @@ function Packer:init()
 			"https://github.com/wbthomason/packer.nvim",
 			packer_install_directory,
 		})
-
-		if packer_bootstrap then
-			packer.sync()
-		end
 	end
 
 	if not packer then
@@ -58,6 +55,10 @@ function Packer:init()
 			use(repo)
 		end
 	end)
+
+	if packer_first_installed then
+		packer.sync()
+	end
 
 	if vim.fn.filereadable(packer_compiled) == 1 then
 		require("_compiled")
