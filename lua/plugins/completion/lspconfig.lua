@@ -72,53 +72,38 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- Efmls-configs
-local efmls = require("efmls-configs")
-
-efmls.init({
-	-- Enable formatting provided by efm langserver
-	init_options = {
-		documentFormatting = true,
+local languages = require("efmls-configs.defaults").languages()
+languages = vim.tbl_extend("force", languages, {
+	-- Custom languages, or override existing ones
+	sh = {
+		require("efmls-configs.linters.shellcheck"),
+		require("efmls-configs.formatters.shfmt"),
+	},
+	cpp = {
+		require("efmls-configs.linters.clang_tidy"),
+		require("efmls-configs.formatters.clang_format"),
+	},
+	c = {
+		require("efmls-configs.linters.clang_tidy"),
+		require("efmls-configs.formatters.clang_format"),
 	},
 })
 
--- Linters
-local eslint = require("efmls-configs.linters.eslint")
-local shellcheck = require("efmls-configs.linters.shellcheck")
-local luacheck = require("efmls-configs.linters.luacheck")
-local clangtidy = require("efmls-configs.linters.clang_tidy")
+local efmls_config = {
+	filetypes = vim.tbl_keys(languages),
+	settings = {
+		rootMarkers = { ".git/" },
+		languages = languages,
+	},
+	init_options = {
+		documentFormatting = true,
+		documentRangeFormatting = true,
+	},
+}
 
--- Formatters
-local prettier = require("efmls-configs.formatters.prettier")
-local stylua = require("efmls-configs.formatters.stylua")
-local shfmt = require("efmls-configs.formatters.shfmt")
-local clangformat = require("efmls-configs.formatters.clang_format")
-
-clangformat = vim.tbl_extend("force", clangformat, {
-	prefix = "clangfmt",
-	formatCommand = 'clang-format --style="{BasedOnStyle: WebKit, IndentWidth: 8}" ${INPUT}',
-	formatStdin = true,
-})
-
-prettier = vim.tbl_extend("force", prettier, {
-	prefix = "prettier",
-	formatCommand = "prettier --arrow-parens=avoid --stdin --stdin-filepath ${INPUT}",
-	formatStdin = true,
-})
-
-efmls.setup({
-	--------- Back-end development ---------
-	c = { formatter = clangformat, linter = clangtidy },
-	cpp = { formatter = clangformat, linter = clangtidy },
-	sh = { formatter = shfmt, linter = shellcheck },
-	lua = { formatter = stylua, linter = luacheck },
-
-	------- Web front-end development -------
-	html = { formatter = prettier },
-	less = { formatter = prettier },
-	sass = { formatter = prettier },
-	css = { formatter = prettier },
-	javascript = { formatter = prettier, linter = eslint },
-	typescript = { formatter = prettier, linter = eslint },
-	vue = { formatter = prettier, linter = eslint },
-})
+lspconfig.efm.setup(vim.tbl_extend("force", efmls_config, {
+	-- Pass your custom lsp config below like on_attach and capabilities
+	--
+	-- on_attach = on_attach,
+	-- capabilities = capabilities,
+}))
