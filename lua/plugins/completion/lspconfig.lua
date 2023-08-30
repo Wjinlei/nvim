@@ -19,6 +19,7 @@ require("mason-lspconfig").setup({
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({})
 lspconfig.bashls.setup({})
+lspconfig.jsonls.setup({})
 lspconfig.clangd.setup(require("plugins.completion.server_config.clangd"))
 lspconfig.gopls.setup({})
 lspconfig.jdtls.setup(require("plugins.completion.server_config.jdtls"))
@@ -86,6 +87,15 @@ languages = vim.tbl_extend("force", languages, {
 	c = {
 		require("efmls-configs.linters.clang_tidy"),
 		require("efmls-configs.formatters.clang_format"),
+	},
+	rust = {
+		require("efmls-configs.formatters.rustfmt"),
+	},
+	json = {
+		require("efmls-configs.formatters.prettier"),
+	},
+	jsonc = {
+		require("efmls-configs.formatters.prettier"),
 	},
 })
 
