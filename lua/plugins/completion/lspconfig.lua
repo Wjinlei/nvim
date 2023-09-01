@@ -19,15 +19,15 @@ require("mason-lspconfig").setup({
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({})
 lspconfig.bashls.setup({})
-lspconfig.jsonls.setup({})
-lspconfig.clangd.setup(require("plugins.completion.server_config.clangd"))
 lspconfig.gopls.setup({})
+lspconfig.clangd.setup(require("plugins.completion.server_config.clangd"))
 lspconfig.jdtls.setup(require("plugins.completion.server_config.jdtls"))
 lspconfig.volar.setup(require("plugins.completion.server_config.volar"))
 lspconfig.tsserver.setup({})
 lspconfig.html.setup({})
 lspconfig.cssls.setup({})
-lspconfig.eslint.setup({})
+-- lspconfig.jsonls.setup({})
+-- lspconfig.eslint.setup({})
 lspconfig.pyright.setup({})
 lspconfig.rust_analyzer.setup({
 	settings = {
@@ -73,31 +73,49 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local languages = require("efmls-configs.defaults").languages()
-languages = vim.tbl_extend("force", languages, {
+local eslint = require("efmls-configs.linters.eslint")
+local stylelint = require("efmls-configs.linters.stylelint")
+-- local prettier = require("efmls-configs.formatters.prettier")
+local prettier_eslint = require("efmls-configs.formatters.prettier_eslint")
+local shellcheck = require("efmls-configs.linters.shellcheck")
+local shfmt = require("efmls-configs.formatters.shfmt")
+local clang_tidy = require("efmls-configs.linters.clang_tidy")
+local clang_format = require("efmls-configs.formatters.clang_format")
+local rustfmt = require("efmls-configs.formatters.rustfmt")
+local luacheck = require("efmls-configs.linters.luacheck")
+local stylua = require("efmls-configs.formatters.stylua")
+local golangci_lint = require("efmls-configs.linters.golangci_lint")
+local gofmt = require("efmls-configs.formatters.gofmt")
+local flake8 = require("efmls-configs.linters.flake8")
+local autopep8 = require("efmls-configs.formatters.autopep8")
+local vint = require("efmls-configs.linters.vint")
+local phpcs = require("efmls-configs.linters.phpcs")
+local phpcbf = require("efmls-configs.formatters.phpcbf")
+
+local languages = {
 	-- Custom languages, or override existing ones
-	sh = {
-		require("efmls-configs.linters.shellcheck"),
-		require("efmls-configs.formatters.shfmt"),
-	},
-	cpp = {
-		require("efmls-configs.linters.clang_tidy"),
-		require("efmls-configs.formatters.clang_format"),
-	},
-	c = {
-		require("efmls-configs.linters.clang_tidy"),
-		require("efmls-configs.formatters.clang_format"),
-	},
-	rust = {
-		require("efmls-configs.formatters.rustfmt"),
-	},
-	json = {
-		require("efmls-configs.formatters.prettier"),
-	},
-	jsonc = {
-		require("efmls-configs.formatters.prettier"),
-	},
-})
+	vim = { vint },
+	html = { prettier_eslint },
+	css = { stylelint, prettier_eslint },
+	less = { stylelint, prettier_eslint },
+	scss = { stylelint, prettier_eslint },
+	sass = { stylelint, prettier_eslint },
+	javascript = { eslint, prettier_eslint },
+	javascriptreact = { eslint, prettier_eslint },
+	typescript = { eslint, prettier_eslint },
+	typescriptreact = { eslint, prettier_eslint },
+	vue = { eslint, prettier_eslint },
+	c = { clang_tidy, clang_format },
+	cpp = { clang_tidy, clang_format },
+	lua = { luacheck, stylua },
+	php = { phpcs, phpcbf },
+	go = { golangci_lint, gofmt },
+	rust = { rustfmt },
+	python = { flake8, autopep8 },
+	sh = { shellcheck, shfmt },
+	json = { prettier_eslint },
+	jsonc = { prettier_eslint },
+}
 
 local efmls_config = {
 	filetypes = vim.tbl_keys(languages),
