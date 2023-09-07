@@ -14,4 +14,15 @@ M.run = function()
 	end
 end
 
+-- 自定义函数，用于退出 Neovim
+M.exit = function()
+	local current_bufname = vim.fn.bufname("%")
+
+	if current_bufname and current_bufname ~= "" and current_bufname ~= "[No Name]" then
+		vim.cmd("bwipeout! " .. vim.fn.bufnr("%"))
+	else
+		vim.cmd("quit!")
+	end
+end
+
 return M

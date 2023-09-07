@@ -7,9 +7,9 @@ keymap("i", "jj", "<ESC>", {})
 keymap("i", "JJ", "<ESC>", {})
 
 --- Save & quit
-keymap("n", "q", ":q!<CR>", {})
+keymap('n', 'q', "<cmd>lua require('core.func').exit()<CR>", { noremap = true, silent = true })
 keymap("n", "Q", ":qa!<CR>", {})
-keymap("v", "q", ":q!<CR>", {})
+keymap('v', 'q', "<cmd>lua require('core.func').exit()<CR>", { noremap = true, silent = true })
 keymap("v", "Q", ":qa!<CR>", {})
 keymap("n", "w", ":w!<CR>", {})
 keymap("n", "W", ":wq!<CR>", {})
