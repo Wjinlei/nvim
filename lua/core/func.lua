@@ -31,7 +31,7 @@ M.exit = function()
 		end, 10) -- 延迟 10 毫秒
 	else
 		-- 否则执行 quit
-		vim.cmd("quit")
+		vim.cmd("quit!")
 	end
 end
 
