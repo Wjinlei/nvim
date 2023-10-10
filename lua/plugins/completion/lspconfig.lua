@@ -30,11 +30,7 @@ lspconfig.cssls.setup({})
 -- lspconfig.jsonls.setup({})
 -- lspconfig.eslint.setup({})
 lspconfig.pyright.setup({})
-lspconfig.rust_analyzer.setup({
-	settings = {
-		["rust-analyzer"] = {},
-	},
-})
+lspconfig.rust_analyzer.setup({})
 
 -- Global mappings.
 vim.keymap.set("n", "<C-cr>", "<cmd>Lspsaga term_toggle<cr>", keymap_opts)
