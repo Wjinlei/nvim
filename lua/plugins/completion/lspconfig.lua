@@ -70,7 +70,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 local eslint = require("efmls-configs.linters.eslint")
 local stylelint = require("efmls-configs.linters.stylelint")
--- local prettier = require("efmls-configs.formatters.prettier")
 local prettier_eslint = require("efmls-configs.formatters.prettier_eslint")
 local shellcheck = require("efmls-configs.linters.shellcheck")
 local shfmt = require("efmls-configs.formatters.shfmt")
