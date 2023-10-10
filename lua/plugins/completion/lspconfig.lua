@@ -27,8 +27,6 @@ lspconfig.intelephense.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.html.setup({})
 lspconfig.cssls.setup({})
--- lspconfig.jsonls.setup({})
--- lspconfig.eslint.setup({})
 lspconfig.pyright.setup({})
 lspconfig.rust_analyzer.setup({})
 
