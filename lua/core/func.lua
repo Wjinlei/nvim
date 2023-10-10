@@ -28,7 +28,7 @@ M.exit = function()
 			if vim.api.nvim_buf_is_valid(current_bufnr) then
 				vim.cmd("bwipeout! " .. current_bufnr)
 			end
-		end, 10) -- 延迟 10 毫秒
+		end, 100) -- 延迟 10 毫秒
 	else
 		-- 否则执行 quit
 		vim.cmd("quit!")
