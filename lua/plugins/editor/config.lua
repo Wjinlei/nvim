@@ -9,11 +9,11 @@ function config.nvim_treesitter()
 		ensure_installed = {
 			"bash",
 			"c",
-			-- "cpp",
+			"cpp",
 			"lua",
 			"go",
 			"gomod",
-			-- "php",
+			"php",
 			"rust",
 			"python",
 			"javascript",
