@@ -31,9 +31,9 @@ lspconfig.tsserver.setup({})
 lspconfig.cssls.setup({})
 
 -- Global mappings.
-vim.keymap.set("n", "<C-cr>", "<cmd>Lspsaga term_toggle<cr>", keymap_opts)
-vim.keymap.set("i", "<C-cr>", "<cmd>Lspsaga term_toggle<cr>", keymap_opts)
-vim.keymap.set("n", "<A-cr>", "<cmd>Lspsaga outline<cr>", keymap_opts)
+vim.keymap.set("n", "<C-\\>", "<cmd>Lspsaga term_toggle<cr>", keymap_opts)
+vim.keymap.set("i", "<C-\\>", "<cmd>Lspsaga term_toggle<cr>", keymap_opts)
+vim.keymap.set("n", "<C-o>", "<cmd>Lspsaga outline<cr>", keymap_opts)
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),

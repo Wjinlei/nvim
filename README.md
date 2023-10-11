@@ -16,9 +16,10 @@
   - java
   - lua
   - shell
+  - php
 - Code format
 - Code snappet
-- Outline
+- Code Outline
 - File browser
 - Markdown preview
 - Git integration
@@ -68,7 +69,7 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
   - Git status `gs`
 ### LSP
 > You must install a language server `<LEADER>lsp`
-  - Code Outline `A-CR`
+  - Code Outline `C-o`
   - Code Rename `<LEADER>rn`
   - Code Format `<LEADER>f`
   - Show bufr diagnostic `<A-d>`
@@ -83,7 +84,7 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
   - Goto hover `gh`
   - Goto signature_help `gH`
 ### Other
-  - Toggle terminal `C-CR`
+  - Toggle terminal `C-\`
   - Startup time `<C-c>s`
   - Sudo write `<LEADER>w`
   - Sudo read `<LEADER>r`
