@@ -6,8 +6,10 @@ function config.dap()
 	local cpp_adapter_config = require("plugins.debugger.adapters.cpp")
 	local cpp_dap_config = require("plugins.debugger.dap.cpp")
 
+	-- Adapter
 	dap.adapters.cppdbg = cpp_adapter_config
 
+	-- Dap
 	dap.configurations.cpp = cpp_dap_config
 	dap.configurations.c = dap.configurations.cpp
 	dap.configurations.rust = dap.configurations.cpp
@@ -54,12 +56,71 @@ end
 
 function config.dap_ui()
 	local dap, dapui = require("dap"), require("dapui")
+
+	dapui.setup({
+		element_mappings = {
+			scopes = {
+				edit = "e",
+				repl = "r",
+			},
+			watches = {
+				edit = "e",
+				repl = "r",
+			},
+			stacks = {
+				open = "g",
+			},
+			breakpoints = {
+				open = "g",
+				toggle = "b",
+			},
+		},
+
+		layouts = {
+			{
+				elements = {
+					"scopes",
+					"stacks",
+					"breakpoints",
+					"watches",
+				},
+				size = 0.2, -- 40 columns
+				position = "left",
+			},
+			{
+				elements = {
+					"repl",
+				},
+				size = 0.25, -- 25% of total lines
+				position = "bottom",
+			},
+			{
+				elements = {
+					"console",
+				},
+				size = 0.2,
+				position = "right",
+			},
+		},
+
+		floating = {
+			max_height = nil, -- These can be integers or a float between 0 and 1.
+			max_width = nil, -- Floats will be treated as percentage of your screen.
+			border = "rounded", -- Border style. Can be "single", "double" or "rounded"
+			mappings = {
+				close = { "q", "<Esc>" },
+			},
+		},
+	})
+
 	dap.listeners.after.event_initialized["dapui_config"] = function()
 		dapui.open()
 	end
+
 	dap.listeners.before.event_terminated["dapui_config"] = function()
 		dapui.close()
 	end
+
 	dap.listeners.before.event_exited["dapui_config"] = function()
 		dapui.close()
 	end
