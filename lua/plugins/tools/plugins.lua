@@ -22,7 +22,7 @@ tools["nvim-telescope/telescope.nvim"] = {
 	keymap("n", "fn", "<cmd>lua require('telescope').extensions.notify.notify()<cr>", keymap_opts),
 }
 
-tools["nvim-telescope/telescope-fzf-native.nvim"] = { after = "telescope.nvim", run = "make" }
+tools["nvim-telescope/telescope-fzf-native.nvim"] = { after = "telescope.nvim", run = "cmake" }
 tools["nvim-telescope/telescope-frecency.nvim"] = {
 	after = "telescope-fzf-native.nvim",
 	requires = { "tami5/sqlite.lua" },
