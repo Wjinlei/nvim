@@ -29,12 +29,19 @@
 
 ## Requirements
 - Neovim >= 0.9.0
+- [sqlite](https://www.sqlite.org/download.html)
 - cmake
+- file
 - sed
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fzf](https://github.com/junegunn/fzf)
 - [tree-sitter](https://github.com/tree-sitter/tree-sitter)
 - xclip(optional)
+### For windows
+- sqlite
+```lua
+vim.g.sqlite_clib_path = "path/to/sqlite3.dll"
+```
 
 ## Install
 ```sh
