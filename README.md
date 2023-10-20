@@ -33,6 +33,7 @@
 - sed
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fzf](https://github.com/junegunn/fzf)
+- [tree-sitter](https://github.com/tree-sitter/tree-sitter)
 - xclip(optional)
 
 ## Install
