@@ -29,6 +29,8 @@
 
 ## Requirements
 - Neovim >= 0.9.0
+- cmake
+- sed
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fzf](https://github.com/junegunn/fzf)
 - xclip(optional)
