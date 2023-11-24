@@ -4,7 +4,10 @@ local keymap = vim.api.nvim_set_keymap
 local conf = require("plugins.editor.config")
 
 editor["nvim-treesitter/nvim-treesitter"] = { run = ":TSUpdate", event = "BufRead", config = conf.nvim_treesitter }
-editor["JoosepAlviste/nvim-ts-context-commentstring"] = { after = "nvim-treesitter" }
+editor["JoosepAlviste/nvim-ts-context-commentstring"] = {
+	after = "nvim-treesitter",
+	config = conf.nvim_commentstring,
+}
 
 editor["windwp/nvim-spectre"] = {
 	requires = {

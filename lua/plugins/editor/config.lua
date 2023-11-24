@@ -1,6 +1,12 @@
 -- luacheck: globals vim
 local config = {}
 
+function config.nvim_commentstring()
+	require("ts_context_commentstring").setup({
+		enable_autocmd = false,
+	})
+end
+
 function config.nvim_treesitter()
 	vim.api.nvim_command("set foldmethod=expr")
 	vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
@@ -33,7 +39,6 @@ function config.nvim_treesitter()
 			enable = true,
 			disable = { "vim" },
 		},
-		context_commentstring = { enable = true, enable_autocmd = false },
 		matchup = { enable = true },
 	})
 	require("nvim-treesitter.install").prefer_git = true
