@@ -17,6 +17,7 @@ completion["L3MON4D3/LuaSnip"] = {
 	after = "nvim-cmp",
 	config = conf.luasnip,
 	requires = { "rafamadriz/friendly-snippets" },
+	run = "make install_jsregexp"
 }
 completion["windwp/nvim-autopairs"] = {
 	after = "nvim-cmp",
@@ -31,7 +32,7 @@ completion["nvimdev/lspsaga.nvim"] = {
 		require("lspsaga").setup({})
 	end,
 }
-completion["simrat39/rust-tools.nvim"] = { config = conf.rust_tools, after = "nvim-lspconfig" }
+
 completion["williamboman/mason.nvim"] = { after = "nvim-lspconfig", cmd = "MasonUpdate" }
 completion["williamboman/mason-lspconfig.nvim"] = { after = "mason.nvim" }
 completion["mfussenegger/nvim-jdtls"] = { after = "nvim-lspconfig" }

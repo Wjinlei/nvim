@@ -16,7 +16,7 @@ debugger["mfussenegger/nvim-dap"] = {
 
 debugger["rcarriga/nvim-dap-ui"] = {
 	config = conf.dap_ui,
-	requires = { "mfussenegger/nvim-dap" },
+	requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
 }
 
 debugger["theHamsta/nvim-dap-virtual-text"] = {

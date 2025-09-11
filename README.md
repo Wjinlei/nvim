@@ -49,6 +49,9 @@ git clone https://github.com/Wjinlei/nvim.git ~/.config/nvim
 ```
 ### After Installation, You Need To
   - Python3 install `pynvim`
+```
+Set your python3 path in `lua/core/python3_host_prog.lua`
+```
   - Nodejs install `neovim`
   - Install [Nerd font](https://www.nerdfonts.com/)
   - Do `:checkhealth`

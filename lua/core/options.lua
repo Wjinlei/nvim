@@ -1,6 +1,9 @@
 -- luacheck: globals vim
 local global = require("core.global")
 
+-- python3 path
+local python3_host_prog = require('core.python3_host_prog')
+
 --- Global options
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

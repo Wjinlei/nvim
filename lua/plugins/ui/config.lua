@@ -112,7 +112,7 @@ function config.nvim_navic()
 		},
 		lsp = {
 			auto_attach = true,
-			preference = nil,
+			preference = { 'vue_ls', 'vtsls' },
 		},
 		highlight = true,
 		separator = " > ",

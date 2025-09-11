@@ -2,7 +2,7 @@
 local config = {
 	id = "cppdbg",
 	type = "executable",
-	command = "/usr/local/vscode-cpptools/OpenDebugAD7",
+	command = "/usr/local/vscode-cpptools/extension/debugAdapters/bin/OpenDebugAD7",
 }
 
 return config

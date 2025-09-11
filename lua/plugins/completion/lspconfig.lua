@@ -11,24 +11,32 @@ vim.api.nvim_set_keymap("n", "<LEADER>lsp", ":Mason<CR>", {})
 vim.api.nvim_set_keymap("n", "<LEADER>lsi", ":LspInfo<CR>", {})
 
 require("mason-lspconfig").setup({
-	automatic_installation = true,
-	handlers = nil,
+    automatic_enable = {
+        "vue_ls",
+        "vtsls"
+    }
 })
 
--- Lspconfig
-local lspconfig = require("lspconfig")
-lspconfig.lua_ls.setup({})
-lspconfig.bashls.setup({})
-lspconfig.gopls.setup({})
-lspconfig.rust_analyzer.setup({})
-lspconfig.pyright.setup({})
-lspconfig.clangd.setup(require("plugins.completion.server_config.clangd"))
-lspconfig.jdtls.setup(require("plugins.completion.server_config.jdtls"))
-lspconfig.volar.setup(require("plugins.completion.server_config.volar"))
-lspconfig.intelephense.setup({})
-lspconfig.html.setup({})
-lspconfig.tsserver.setup({})
-lspconfig.cssls.setup({})
+-- vtsls
+local vue_language_server_path = vim.fn.stdpath('data') .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+local vue_plugin = {
+  name = '@vue/typescript-plugin',
+  location = vue_language_server_path,
+  languages = { 'vue' },
+  configNamespace = 'typescript',
+}
+vim.lsp.config('vtsls', {
+  settings = {
+    vtsls = {
+      tsserver = {
+        globalPlugins = {
+          vue_plugin,
+        },
+      },
+    },
+  },
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+})
 
 -- Global mappings.
 vim.keymap.set("n", "<C-\\>", "<cmd>Lspsaga term_toggle<cr>", keymap_opts)
@@ -68,27 +76,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local eslint = require("efmls-configs.linters.eslint")
+-- front-end
 local stylelint = require("efmls-configs.linters.stylelint")
+local eslint = require("efmls-configs.linters.eslint")
 local prettier_eslint = require("efmls-configs.formatters.prettier_eslint")
+
+-- shell
 local shellcheck = require("efmls-configs.linters.shellcheck")
 local shfmt = require("efmls-configs.formatters.shfmt")
--- local clang_tidy = require("efmls-configs.linters.clang_tidy")
--- local clang_format = require("efmls-configs.formatters.clang_format")
-local rustfmt = require("efmls-configs.formatters.rustfmt")
-local luacheck = require("efmls-configs.linters.luacheck")
-local stylua = require("efmls-configs.formatters.stylua")
+
+-- golang
 local golangci_lint = require("efmls-configs.linters.golangci_lint")
 local gofmt = require("efmls-configs.formatters.gofmt")
-local flake8 = require("efmls-configs.linters.flake8")
+
+-- python
 local autopep8 = require("efmls-configs.formatters.autopep8")
-local vint = require("efmls-configs.linters.vint")
-local phpcs = require("efmls-configs.linters.phpcs")
-local phpcbf = require("efmls-configs.formatters.phpcbf")
+local flake8 = require("efmls-configs.linters.flake8")
 
 local languages = {
 	-- Custom languages, or override existing ones
-	vim = { vint },
 	javascript = { eslint, prettier_eslint },
 	javascriptreact = { eslint, prettier_eslint },
 	typescript = { eslint, prettier_eslint },
@@ -97,18 +103,14 @@ local languages = {
 	scss = { stylelint, prettier_eslint },
 	sass = { stylelint, prettier_eslint },
 	html = { prettier_eslint },
+	json = { prettier_eslint },
 	css = { stylelint, prettier_eslint },
 	vue = { eslint, prettier_eslint },
-	-- c = { clang_tidy, clang_format },
-	-- cpp = { clang_tidy, clang_format },
-	lua = { luacheck, stylua },
-	php = { phpcs, phpcbf },
-	go = { golangci_lint, gofmt },
-	rust = { rustfmt },
+
 	python = { flake8, autopep8 },
+	lua = { luacheck, stylua },
+	go = { golangci_lint, gofmt },
 	sh = { shellcheck, shfmt },
-	json = { prettier_eslint },
-	jsonc = { prettier_eslint },
 }
 
 local efmls_config = {
@@ -122,9 +124,3 @@ local efmls_config = {
 		documentRangeFormatting = true,
 	},
 }
-
--- Pass your custom lsp config below like on_attach and capabilities
-lspconfig.efm.setup(vim.tbl_extend("force", efmls_config, {
-	-- on_attach = on_attach,
-	-- capabilities = capabilities,
-}))
