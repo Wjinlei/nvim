@@ -13,7 +13,8 @@ vim.api.nvim_set_keymap("n", "<LEADER>lsi", ":LspInfo<CR>", {})
 require("mason-lspconfig").setup({
     automatic_enable = {
         "vue_ls",
-        "vtsls"
+        "vtsls",
+        "gopls",
     }
 })
 
