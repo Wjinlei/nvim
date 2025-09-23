@@ -28,14 +28,13 @@ M.setup_python_host = function()
             vim.cmd('normal! G$')
         end)
     else
-        vim.notify('Load python3 executable file path', vim.log.levels.INFO)
         dofile(config_file)
 
         -- 检查配置是否已设置
         if not vim.g.python3_host_prog or vim.g.python3_host_prog == '' then
             vim.notify('Please set the Python 3 executable file path: ' .. config_file, vim.log.levels.WARN)
-        else
-            vim.notify('python3_host_prog=' .. vim.g.python3_host_prog, vim.log.levels.INFO)
+        -- else
+        --     vim.notify('python3_host_prog=' .. vim.g.python3_host_prog, vim.log.levels.INFO)
         end
     end
 end
