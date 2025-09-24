@@ -44,7 +44,7 @@ function config.telescope()
 			layout_config = {
 				width = 0.9,
 				horizontal = {
-					preview_width = 0.6,
+					preview_width = 0.4,
 				},
 			},
 			mappings = {

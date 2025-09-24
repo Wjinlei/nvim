@@ -149,9 +149,9 @@ function config.lualine()
 					end,
 				},
 			},
-			lualine_x = { "encoding", "fileformat", "filetype", "filesize" },
+			lualine_x = { "encoding", "filetype", "filesize" },
 			lualine_y = { "progress" },
-			lualine_z = { "location", "tabs" },
+			lualine_z = { "location", "lsp_status" },
 		},
 		options = {
 			theme = "palenight",
