@@ -80,7 +80,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- front-end
 local stylelint = require("efmls-configs.linters.stylelint")
 local eslint = require("efmls-configs.linters.eslint")
-local prettier_eslint = require("efmls-configs.formatters.prettier_eslint")
+local prettier = require("efmls-configs.formatters.prettier")
 
 -- shell
 local shellcheck = require("efmls-configs.linters.shellcheck")
@@ -96,17 +96,17 @@ local flake8 = require("efmls-configs.linters.flake8")
 
 local languages = {
 	-- Custom languages, or override existing ones
-	javascript = { eslint, prettier_eslint },
-	javascriptreact = { eslint, prettier_eslint },
-	typescript = { eslint, prettier_eslint },
-	typescriptreact = { eslint, prettier_eslint },
-	less = { stylelint, prettier_eslint },
-	scss = { stylelint, prettier_eslint },
-	sass = { stylelint, prettier_eslint },
-	html = { prettier_eslint },
-	json = { prettier_eslint },
-	css = { stylelint, prettier_eslint },
-	vue = { eslint, prettier_eslint },
+	javascript = { eslint, prettier },
+	javascriptreact = { eslint, prettier },
+	typescript = { eslint, prettier },
+	typescriptreact = { eslint, prettier },
+	less = { stylelint, prettier },
+	scss = { stylelint, prettier },
+	sass = { stylelint, prettier },
+	html = { prettier },
+	json = { prettier },
+	css = { stylelint, prettier },
+	vue = { eslint, prettier },
 
 	python = { flake8, autopep8 },
 	lua = { luacheck, stylua },
