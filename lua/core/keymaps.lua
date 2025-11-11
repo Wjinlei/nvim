@@ -21,6 +21,7 @@ keymap("n", "r", "<cmd>lua require('core.func').run()<CR>", {})
 keymap("n", "R", "<cmd>lua require('core.func').run()<CR>", {})
 
 -- Record mocro
+-- 按两下小写x开始录制宏，再按一次x停止录制，按大写X执行宏
 keymap("n", "x", "q", { noremap = true, silent = true })
 keymap("n", "X", "@x", { noremap = true, silent = true })
 
