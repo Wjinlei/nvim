@@ -172,10 +172,13 @@ function config.neogit()
 		},
 		-- override/add mappings
 		mappings = {
-			-- modify status buffer mappings
 			status = {
-				-- Adds a mapping with "B" as key that does the "BranchPopup" command
-				-- ["B"] = "BranchPopup",
+				["q"] = "Close",
+				["Q"] = "Close",
+			},
+			commit_editor = {
+				["q"] = "Close",
+				["Q"] = "Close",
 			},
 		},
 	})
