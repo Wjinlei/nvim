@@ -184,6 +184,15 @@ function config.neogit()
 	})
 end
 
+function config.gitblame()
+	require("gitblame").setup({
+		enabled = true,
+		message_template = " <author> • <summary> • <date>",
+		date_format = "%Y-%m-%d %H:%M:%S",
+		virtual_text_column = 1,
+	})
+end
+
 function config.tmux()
 	require("tmux").setup({
 		copy_sync = {

@@ -63,6 +63,11 @@ tools["NeogitOrg/neogit"] = {
 	keymap("n", "gs", '<cmd>lua require("neogit").open()<CR>', keymap_opts),
 }
 
+tools["f-person/git-blame.nvim"] = {
+	config = conf.gitblame,
+	keymap("n", "gb", ":GitBlameOpenCommitURL<CR>", keymap_opts),
+}
+
 tools["aserowy/tmux.nvim"] = {
 	config = conf.tmux,
 	keymap("n", "<Left>", '<cmd>lua require("tmux").resize_left()<cr>', keymap_opts),
