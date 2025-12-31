@@ -1,10 +1,11 @@
 -- luacheck: globals vim
 
--- Set tabstop=4
-vim.cmd([[augroup SetTabstop]])
-vim.cmd([[autocmd! * <buffer>]])
-vim.cmd([[autocmd BufEnter * :set tabstop=4]])
-vim.cmd([[autocmd BufEnter * :set shiftwidth=4]])
-vim.cmd([[autocmd BufEnter * :set softtabstop=4]])
-vim.cmd([[autocmd BufEnter * :set expandtab]])
-vim.cmd([[augroup END]])
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "js", "html", "css" },
+	callback = function()
+		vim.opt_local.tabstop = 2
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.softtabstop = 2
+		vim.opt_local.expandtab = false -- 使用 Tab
+	end
+})
