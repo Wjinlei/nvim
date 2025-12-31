@@ -11,33 +11,65 @@ vim.api.nvim_set_keymap("n", "<LEADER>lsp", ":Mason<CR>", {})
 vim.api.nvim_set_keymap("n", "<LEADER>lsi", ":LspInfo<CR>", {})
 
 require("mason-lspconfig").setup({
-    automatic_enable = {
-        "vue_ls",
-        "vtsls",
-        "gopls",
-        "jsonls",
-    }
+	automatic_enable = {
+		"efm",
+		"lua_ls",
+		"jsonls",
+		"bashls",
+		"vue_ls",
+		"vtsls",
+		"gopls",
+		"pyright",
+	},
+	ensure_installed = {
+		"efm",
+		"lua_ls",
+		"jsonls",
+		"bashls",
+		"vue_ls",
+		"vtsls",
+		"rust_analyzer",
+		"gopls",
+		"pyright",
+	}
 })
 
 -- vtsls
-local vue_language_server_path = vim.fn.stdpath('data') .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+local vue_language_server_path = vim.fn.stdpath('data') ..
+	"/mason/packages/vue-language-server/node_modules/@vue/language-server"
 local vue_plugin = {
-  name = '@vue/typescript-plugin',
-  location = vue_language_server_path,
-  languages = { 'vue' },
-  configNamespace = 'typescript',
+	name = '@vue/typescript-plugin',
+	location = vue_language_server_path,
+	languages = { 'vue' },
+	configNamespace = 'typescript',
 }
 vim.lsp.config('vtsls', {
-  settings = {
-    vtsls = {
-      tsserver = {
-        globalPlugins = {
-          vue_plugin,
-        },
-      },
-    },
-  },
-  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+	settings = {
+		vtsls = {
+			tsserver = {
+				globalPlugins = {
+					vue_plugin,
+				},
+			},
+		},
+	},
+	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+})
+
+-- lua_ls
+vim.lsp.config('lua_ls', {
+	settings = {
+		Lua = {
+			format = {
+				enable = true,
+				defaultConfig = {
+					-- 下面设置没用，因为编辑器的缩进设置覆盖了它
+					indent_style = "space",
+					indent_size = "2",
+				}
+			}
+		}
+	}
 })
 
 -- Global mappings.
@@ -78,40 +110,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- front-end
-local stylelint = require("efmls-configs.linters.stylelint")
-local eslint = require("efmls-configs.linters.eslint")
-local prettier = require("efmls-configs.formatters.prettier")
-
 -- shell
 local shellcheck = require("efmls-configs.linters.shellcheck")
 local shfmt = require("efmls-configs.formatters.shfmt")
 
--- golang
-local golangci_lint = require("efmls-configs.linters.golangci_lint")
-local gofmt = require("efmls-configs.formatters.gofmt")
-
--- python
-local autopep8 = require("efmls-configs.formatters.autopep8")
-local flake8 = require("efmls-configs.linters.flake8")
-
 local languages = {
-	-- Custom languages, or override existing ones
-	javascript = { eslint, prettier },
-	javascriptreact = { eslint, prettier },
-	typescript = { eslint, prettier },
-	typescriptreact = { eslint, prettier },
-	less = { stylelint, prettier },
-	scss = { stylelint, prettier },
-	sass = { stylelint, prettier },
-	html = { prettier },
-	json = { prettier },
-	css = { stylelint, prettier },
-	vue = { eslint, prettier },
-
-	python = { flake8, autopep8 },
-	lua = { luacheck, stylua },
-	go = { golangci_lint, gofmt },
 	sh = { shellcheck, shfmt },
 }
 
@@ -126,3 +129,12 @@ local efmls_config = {
 		documentRangeFormatting = true,
 	},
 }
+
+-- If using nvim >= 0.11 then use the following
+vim.lsp.config('efm', vim.tbl_extend('force', efmls_config, {
+	cmd = { 'efm-langserver' },
+	-- Pass your custom lsp config below like on_attach and capabilities
+	--
+	-- on_attach = on_attach,
+	-- capabilities = capabilities,
+}))
