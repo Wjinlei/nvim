@@ -15,6 +15,7 @@ require("mason-lspconfig").setup({
         "vue_ls",
         "vtsls",
         "gopls",
+        "jsonls",
     }
 })
 
