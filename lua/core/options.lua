@@ -27,6 +27,10 @@ vim.o.writebackup = true
 vim.o.backupdir = global.cache_dir .. "/backup"
 vim.o.directory = global.cache_dir .. "/swap"
 vim.o.undodir = global.cache_dir .. "/undo"
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
+vim.o.expandtab = false
 
 --- Neovide
 if vim.g.neovide then
