@@ -3,7 +3,7 @@ local editor = {}
 local keymap = vim.api.nvim_set_keymap
 local conf = require("plugins.editor.config")
 
-editor["nvim-treesitter/nvim-treesitter"] = { run = ":TSUpdate", branch = 'master', event = "BufRead", config = conf.nvim_treesitter }
+editor["nvim-treesitter/nvim-treesitter"] = { run = ":TSUpdate", branch = 'main', event = "BufRead", config = conf.nvim_treesitter }
 editor["JoosepAlviste/nvim-ts-context-commentstring"] = {
 	after = "nvim-treesitter",
 	config = conf.nvim_commentstring,

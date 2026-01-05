@@ -8,44 +8,29 @@ function config.nvim_commentstring()
 end
 
 function config.nvim_treesitter()
-	vim.api.nvim_command("set foldmethod=expr")
-	vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
-
-	require("nvim-treesitter.configs").setup({
-		ensure_installed = {
-			"bash",
-			"c",
-			"cpp",
-			"lua",
-			"go",
-			"gomod",
-			"php",
-			"rust",
-			"python",
-			"javascript",
-			"typescript",
-			"vue",
-			"css",
-			"html",
-			"json",
-			"yaml",
-			"toml",
-			"make",
-			"markdown",
-			"gitignore",
-			"comment",
-		},
-		highlight = {
-			enable = true,
-			disable = { "vim" },
-		},
-		matchup = { enable = true },
-	})
-	require("nvim-treesitter.install").prefer_git = true
-	local parsers = require("nvim-treesitter.parsers").get_parser_configs()
-	for _, p in pairs(parsers) do
-		p.install_info.url = p.install_info.url:gsub("https://github.com/", "git@github.com:")
-	end
+	require 'nvim-treesitter'.install {
+		"bash",
+		"c",
+		"cpp",
+		"lua",
+		"go",
+		"gomod",
+		"php",
+		"rust",
+		"python",
+		"javascript",
+		"typescript",
+		"vue",
+		"css",
+		"html",
+		"json",
+		"yaml",
+		"toml",
+		"make",
+		"markdown",
+		"gitignore",
+		"comment",
+	}
 end
 
 function config.spectre()
