@@ -3,16 +3,16 @@ local config = {}
 
 function config.dap()
 	local dap = require("dap")
-	local cpp_adapter_config = require("plugins.debugger.adapters.cpp")
-	local cpp_dap_config = require("plugins.debugger.dap.cpp")
+	local codelldb_adapter = require("plugins.debugger.adapters.codelldb")
+	local codelldb_conf = require("plugins.debugger.configs.codelldb")
 
 	-- Adapter
-	dap.adapters.cppdbg = cpp_adapter_config
+	dap.adapters.codelldb = codelldb_adapter
 
-	-- Dap
-	dap.configurations.cpp = cpp_dap_config
-	dap.configurations.c = dap.configurations.cpp
-	dap.configurations.rust = dap.configurations.cpp
+	-- Dap Configs
+	dap.configurations.cpp = codelldb_conf
+	dap.configurations.c = codelldb_conf
+	dap.configurations.rust = codelldb_conf
 
 	local dap_breakpoint = {
 		error = {
