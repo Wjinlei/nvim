@@ -4,37 +4,15 @@ local conf = require("plugins.tools.config")
 local keymap = vim.api.nvim_set_keymap
 local keymap_opts = { noremap = true, silent = true }
 
-tools["nvim-telescope/telescope.nvim"] = {
-	module = "telescope",
-	cmd = "Telescope",
-	config = conf.telescope,
-	requires = {
-		{ "kyazdani42/nvim-web-devicons", opt = false },
-		{ "nvim-lua/plenary.nvim", opt = false },
-		{ "nvim-lua/popup.nvim", opt = false },
-	},
-	keymap("n", "ff", "<cmd>lua require('plugins.tools.pickers').project_files()<cr>", keymap_opts),
-	keymap("n", "fg", "<cmd>lua require('plugins.tools.pickers').project_change_files()<cr>", keymap_opts),
-	keymap("n", "fs", "<cmd>lua require('plugins.tools.pickers').search()<cr>", keymap_opts),
-	keymap("n", "bb", "<cmd>lua require('telescope.builtin').buffers()<cr>", keymap_opts),
-	keymap("n", "fh", "<cmd>lua require('telescope.builtin').oldfiles()<cr>", keymap_opts),
-	keymap("n", "fp", ":lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>", keymap_opts),
-	keymap("n", "fn", "<cmd>lua require('telescope').extensions.notify.notify()<cr>", keymap_opts),
-}
-
-tools["nvim-telescope/telescope-fzf-native.nvim"] = { after = "telescope.nvim", run = "make" }
-tools["nvim-telescope/telescope-frecency.nvim"] = {
-	after = "telescope-fzf-native.nvim",
-	requires = { "tami5/sqlite.lua" },
-}
-tools["nvim-telescope/telescope-live-grep-args.nvim"] = { after = "telescope-frecency.nvim" }
-tools["nvim-telescope/telescope-project.nvim"] = { after = "telescope-live-grep-args.nvim" }
-tools["notjedi/nvim-rooter.lua"] = { after = "telescope-project.nvim", config = conf.rooter }
-tools["rcarriga/nvim-notify"] = {
-	after = "nvim-rooter.lua",
-	config = function()
-		vim.notify = require("notify")
-	end,
+tools["ibhagwan/fzf-lua"] = {
+	config = conf.fzf_lua,
+	requires = 'nvim-tree/nvim-web-devicons',
+	keymap("n", "fp", '<cmd>lua require("fzf-lua").grep_project()<CR>', keymap_opts),
+	keymap("n", "ff", '<cmd>lua require("fzf-lua").files()<CR>', keymap_opts),
+	keymap("n", "fs", '<cmd>lua require("fzf-lua").live_grep_native()<CR>', keymap_opts),
+	keymap("n", "fh", '<cmd>lua require("fzf-lua").oldfiles()<CR>', keymap_opts),
+	keymap("n", "bb", '<cmd>lua require("fzf-lua").buffers()<CR>', keymap_opts),
+	keymap("n", "fg", '<cmd>lua require("fzf-lua").git_status()<CR>', keymap_opts),
 }
 
 tools["airblade/vim-gitgutter"] = {

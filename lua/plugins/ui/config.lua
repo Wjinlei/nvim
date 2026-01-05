@@ -24,14 +24,11 @@ function config.alpha()
 		[[    CENTAUR VIM - Enjoy Programming & Writing     ]],
 	}
 	dashboard.section.buttons.val = {
-		dashboard.button(
-			"fp",
-			"  Find project",
-			"<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>"
-		),
-		dashboard.button("ff", "󰈞  Find file", "<cmd>lua require('plugins.tools.pickers').project_files()<CR>"),
-		dashboard.button("fs", "󱎸  Find text", "<cmd>lua require('plugins.tools.pickers').search()<CR>"),
-		dashboard.button("fh", "  Recently used files", ":Telescope oldfiles <CR>"),
+		dashboard.button("fg", "󰈞  Find Git status", "<cmd>lua require('fzf-lua').git_status()<CR>"),
+		dashboard.button("fp", "󰈞  Find project lines", "<cmd>lua require('fzf-lua').grep_project()<CR>"),
+		dashboard.button("ff", "󰈞  Find file", "<cmd>lua require('fzf-lua').files()<CR>"),
+		dashboard.button("fs", "󱎸  Find text", "<cmd>lua require('fzf-lua').live_grep_native()<CR>"),
+		dashboard.button("fh", "  Recently used files", "<cmd>lua require('fzf-lua').oldfiles()<CR>"),
 		dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
 		dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
 		dashboard.button("q", "󰗼  Quit vim", ":qa<CR>"),
