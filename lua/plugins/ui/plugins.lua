@@ -1,6 +1,7 @@
 -- luacheck: globals vim
 local ui = {}
 local keymap = vim.api.nvim_set_keymap
+local keymap_opts = { noremap = true, silent = true }
 local conf = require("plugins.ui.config")
 
 ui["dracula/vim"] = {
@@ -15,7 +16,7 @@ ui["goolord/alpha-nvim"] = {
 	event = "BufWinEnter",
 	config = conf.alpha,
 	requires = "kyazdani42/nvim-web-devicons",
-	-- keymap("n", "ta", "<cmd>Alpha<cr>", { noremap = true, silent = true }),
+	keymap("n", "mm", "<cmd>Alpha<cr>", keymap_opts),
 }
 
 ui["RRethy/vim-illuminate"] = {
