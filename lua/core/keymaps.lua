@@ -2,6 +2,8 @@
 local keymap = vim.api.nvim_set_keymap
 vim.g.mapleader = " "
 
+keymap("n", "<C-x>d", ":chdir ", {})
+
 -- Back normal mode
 keymap("i", "jj", "<ESC>", {})
 keymap("i", "JJ", "<ESC>", {})
