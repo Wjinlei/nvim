@@ -13,6 +13,7 @@ tools["ibhagwan/fzf-lua"] = {
 	keymap("n", "fh", '<cmd>lua require("fzf-lua").oldfiles()<CR>', keymap_opts),
 	keymap("n", "bb", '<cmd>lua require("fzf-lua").buffers()<CR>', keymap_opts),
 	keymap("n", "fg", '<cmd>lua require("fzf-lua").git_status()<CR>', keymap_opts),
+	keymap("n", "fc", '<cmd>lua require("fzf-lua").git_commits()<CR>', keymap_opts),
 }
 
 tools["airblade/vim-gitgutter"] = {

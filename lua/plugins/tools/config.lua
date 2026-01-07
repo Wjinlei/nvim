@@ -3,7 +3,7 @@ local config = {}
 
 function config.fzf_lua()
 	-- :FzfLua profiles
-	require('fzf-lua').setup({ 'ivy' })
+	require('fzf-lua').setup({ { 'ivy', 'hide' } })
 end
 
 function config.neogit()

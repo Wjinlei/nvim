@@ -30,7 +30,7 @@ function config.alpha()
 		dashboard.button("fs", "󱎸  Find text", "<cmd>lua require('fzf-lua').live_grep_native()<CR>"),
 		dashboard.button("fh", "  Recently used files", "<cmd>lua require('fzf-lua').oldfiles()<CR>"),
 		dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-		dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
+		-- dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"), -- 关打开这个没有，目录没有切换
 		dashboard.button("q", "󰗼  Quit vim", ":qa<CR>"),
 	}
 
